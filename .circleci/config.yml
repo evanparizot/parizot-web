@@ -1,0 +1,48 @@
+version: 2.1
+
+workflows:
+  version: 2.1
+  pipeline:
+    jobs:
+      - build
+      # - push_to_s3:
+      #     requires: build
+      #     filters:
+      #       branches:
+      #         only: master
+
+orbs:
+  aws-s3: circleci/aws-s3@1.0.11
+
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8-browsers
+    working_directory: '~/project'
+    steps:
+      - checkout
+      - run:
+          name: Update npm
+          command: 'sudo npm install -g npm@latest'
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run: npm install
+      - run: npm install -g @angular/cli
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+      - run: ng serve --prod
+      - run: ls
+      
+      # - run: ng serve --prod
+
+      # - persist_to_workspace:
+      #     root: '~/web'
+
+  # push_to_s3:
+  #   docker:
+  #     - image: circleci/python:2.7
+  #   steps:
+  #     - attach_workspace:
+  #         at: ~/web
