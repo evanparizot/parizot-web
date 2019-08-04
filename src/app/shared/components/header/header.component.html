@@ -1,13 +1,28 @@
-<header>
-  <mat-drawer-container class="container" autosize>
-    <mat-drawer #drawer class="sidenav">
-      <p>Menu</p>
+<mat-toolbar color="accent">
+  <mat-toolbar-row>
+    <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" color="primary">
+      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #drawer mode="side" opened role="navigation">
+    <mat-nav-list>
+      <a mat-list-item>First</a>
+    </mat-nav-list>
+  </mat-sidenav>
+</mat-sidenav-container>
 
-    </mat-drawer>
-    <div class="sidenav-content">
-      <button mat-icon-button (click)="drawer.toggle()">
-        <mat-icon>menu</mat-icon>
+<!-- <mat-toolbar color="primary">
+  <mat-toolbar-row>
+      <button mat-icon-button>
+          <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
       </button>
-    </div>
-  </mat-drawer-container>
-</header>
+      <h1>Something</h1>
+      <span class="menu-spacer"></span>
+      <div>
+          <a>something</a>
+          <a>somethingelse</a>
+      </div>
+  </mat-toolbar-row>
+</mat-toolbar> -->

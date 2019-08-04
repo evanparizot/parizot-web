@@ -4,12 +4,14 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { MaterialModule } from './modules/material.module';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     HomePageComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    PageNotFoundComponent
   ],
   imports: [
     CommonModule,
