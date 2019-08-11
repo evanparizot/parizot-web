@@ -5,13 +5,21 @@ workflows:
   pipeline:
     jobs:
       - build
-      - push_to_s3:
+
+      - push_to_s3_dev:
           context: aws-creds
-          requires: 
-            - build
+          requires: [ 'build' ]
           filters:
             branches:
               only: master
+
+      - hold:
+          type: 'approval'
+          requires: [ 'push_to_s3_dev' ]
+
+      - push_to_s3:
+          context: aws-creds
+          requires: [ 'hold' ]
 
 orbs:
   aws-s3: circleci/aws-s3@1.0.11
@@ -30,12 +38,26 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - node_modules
+      - run: npm run build -- --configuration=dev --output-path=dist/dev --progress=false
       - run: npm run build -- --configuration=production --output-path=dist/prod --progress=false
-      
       - persist_to_workspace:
           root: '~/project'
           paths:
+            - dist/dev
             - dist/prod
+
+  push_to_s3_dev:
+    docker:
+      - image: circleci/python:3.7
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - run: find . -type f -follow -print
+      - run: pip3 install awscli --upgrade --user
+      - aws-s3/sync:
+          from: ./dist/dev
+          to: 's3://dev.parizot.info/'
+          overwrite: true
 
   push_to_s3:
     docker:
