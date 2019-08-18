@@ -5,6 +5,7 @@ import { MaterialModule } from './modules/material.module';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
   ],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
   ],
   exports: [
     MaterialModule,

@@ -12,8 +12,6 @@ export class HeaderComponent implements OnInit {
 
   constructor(private breakpointObserver: BreakpointObserver) { }
 
-  @ViewChild('sidenav') sidenav: MatSidenav;
-
   ngOnInit() {
   }
 
