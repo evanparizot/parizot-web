@@ -5,21 +5,32 @@ workflows:
   pipeline:
     jobs:
       - build
-
-      - push_to_s3_dev:
-          context: aws-creds
+      - push_to_gcs_dev:
+          context: gcp-storage-parizot
           requires: [ 'build' ]
-          filters:
-            branches:
-              only: master
-
+      
       - hold:
           type: 'approval'
-          requires: [ 'push_to_s3_dev' ]
+          requires: [ 'push_to_gcs_dev' ]
+      
+      - push_to_gcs_prod:
+          context: gcp-storage-parizot
+          requires: ['hold']
 
-      - push_to_s3:
-          context: aws-creds
-          requires: [ 'hold' ]
+      # - push_to_s3_dev:
+      #     context: aws-s3-parizot
+      #     requires: [ 'build' ]
+      #     filters:
+      #       branches:
+      #         only: master
+
+      # - hold:
+      #     type: 'approval'
+      #     requires: [ 'push_to_s3_dev' ]
+
+      # - push_to_s3:
+      #     context: aws-s3-parizot
+      #     requires: [ 'hold' ]
 
 orbs:
   aws-s3: circleci/aws-s3@1.0.11
@@ -46,28 +57,54 @@ jobs:
             - dist/dev
             - dist/prod
 
-  push_to_s3_dev:
+  push_to_gcs_dev:
     docker:
-      - image: circleci/python:3.7
+      - image: google/cloud-sdk
     steps:
       - attach_workspace:
           at: ~/project
+      - run: |
+          echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --key-file=-
+          gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
+          gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
       - run: find . -type f -follow -print
-      - run: pip3 install awscli --upgrade --user
-      - aws-s3/sync:
-          from: ./dist/dev
-          to: 's3://dev.parizot.info/'
-          overwrite: true
+      - run: gsutil -m cp -r dist/dev/** gs://dev.parizot.info/
 
-  push_to_s3:
+  push_to_gcs_prod:
     docker:
-      - image: circleci/python:3.7
+      - image: google/cloud-sdk
     steps:
       - attach_workspace:
           at: ~/project
+      - run: |
+          echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --key-file=-
+          gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
+          gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
       - run: find . -type f -follow -print
-      - run: pip3 install awscli --upgrade --user
-      - aws-s3/sync:
-          from: ./dist/prod
-          to: 's3://parizot.info/'
-          overwrite: true
+      - run: gsutil -m cp -r dist/prod/** gs://parizot.info/
+
+  # push_to_s3_dev:
+  #   docker:
+  #     - image: circleci/python:3.7
+  #   steps:
+  #     - attach_workspace:
+  #         at: ~/project
+  #     - run: find . -type f -follow -print
+  #     - run: pip3 install awscli --upgrade --user
+  #     - aws-s3/sync:
+  #         from: ./dist/dev
+  #         to: 's3://dev.parizot.info/'
+  #         overwrite: true
+
+  # push_to_s3:
+  #   docker:
+  #     - image: circleci/python:3.7
+  #   steps:
+  #     - attach_workspace:
+  #         at: ~/project
+  #     - run: find . -type f -follow -print
+  #     - run: pip3 install awscli --upgrade --user
+  #     - aws-s3/sync:
+  #         from: ./dist/prod
+  #         to: 's3://parizot.info/'
+  #         overwrite: true
