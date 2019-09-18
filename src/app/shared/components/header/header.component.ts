@@ -1,3 +1,4 @@
+import { AuthService } from './../../../auth.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material';
 import { Observable } from 'rxjs';
@@ -10,7 +11,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private breakpointObserver: BreakpointObserver) { }
+  constructor(private breakpointObserver: BreakpointObserver, private auth: AuthService) { }
 
   ngOnInit() {
   }
