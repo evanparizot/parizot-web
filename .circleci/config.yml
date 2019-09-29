@@ -17,24 +17,6 @@ workflows:
           context: gcp-storage-parizot
           requires: ['hold']
 
-      # - push_to_s3_dev:
-      #     context: aws-s3-parizot
-      #     requires: [ 'build' ]
-      #     filters:
-      #       branches:
-      #         only: master
-
-      # - hold:
-      #     type: 'approval'
-      #     requires: [ 'push_to_s3_dev' ]
-
-      # - push_to_s3:
-      #     context: aws-s3-parizot
-      #     requires: [ 'hold' ]
-
-orbs:
-  aws-s3: circleci/aws-s3@1.0.11
-
 jobs:
   build:
     docker:
@@ -82,29 +64,3 @@ jobs:
           gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
       - run: find . -type f -follow -print
       - run: gsutil -m cp -r dist/prod/** gs://evan.parizot.info/
-
-  # push_to_s3_dev:
-  #   docker:
-  #     - image: circleci/python:3.7
-  #   steps:
-  #     - attach_workspace:
-  #         at: ~/project
-  #     - run: find . -type f -follow -print
-  #     - run: pip3 install awscli --upgrade --user
-  #     - aws-s3/sync:
-  #         from: ./dist/dev
-  #         to: 's3://dev.parizot.info/'
-  #         overwrite: true
-
-  # push_to_s3:
-  #   docker:
-  #     - image: circleci/python:3.7
-  #   steps:
-  #     - attach_workspace:
-  #         at: ~/project
-  #     - run: find . -type f -follow -print
-  #     - run: pip3 install awscli --upgrade --user
-  #     - aws-s3/sync:
-  #         from: ./dist/prod
-  #         to: 's3://parizot.info/'
-  #         overwrite: true
