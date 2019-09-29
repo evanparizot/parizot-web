@@ -68,7 +68,7 @@ jobs:
           gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
           gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
       - run: find . -type f -follow -print
-      - run: gsutil -m cp -r dist/dev/** gs://dev.parizot.info/
+      - run: gsutil -m cp -r dist/dev/** gs://dev.evan.parizot.info/
 
   push_to_gcs_prod:
     docker:
@@ -81,7 +81,7 @@ jobs:
           gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
           gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
       - run: find . -type f -follow -print
-      - run: gsutil -m cp -r dist/prod/** gs://parizot.info/
+      - run: gsutil -m cp -r dist/prod/** gs://evan.parizot.info/
 
   # push_to_s3_dev:
   #   docker:
