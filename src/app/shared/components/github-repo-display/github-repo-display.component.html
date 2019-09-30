@@ -1,0 +1,11 @@
+<!-- <div *ngIf="!!userRepos">
+    <mat-grid-list cols="4">
+        <mat-grid-tile *ngFor="let repo of userRepos">
+            <app-github-repo-tile [repo]="repo"></app-github-repo-tile>
+        </mat-grid-tile>
+</div> -->
+<mat-grid-list [cols]="cols" gutterSize="16px">
+    <mat-grid-tile *ngFor="let repo of userRepos">
+        <app-github-repo-tile [repo]="repo"></app-github-repo-tile>
+    </mat-grid-tile>
+</mat-grid-list>

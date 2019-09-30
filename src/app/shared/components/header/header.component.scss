@@ -2,7 +2,7 @@
 .header {
   overflow: hidden;
   background-color: #f1f1f1;
-  padding: 25px 10px;
+  margin-top: 0;
 }
 
 /* Style the header links */
@@ -38,6 +38,7 @@
 /* Float the link section to the right */
 .header-right {
   float: right;
+
 }
 
 /* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */ 
@@ -51,3 +52,5 @@
     float: none;
   }
 }
+
+// http://bootflat.github.io/color-picker-gray.html

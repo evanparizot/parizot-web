@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +7,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private breakpointObserver: BreakpointObserver) { }
+  constructor() { }
 
   ngOnInit() {
   }
