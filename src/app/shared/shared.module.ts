@@ -4,22 +4,21 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { MaterialModule } from './modules/material.module';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { GithubRepoDisplayComponent } from './components/github-repo-display/github-repo-display.component';
-import { GithubRepoTileComponent } from './components/github-repo-tile/github-repo-tile.component';
-import { GithubRepoContainerComponent } from './components/github-repo-container/github-repo-container.component';
+import { GithubRepoDisplayComponent } from './github/github-repo-display/github-repo-display.component';
+import { GithubRepoTileComponent } from './github/github-repo-tile/github-repo-tile.component';
+import { GithubRepoContainerComponent } from './github/github-repo-container/github-repo-container.component';
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     HomePageComponent,
     HeaderComponent,
     FooterComponent,
-    PageNotFoundComponent,
     GithubRepoDisplayComponent,
     GithubRepoTileComponent,
-    GithubRepoContainerComponent
+    GithubRepoContainerComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     CommonModule,

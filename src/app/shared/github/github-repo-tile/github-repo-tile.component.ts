@@ -1,5 +1,5 @@
-import { UserRepository } from '../../../models/github/userRepository';
 import { Component, OnInit, Input } from '@angular/core';
+import { UserRepository } from '../models/userRepository';
 
 @Component({
   selector: 'app-github-repo-tile',

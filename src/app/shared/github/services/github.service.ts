@@ -1,4 +1,4 @@
-import { UserRepository } from '../models/github/userRepository';
+import { UserRepository } from '../models/userRepository';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError, Observable, of } from 'rxjs';

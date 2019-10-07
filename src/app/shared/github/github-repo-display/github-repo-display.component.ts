@@ -1,4 +1,4 @@
-import { UserRepository } from '../../../models/github/userRepository';
+import { UserRepository } from '../models/userRepository';
 import { Component, OnInit, Input } from '@angular/core';
 import { MediaObserver, MediaChange } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';

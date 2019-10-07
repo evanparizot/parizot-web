@@ -1,8 +1,8 @@
-import { UserRepository } from '../../../models/github/userRepository';
-import { GithubService } from './../../../services/github.service';
+import { UserRepository } from '../models/userRepository';
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { GithubService } from '../services/github.service';
 
 @Component({
   selector: 'app-github-repo-container',
