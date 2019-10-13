@@ -8,6 +8,8 @@ import { GithubRepoDisplayComponent } from './github/github-repo-display/github-
 import { GithubRepoContainerComponent } from './github/github-repo-container/github-repo-container.component';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { MaterialElevationDirective } from './directives/material-elevation.directive';
+import { LayoutComponent } from './layout/layout.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     GithubRepoDisplayComponent,
     GithubRepoContainerComponent,
     PageNotFoundComponent,
+    MaterialElevationDirective,
+    LayoutComponent,
   ],
   imports: [
     CommonModule,

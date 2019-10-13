@@ -2,3 +2,18 @@
 //     background-color: gray;
 //     border-radius: 25px;
 // }
+
+.mat-card {
+  height: 100%;
+
+  .header-image {
+    background-image: url('https://simpleicons.org/icons/github.svg');
+    background-size: cover;
+  }
+}
+
+a {
+  height: auto;
+  padding: 1px;
+  text-decoration: none;
+}

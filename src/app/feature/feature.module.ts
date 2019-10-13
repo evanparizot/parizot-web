@@ -1,3 +1,4 @@
+import { PathfinderModule } from './pathfinder/pathfinder.module';
 import { HomeModule } from './home/home.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -9,10 +10,12 @@ import { CommonModule } from '@angular/common';
   ],
   imports: [
     HomeModule,
+    PathfinderModule,
     CommonModule
   ],
   exports: [
-    HomeModule
+    HomeModule,
+    PathfinderModule
   ]
 })
 export class FeatureModule { }
