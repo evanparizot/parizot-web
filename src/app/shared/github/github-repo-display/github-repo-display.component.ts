@@ -17,11 +17,11 @@ export class GithubRepoDisplayComponent implements OnInit {
   cols: number = 4;
 
   grid = new Map([
-    ["xs", 1],
-    ["sm", 2],
-    ["md", 3],
+    ["xs", 2],
+    ["sm", 3],
+    ["md", 4],
     ["lg", 4],
-    ["xl", 6]
+    ["xl", 4]
   ]);
 
   // xs	'screen and (max-width: 599px)'

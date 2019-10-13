@@ -1,11 +1,19 @@
-<!-- <div *ngIf="!!userRepos">
-    <mat-grid-list cols="4">
-        <mat-grid-tile *ngFor="let repo of userRepos">
-            <app-github-repo-tile [repo]="repo"></app-github-repo-tile>
-        </mat-grid-tile>
-</div> -->
 <mat-grid-list [cols]="cols" gutterSize="16px">
-    <mat-grid-tile *ngFor="let repo of userRepos">
-        <app-github-repo-tile [repo]="repo"></app-github-repo-tile>
-    </mat-grid-tile>
+  <mat-grid-tile *ngFor="let repo of userRepos">
+
+    <mat-card class="repository-card">
+      <mat-card-header>
+        <!-- <div mat-card-avatar class="header"></div> -->
+        <mat-card-title>{{repo.name}}</mat-card-title>
+        <!-- <mat-card-subtitle></mat-card-subtitle> -->
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{repo.description}}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <a mat-button href="{{repo.html_url}}" target="_blank">Github Link</a>
+      </mat-card-actions>
+    </mat-card>
+    
+  </mat-grid-tile>
 </mat-grid-list>

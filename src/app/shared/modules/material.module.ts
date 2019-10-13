@@ -35,7 +35,8 @@ import {NgModule} from '@angular/core';
     MatListModule,
     MatDialogModule,
     MatSidenavModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatIconModule
   ],
   exports: [
     MatButtonModule,
@@ -53,7 +54,8 @@ import {NgModule} from '@angular/core';
     MatListModule,
     MatDialogModule,
     MatSidenavModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatIconModule
   ],
 })
 

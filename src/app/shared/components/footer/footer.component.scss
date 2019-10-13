@@ -3,14 +3,41 @@ footer {
 
     .container {
         height: 100%;
+
+        .row {
+            height: 100%;
+        }
     }
 
     .col {
         margin: 0 auto;
         width: 100%;
+
+        a {
+            padding: 10px;
+        }
+
+        img {
+            height: 30px;
+        }
+
+        .simple-icon {
+            //https://www.atlassian.design/guidelines/brand/color
+            //https://codepen.io/sosuke/pen/Pjoqqp
+            filter: invert(89%) sepia(5%) saturate(99%) hue-rotate(190deg) brightness(110%) contrast(94%);
+        }
+
+        .twitter:hover {
+            filter: brightness(0) saturate(100%) invert(63%) sepia(27%) saturate(7500%) hue-rotate(176deg) brightness(95%) contrast(100%);
+        }
+
+        .linkedin:hover {
+            filter: brightness(0) saturate(100%) invert(33%) sepia(44%) saturate(7260%) hue-rotate(183deg) brightness(91%) contrast(101%);
+        }
+
+        .github:hover {
+            filter: brightness(0) saturate(100%) invert(6%) sepia(5%) saturate(387%) hue-rotate(316deg) brightness(96%) contrast(94%);
+        }
     }
 
-    img {
-        height: 40px;
-    }
 }

@@ -1,4 +1,4 @@
-import { HomePageComponent } from './shared/pages/home-page/home-page.component';
+import { HomePageComponent } from './feature/home/home-page/home-page.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, ExtraOptions } from '@angular/router';
 import { PageNotFoundComponent } from './shared/pages/page-not-found/page-not-found.component';
