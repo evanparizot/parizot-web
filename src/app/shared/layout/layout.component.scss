@@ -4,6 +4,12 @@
   height: 100%;
 }
 
+app-header {
+  z-index: 1000;
+  height: 60px;
+  display: flex;
+}
+
 .page {
   display: flex;
   flex-direction: column;
@@ -11,7 +17,7 @@
 }
 
 .content {
+
   flex-grow: 1;
-  margin: 15px;
-  // height: 100vh;
+  overflow: hidden;
 }

@@ -7,11 +7,16 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
+  photoUrl:string = null;
 
   constructor(private titleService: Title) { }
 
   ngOnInit() {
     this.titleService.setTitle('Evan Parizot - Home')
+  }
+
+  getRandomPhoto(): string {
+    return "assets/images/florence_night.jpg"
   }
 
 }

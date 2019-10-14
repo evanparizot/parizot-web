@@ -1,3 +1,4 @@
+import { environment } from './../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -12,6 +13,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { FeatureModule } from './feature/feature.module';
 
+// NgRx
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +31,15 @@ import { FeatureModule } from './feature/feature.module';
     // Core
     SharedModule,
     FeatureModule,
-    NgbModule
+    NgbModule,
+    //NgRx
+    StoreModule.forRoot({}),
+    StoreDevtoolsModule.instrument({
+      name: "Evan's website",
+      maxAge: 25,
+      logOnly: environment.production
+    }),
+    EffectsModule.forRoot([])
   ],
   providers: [],
   bootstrap: [AppComponent]

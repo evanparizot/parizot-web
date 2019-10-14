@@ -1,3 +1,9 @@
 nav a:hover {
   color: black;
 }
+
+:host {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}

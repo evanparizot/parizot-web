@@ -10,6 +10,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { MaterialElevationDirective } from './directives/material-elevation.directive';
 import { LayoutComponent } from './layout/layout.component';
+import { LayoutNoFooterComponent } from './layout-no-footer/layout-no-footer.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { LayoutComponent } from './layout/layout.component';
     PageNotFoundComponent,
     MaterialElevationDirective,
     LayoutComponent,
+    LayoutNoFooterComponent,
   ],
   imports: [
     CommonModule,
