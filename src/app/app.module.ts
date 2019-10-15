@@ -1,3 +1,4 @@
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { environment } from './../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
@@ -28,6 +29,7 @@ import { EffectsModule } from '@ngrx/effects';
     BrowserAnimationsModule,
     HttpClientModule,
     AngularSvgIconModule,
+    FlexLayoutModule,
     // Core
     SharedModule,
     FeatureModule,
