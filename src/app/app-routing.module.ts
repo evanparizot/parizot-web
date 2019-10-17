@@ -1,39 +1,27 @@
-import { LayoutNoFooterComponent } from './shared/layout-no-footer/layout-no-footer.component';
-import { LayoutComponent } from './shared/layout/layout.component';
-import { HomePageComponent } from './feature/home/home-page/home-page.component';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule, ExtraOptions } from '@angular/router';
-import { PageNotFoundComponent } from './shared/pages/page-not-found/page-not-found.component';
-import { PathfinderModule } from './feature/pathfinder/pathfinder.module';
+import { Routes, RouterModule, ExtraOptions, PreloadAllModules } from '@angular/router';
+import { PathfinderModule } from './features/pathfinder/pathfinder.module';
 
 const routes: Routes = [
   {
     path: '',
-    component: LayoutComponent,
-    children: [
-      { path: '', component: HomePageComponent, pathMatch: 'full' },
-    ]
+    loadChildren: () => import('./features/home/home.module').then(m => m.HomeModule)
   },
   {
-    path: '',
-    component: LayoutNoFooterComponent,
-    children: [
-      {
-        path: 'pathfinder',
-        loadChildren: () => import('./feature/pathfinder/pathfinder.module').then(m => PathfinderModule)
-      }
-    ]
+    path: 'pathfinder',
+    loadChildren: () => import('./features/pathfinder/pathfinder.module').then(m => PathfinderModule)
   },
   {
     path: '**',
-    component: LayoutComponent,
-    children: [
-      { path: '', component: PageNotFoundComponent }
-    ]
+    redirectTo: ''
   }
 ];
 
-const configs: ExtraOptions = { enableTracing: true };
+const configs: ExtraOptions = { 
+  enableTracing: true, 
+  scrollPositionRestoration: 'enabled',
+  preloadingStrategy: PreloadAllModules
+};
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, configs)],

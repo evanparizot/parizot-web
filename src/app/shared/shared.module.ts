@@ -1,38 +1,30 @@
-import { AppRoutingModule } from './../app-routing.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from './modules/material.module';
-import { HeaderComponent } from './components/header/header.component';
+import { MaterialModule } from './material.module';
 import { FooterComponent } from './components/footer/footer.component';
 import { GithubRepoDisplayComponent } from './github/github-repo-display/github-repo-display.component';
 import { GithubRepoContainerComponent } from './github/github-repo-container/github-repo-container.component';
 import { FlexLayoutModule } from "@angular/flex-layout";
-import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { MaterialElevationDirective } from './directives/material-elevation.directive';
-import { LayoutComponent } from './layout/layout.component';
-import { LayoutNoFooterComponent } from './layout-no-footer/layout-no-footer.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
-    HeaderComponent,
     FooterComponent,
     GithubRepoDisplayComponent,
     GithubRepoContainerComponent,
-    PageNotFoundComponent,
+
     MaterialElevationDirective,
-    LayoutComponent,
-    LayoutNoFooterComponent,
   ],
   imports: [
     CommonModule,
     MaterialModule,
     FlexLayoutModule,
-    AppRoutingModule
+    FontAwesomeModule
   ],
   exports: [
     MaterialModule,
     FlexLayoutModule,
-    HeaderComponent,
     FooterComponent,
     GithubRepoDisplayComponent,
     GithubRepoContainerComponent,
