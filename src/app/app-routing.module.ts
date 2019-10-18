@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, ExtraOptions, PreloadAllModules } from '@angular/router';
-import { PathfinderModule } from './features/pathfinder/pathfinder.module';
 
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./features/home/home.module').then(m => m.HomeModule)
+    loadChildren: () => import('./features/home/home.module')
+      .then(m => m.HomeModule)
   },
   {
     path: 'pathfinder',
-    loadChildren: () => import('./features/pathfinder/pathfinder.module').then(m => PathfinderModule)
+    loadChildren: () => import('./features/pathfinder/pathfinder.module')
+      .then(m => m.PathfinderModule)
   },
   {
     path: '**',

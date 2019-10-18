@@ -1,11 +1,11 @@
 import { PathfinderActions, PathfinderActionTypes } from './pathfinder.actions';
 
 export interface PathfinderState {
-
+  nodes: number[][];
 }
 
 const initialState: PathfinderState = {
-
+  nodes: [[1,2,3,4,5],[1,2,3,4,5]]
 };
 
 export function reducer(state = initialState, action: PathfinderActions): PathfinderState {

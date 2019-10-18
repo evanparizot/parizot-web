@@ -4,7 +4,8 @@ import { Title } from '@angular/platform-browser';
 // NgRx
 import * as fromPathfinder from './../state';
 import * as pathfinderActions from './../state/pathfinder.actions';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-pathfinder-container',
@@ -13,13 +14,16 @@ import { Store } from '@ngrx/store';
 })
 export class PathfinderContainerComponent implements OnInit {
 
-  constructor(private titleService: Title, private store: Store<fromPathfinder.State>) {
+  nodes$: Observable<number[][]>;
+
+  constructor(
+    private titleService: Title, 
+    private store: Store<fromPathfinder.State>
+  ) {
     
   }
   
   ngOnInit() {
-    this.titleService.setTitle('Pathfinder Visualizer');
-    
+    this.nodes$ = this.store.pipe(select(fromPathfinder.getNodes));
   }
-
 }

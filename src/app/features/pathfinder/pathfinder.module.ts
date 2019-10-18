@@ -1,3 +1,5 @@
+import { SharedModule } from './../../shared/shared.module';
+import { FEATURE_NAME } from './state/index';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -24,8 +26,9 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
+    SharedModule,
     RouterModule.forChild(routes),
-    StoreModule.forFeature('pathfinder', reducer),
+    StoreModule.forFeature(FEATURE_NAME, reducer),
     EffectsModule.forFeature([PathfinderEffects])
   ]
 })

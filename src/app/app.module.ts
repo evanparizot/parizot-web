@@ -6,18 +6,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app/app.component';
 
 import { SharedModule } from './shared/shared.module';
-import { CoreModule } from '@angular/flex-layout';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   imports: [
+    // Angular stuff
+    BrowserAnimationsModule,
+    BrowserModule,
+    // Core stuff
+    CoreModule,
+    SharedModule,
     // App stuff
     AppRoutingModule,
-    // Angular stuff
-    BrowserModule,
-    BrowserAnimationsModule,
-    // Core stuff
-    SharedModule,
-    CoreModule,
   ],
   providers: [],
   declarations: [AppComponent],

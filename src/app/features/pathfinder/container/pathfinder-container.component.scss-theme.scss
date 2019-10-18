@@ -1,0 +1,18 @@
+@import '~@angular/material/theming';
+
+@mixin feature-pathfinder-container-theme($theme) {
+
+  app-pathfinder-container {
+    table {
+      border-collapse: collapse;
+
+      td {
+        height: 15px;
+        width: 15px;
+      }
+    }
+    table, td {
+      border: 1px solid black;
+    }
+  }
+}
