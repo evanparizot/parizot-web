@@ -5,13 +5,13 @@ workflows:
   pipeline:
     jobs:
       - build
-      - push_to_gcs_dev:
+      - push_to_gcs_staging:
           context: gcp-storage-parizot
           requires: [ 'build' ]
       
       - hold:
           type: 'approval'
-          requires: [ 'push_to_gcs_dev' ]
+          requires: [ 'push_to_gcs_staging' ]
       
       - push_to_gcs_prod:
           context: gcp-storage-parizot
@@ -31,15 +31,15 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - node_modules
-      - run: npm run build -- --configuration=dev --output-path=dist/dev --progress=false
+      - run: npm run build -- --configuration=staging --output-path=dist/staging --progress=false
       - run: npm run build -- --configuration=production --output-path=dist/prod --progress=false
       - persist_to_workspace:
           root: '~/project'
           paths:
-            - dist/dev
+            - dist/staging
             - dist/prod
 
-  push_to_gcs_dev:
+  push_to_gcs_staging:
     docker:
       - image: google/cloud-sdk
     steps:
@@ -50,8 +50,8 @@ jobs:
           gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
           gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
       - run: find . -type f -follow -print
-      - run: gsutil rm -r gs://dev.evan.parizot.info/**
-      - run: gsutil -m cp -r dist/dev/** gs://dev.evan.parizot.info/
+      - run: gsutil rm -r gs://staging.evanparizot.com/**
+      - run: gsutil -m cp -r dist/staging/** gs://staging.evanparizot.com/
 
   push_to_gcs_prod:
     docker:
@@ -64,4 +64,4 @@ jobs:
           gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
           gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
       - run: find . -type f -follow -print
-      - run: gsutil -m cp -r dist/prod/** gs://evan.parizot.info/
+      - run: gsutil -m cp -r dist/prod/** gs://evanparizot.com/
