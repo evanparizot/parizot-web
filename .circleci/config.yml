@@ -50,7 +50,7 @@ jobs:
           gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
           gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
       - run: find . -type f -follow -print
-      - run: gsutil rm -r gs://staging.evanparizot.com/**
+      - run: gsutil -m rm -r gs://staging.evanparizot.com/**
       - run: gsutil -m cp -r dist/staging/** gs://staging.evanparizot.com/
 
   push_to_gcs_prod:
@@ -64,4 +64,5 @@ jobs:
           gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
           gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
       - run: find . -type f -follow -print
+      - run: gsutil -m rm -r gs://evanparizot.com/** 
       - run: gsutil -m cp -r dist/prod/** gs://evanparizot.com/
