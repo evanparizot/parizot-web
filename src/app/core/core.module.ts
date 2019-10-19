@@ -1,4 +1,5 @@
-import { environment } from './../../environments/environment.dev';
+import { GoogleAnalyticsEffects } from './google-analytics/google-analytics.effects';
+import { environment } from '../../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import {
@@ -20,7 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     StoreModule.forRoot({}),
     StoreRouterConnectingModule.forRoot(),
     EffectsModule.forRoot([
-      //Put effects here
+      GoogleAnalyticsEffects
     ]),
     environment.production ? [] : StoreDevtoolsModule.instrument({name: 'Main site'})
   ],
