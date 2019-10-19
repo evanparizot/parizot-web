@@ -1,6 +1,11 @@
 import {Action} from '@ngrx/store';
 
+/*
+  Actions get dispatched by components (this.store.dispatch())
+*/
+
 export enum PathfinderActionTypes {
+  InitializeNodes = '[Pathfinder] Initialize Nodes',
   DrawNode = '[Pathfinder] Draw Node'
 }
 

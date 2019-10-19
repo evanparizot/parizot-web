@@ -1,11 +1,19 @@
 import { PathfinderActions, PathfinderActionTypes } from './pathfinder.actions';
 
+/*
+  Reducers alter a slice of state and returns a new state. Actions trigger reducers by passing an action.
+  Reducers take actions and state to produce new state and store it in the Store
+
+  Reducers should be pure functions
+*/
+
+
 export interface PathfinderState {
-  nodes: number[][];
+  nodes: Node[][];
 }
 
 const initialState: PathfinderState = {
-  nodes: [[1,2,3,4,5],[1,2,3,4,5]]
+  nodes: []
 };
 
 export function reducer(state = initialState, action: PathfinderActions): PathfinderState {

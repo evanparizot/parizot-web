@@ -10,11 +10,12 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-pathfinder-container',
   templateUrl: './pathfinder-container.component.html',
-  styleUrls: ['./pathfinder-container.component.scss']
+  styleUrls: ['./pathfinder-container.component.scss'],
+  //changeDirection: ChangeDirectionStrategy.OnPush
 })
 export class PathfinderContainerComponent implements OnInit {
 
-  nodes$: Observable<number[][]>;
+  nodes$: Observable<Node[][]>;
 
   constructor(
     private titleService: Title, 
