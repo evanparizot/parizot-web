@@ -14,11 +14,10 @@ workflows:
           post-steps:
             - store_test_results:
                 path: cypress/results
-          requires: [ 'build' ]
 
       - push_to_gcs_staging:
           context: gcp-storage-parizot
-          requires: [ 'cypress/run' ]
+          requires: [ 'cypress/run', 'build' ]
 
       - hold:
           type: 'approval'
