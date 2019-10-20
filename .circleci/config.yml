@@ -1,18 +1,30 @@
 version: 2.1
 
+orbs:
+  cypress: cypress-io/cypress@1
+
 workflows:
   version: 2.1
   pipeline:
     jobs:
       - build
+
+      - cypress/run:
+          start: npm start
+          wait-on: 'http://localhost:4200'
+          post-steps:
+            - store_test_results:
+                path: cypress/results
+          requires: [ 'build' ]
+
       - push_to_gcs_staging:
           context: gcp-storage-parizot
-          requires: [ 'build' ]
-      
+          requires: [ 'cypress/run' ]
+
       - hold:
           type: 'approval'
           requires: [ 'push_to_gcs_staging' ]
-      
+
       - push_to_gcs_prod:
           context: gcp-storage-parizot
           requires: ['hold']
