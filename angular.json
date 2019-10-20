@@ -107,7 +107,11 @@
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
-            "no-cache": true
+            "no-cache": true,
+            "tsConfig": [
+              "src/tsconfig.app.json",
+              "src/tsconfig.spec.json"
+            ]
           }
         },
         "lint": {
