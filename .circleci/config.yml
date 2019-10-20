@@ -8,6 +8,9 @@ workflows:
   pipeline:
     jobs:
       - build
+      - run_unit_tests:
+          requires: [ 'build' ]
+
       - cypress/run:
           start: npm start
           wait-on: 'http://localhost:4200'
@@ -17,7 +20,10 @@ workflows:
 
       - push_to_gcs_staging:
           context: gcp-storage-parizot
-          requires: [ 'cypress/run', 'build' ]
+          requires: [ 'cypress/run', 'run_unit_tests' ]
+          filters:
+            branches:
+              only: master
 
       - hold:
           type: 'approval'
@@ -48,6 +54,15 @@ jobs:
           paths:
             - dist/staging
             - dist/prod
+
+  run_unit_tests:
+    docker:
+      - image: circleci/node:10.16.0-browsers
+    working_directory: '~/project'
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
 
   push_to_gcs_staging:
     docker:
