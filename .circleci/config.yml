@@ -1,24 +1,37 @@
 version: 2.1
 
+orbs:
+  cypress: cypress-io/cypress@1
+
 workflows:
   version: 2.1
   pipeline:
     jobs:
-      - build
+      - build_and_test
+      - cypress/run:
+          start: npm start
+          wait-on: 'http://localhost:4200'
+          post-steps:
+            - store_test_results:
+                path: cypress/results
+
       - push_to_gcs_staging:
           context: gcp-storage-parizot
-          requires: [ 'build' ]
-      
+          requires: [ 'cypress/run', 'build_and_test' ]
+          filters:
+            branches:
+              only: master
+
       - hold:
           type: 'approval'
           requires: [ 'push_to_gcs_staging' ]
-      
+
       - push_to_gcs_prod:
           context: gcp-storage-parizot
           requires: ['hold']
 
 jobs:
-  build:
+  build_and_test:
     docker:
       - image: circleci/node:10.16.0-browsers
     working_directory: '~/project'
@@ -31,6 +44,8 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - node_modules
+      # - run: npm run lint
+      # - run: npm run test
       - run: npm run build -- --configuration=staging --output-path=dist/staging --progress=false
       - run: npm run build -- --configuration=production --output-path=dist/prod --progress=false
       - persist_to_workspace:

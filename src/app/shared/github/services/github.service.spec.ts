@@ -5,7 +5,7 @@ import { GithubService } from './github.service';
 describe('GithubService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
-  it('should be created', () => {
+  test('should be created', () => {
     const service: GithubService = TestBed.get(GithubService);
     expect(service).toBeTruthy();
   });
