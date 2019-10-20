@@ -45,7 +45,7 @@ jobs:
           paths:
             - node_modules
       # - run: npm run lint
-      - run: npm run test
+      # - run: npm run test
       - run: npm run build -- --configuration=staging --output-path=dist/staging --progress=false
       - run: npm run build -- --configuration=production --output-path=dist/prod --progress=false
       - persist_to_workspace:
