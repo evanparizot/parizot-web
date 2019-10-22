@@ -7,6 +7,7 @@ import { GithubRepoContainerComponent } from './github/github-repo-container/git
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { MaterialElevationDirective } from './directives/material-elevation.directive';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FontawesomeModule } from './fontawesome.module';
 
 @NgModule({
   declarations: [
@@ -19,11 +20,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   imports: [
     CommonModule,
     MaterialModule,
+    FontawesomeModule,
     FlexLayoutModule,
     FontAwesomeModule
   ],
   exports: [
     MaterialModule,
+    FontawesomeModule,
     FlexLayoutModule,
     FooterComponent,
     GithubRepoDisplayComponent,

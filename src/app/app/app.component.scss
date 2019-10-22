@@ -1,28 +1,30 @@
 @import "../../sass/styles-variables.scss";
+@import "../../sass/variables";
 
 .default-theme {
   height: 100%;
   width: 100%;
 }
 
-mat-sidenav-container {
-  height: 100%;
+.toolbar {
+  position: fixed;
   width: 100%;
+  display: flex;
+  z-index: 10;
 
-  .toolbar {
-    position: fixed;
-    width: 100%;
-    display: flex;
-    z-index: 10;
-
-    .spacer {
-      flex: 1 1 auto;
-    }
-
-    button:focus {
-      outline: 0;
-    }
+  .spacer {
+    flex: 1 1 auto;
   }
+
+  button:focus {
+    outline: 0;
+  }
+}
+
+mat-sidenav-container {
+  top: $mat-toolbar-height-desktop;
+  height: calc(100vh - 64px);
+  width: 100%;
 
   .wrapper {
     position: absolute;
@@ -35,7 +37,7 @@ mat-sidenav-container {
 
     .content {
       flex: 1 0 auto;
-      margin-top: 64px; // TODO: Change this to a variable
+      //margin-top: 64px; // TODO: Change this to a variable
       overflow: hidden;
     }
 
@@ -53,14 +55,15 @@ mat-sidenav-container {
             display: inline-block;
             padding: 20px 5px;
 
+            fa-icon {
+              font-size: 30px;
+              width: 35px;
+            }
+
             &:hover {
               text-decoration: none;
             }
 
-            img {
-              height: 25px;
-              width: 25px;
-            }
           }
         }
       }

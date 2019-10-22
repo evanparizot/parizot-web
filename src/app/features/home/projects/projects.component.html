@@ -1,0 +1,7 @@
+<div class="container">
+    <mat-grid-list cols="4" gutterSize="10px">
+      <mat-grid-tile *ngFor="let project of projects" [style.background]="lightblue" [colspan]="1" [rowspan]="1">
+        {{project.title}}, {{project.url}}
+      </mat-grid-tile>
+    </mat-grid-list>
+</div>
