@@ -1,7 +1,18 @@
-<div class="container">
-    <mat-grid-list cols="4" gutterSize="10px">
-      <mat-grid-tile *ngFor="let project of projects" [style.background]="lightblue" [colspan]="1" [rowspan]="1">
-        {{project.title}}, {{project.url}}
-      </mat-grid-tile>
-    </mat-grid-list>
-</div>
+<mat-grid-list [cols]="cols" gutterSize="0px">
+  <mat-grid-tile *ngFor="let project of projects" [style.background]="lightblue" [colspan]="1" [rowspan]="1" (deferLoad)="project.show=true">
+    <div *ngIf="project.show" class="tile-content">
+    <!-- <div [ngStyle]="{'background-image':'url('+project.backgroundUrl+')'}" *ngIf="project.show" class="tile-content"> -->
+      <a [href]="project.url" target="_blank">
+        <img [src]='project.backgroundUrl'>
+        <div class="overlay">
+          <div class="text">
+            <h4>{{project.title}}</h4>
+            <hr>
+            <h6>{{project.description}}</h6>
+          </div>
+          <!-- <div class="text">{{project.description}}</div> -->
+        </div>
+      </a>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>

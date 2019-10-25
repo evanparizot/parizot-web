@@ -3,19 +3,14 @@ export interface Project {
   description: string;
   url: string;
   backgroundUrl: string;
+  show?: boolean;
 }
 
 export const projects: Project [] = [
   {
-    title: "item one",
+    title: "Catan",
     description: "description one",
-    url: "url one",
-    backgroundUrl: "background url one"
-  },
-  {
-    title: "item two",
-    description: "descripiton two",
-    url: "url two",
-    backgroundUrl: "background url two"
+    url: "https://google.com",
+    backgroundUrl: "http://assets.parizot.info/evan/backgrounds/vElJSDx.jpg",
   }
 ]
