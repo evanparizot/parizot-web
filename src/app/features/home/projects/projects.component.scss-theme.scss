@@ -6,9 +6,20 @@
   $warn: map-get($theme, warn);
 
   mat-grid-list {
-
     mat-grid-tile {
-      // background-color: lightblue;
+      .tile-content {
+        .overlay {
+          background-color: #353a3b;
+
+          .text {
+            color: white;
+            
+            hr {
+              border: 0.5px solid white;
+            }
+          }
+        }
+      }
     }
   }
 }

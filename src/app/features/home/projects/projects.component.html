@@ -1,16 +1,15 @@
 <mat-grid-list [cols]="cols" gutterSize="0px">
   <mat-grid-tile *ngFor="let project of projects" [style.background]="lightblue" [colspan]="1" [rowspan]="1" (deferLoad)="project.show=true">
     <div *ngIf="project.show" class="tile-content">
-    <!-- <div [ngStyle]="{'background-image':'url('+project.backgroundUrl+')'}" *ngIf="project.show" class="tile-content"> -->
-      <a [href]="project.url" target="_blank">
+      <a [href]="project.sourceUrl" target="_blank">
         <img [src]='project.backgroundUrl'>
         <div class="overlay">
           <div class="text">
             <h4>{{project.title}}</h4>
             <hr>
             <h6>{{project.description}}</h6>
+            <fa-icon *ngIf="project.sourceIcon" [icon]="['fab', project.sourceIcon]"></fa-icon>
           </div>
-          <!-- <div class="text">{{project.description}}</div> -->
         </div>
       </a>
     </div>
