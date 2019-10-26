@@ -27,7 +27,7 @@ export const projects: Project [] = [
   {
     title: "Wordclock",
     description: "PCB and code for prototype wordclock",
-    backgroundUrl: "",
+    backgroundUrl: "http://assets.parizot.info/evan/projects/wordclock-3d.png",
     source: "Github",
     sourceIcon: "github",
     sourceUrl: "https://github.com/evanparizot/wordclock"
@@ -41,8 +41,8 @@ export const projects: Project [] = [
   },
   {
     title: "Topographic Map",
-    description: "Topographic map of Austin, Texas using public GIS information",
-    backgroundUrl: "",
+    description: "Laser cut topographic map of Austin, Texas using public GIS information",
+    backgroundUrl: "http://assets.parizot.info/evan/projects/austin-map.jpg",
     source: "github",
     sourceIcon: "github",
     sourceUrl: "https://github.com/evanparizot/austin-map"
@@ -57,7 +57,7 @@ export const projects: Project [] = [
   },
   {
     title: "PC",
-    description: "Hardline watercooled PC",
+    description: "Hardline, watercooled PC",
     backgroundUrl: "http://assets.parizot.info/evan/projects/watercooledPC.jpg",
     source: "Imgur",
     sourceIcon: "",
@@ -65,10 +65,19 @@ export const projects: Project [] = [
   },
   {
     title: "JBL Speakers",
-    description: "Restored vintage JBL L26 Century Speakers",
+    description: "Restored, vintage JBL L26 Century Speakers",
     backgroundUrl: "",
     source: "Imgur",
     sourceIcon: "",
     sourceUrl: "https://imgur.com/a/pdVpFP3"
+  },
+  {
+    title: "Plant Stands",
+    description: "Simple plants stands with mortise and tenon joints. Made out of cherry.",
+    backgroundUrl: "http://assets.parizot.info/evan/projects/plant-stands.jpg",
+    source: "Imgur",
+    sourceIcon: "",
+    sourceUrl: "https://imgur.com/a/DSSKPzK"
   }
+  
 ]

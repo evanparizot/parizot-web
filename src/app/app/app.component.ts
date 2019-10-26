@@ -8,10 +8,16 @@ import { MatSidenav } from '@angular/material';
 })
 export class AppComponent implements OnInit {
 
-  navigation = [
+  siteNav = [
     { link: '', label: 'Home' },
-    { link: 'pathfinder', label: 'Pathfinder' }
+    { link: 'about', label: 'About' },
+    { link: 'projects', label: 'Projects' }
   ];
+  
+  projectNav = [
+    { link: 'pathfinder', label: 'Pathfinder' },
+    { link: 'pathfinder3d', label: 'Pathfinder 3D'}
+  ]
 
   @ViewChild('sidenav', {static: false}) sidenav: MatSidenav;
 

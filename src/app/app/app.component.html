@@ -2,7 +2,7 @@
 
   <div class="toolbar">
     <mat-toolbar color="primary">
-      <span class="spacer"></span>
+      <span class="spacer text-center"><a [routerLink]="['']" (click)="sidenav.close();toggleBurger()">Evan Parizot</a></span>
       <button class="hamburger hamburger--spin" type="button" (click)="sidenav.toggle(); toggleBurger();">
         <span class="hamburger-box">
           <span class="hamburger-inner"></span>
@@ -11,19 +11,21 @@
     </mat-toolbar>
   </div> <!-- end toolbar -->
 
-
   <mat-sidenav-container (backdropClick)="toggleBurger()">
     <mat-sidenav #sidenav mode="over" position="end" [(opened)]="opened" (keydown.escape)="toggleBurger()">
-      <div class="brand">
-        Title
-      </div>
       <mat-nav-list>
-        <a mat-list-item *ngFor="let item of navigation" (click)="sidenav.close();toggleBurger()" [routerLink]="[item.link]"
+        <h3 mat-subheader>Site Navigation</h3>
+        <a mat-list-item *ngFor="let item of siteNav" (click)="sidenav.close();toggleBurger()" [routerLink]="[item.link]"
+          routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          {{item.label}}
+        </a>
+        <mat-divider></mat-divider>
+        <h3 mat-subheader>Hosted Projects</h3>
+        <a mat-list-item *ngFor="let item of projectNav" (click)="sidenav.close();toggleBurger()" [routerLink]="[item.link]"
           routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
           {{item.label}}
         </a>
       </mat-nav-list>
-
     </mat-sidenav>
 
     <div class="wrapper">
@@ -36,7 +38,6 @@
           <div class="col-sm-12 links">
             <a href="https://github.com/evanparizot" target="_blank">
               <fa-icon [icon]="['fab','github']"></fa-icon>
-              <!-- <img class="simple-icon github" src="../../../../assets/github.svg"> -->
             </a>
             <a href="https://www.linkedin.com/in/evanparizot/" target="_blank">
               <fa-icon [icon]="['fab','linkedin']"></fa-icon>
@@ -47,8 +48,6 @@
           </div>
         </div>
       </div> <!-- end footer -->
-
-
     </div>
   </mat-sidenav-container>
 </div>

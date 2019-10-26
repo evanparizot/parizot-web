@@ -2,16 +2,29 @@ import { Component, OnInit } from '@angular/core';
 import { Project, projects } from './projects.data';
 import { MediaObserver, MediaChange } from '@angular/flex-layout';
 import { DomSanitizer } from '@angular/platform-browser';
+import { trigger, style, state, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.scss']
+  styleUrls: ['./projects.component.scss'],
+  animations: [
+    trigger('fadeIn', [
+      state('void', style({
+        opacity: 0
+      })),
+      transition(':enter', [
+        style({
+        }),
+        animate('1s 500ms ease-in')
+      ])
+    ])
+  ]
 })
 export class ProjectsComponent implements OnInit {
 
   projects: Project[] = projects;
-  cols: number = 4;
+  cols: number = 3;
   grid = new Map([
     ["xs", 1],
     ["sm", 2],
