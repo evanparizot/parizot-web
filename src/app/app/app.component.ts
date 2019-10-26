@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +13,19 @@ export class AppComponent implements OnInit {
     { link: 'pathfinder', label: 'Pathfinder' }
   ];
 
+  @ViewChild('sidenav', {static: false}) sidenav: MatSidenav;
+
+  opened: boolean;
+  hamburger: any;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.hamburger = document.querySelector('.hamburger').classList;
   }
+
+  toggleBurger(){
+    this.hamburger.toggle("is-active");
+  }
+
 }

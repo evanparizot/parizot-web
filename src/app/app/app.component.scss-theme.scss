@@ -31,5 +31,19 @@
         }
       }
     }
+
+    .footer {
+      color: mat-color($primary, lighter);
+      background-color: mat-color($primary, darker);
+
+      .links {
+        a {
+          color: mat-color($primary, lighter);
+          &:hover {
+            color: mat-color($accent);
+          }
+        }
+      }
+    }
   }
 }
