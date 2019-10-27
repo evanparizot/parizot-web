@@ -2,8 +2,8 @@
 
   <div class="toolbar">
     <mat-toolbar color="primary">
-      <span class="spacer text-center"><a [routerLink]="['']" (click)="sidenav.close();toggleBurger()">Evan Parizot</a></span>
-      <button class="hamburger hamburger--spin" type="button" (click)="sidenav.toggle(); toggleBurger();">
+      <span class="spacer text-center"><a [routerLink]="['']" (click)="sidenav.close()">Evan Parizot</a></span>
+      <button class="hamburger hamburger--spin" type="button" (click)="sidenav.toggle()">
         <span class="hamburger-box">
           <span class="hamburger-inner"></span>
         </span>
@@ -11,17 +11,17 @@
     </mat-toolbar>
   </div> <!-- end toolbar -->
 
-  <mat-sidenav-container (backdropClick)="toggleBurger()">
-    <mat-sidenav #sidenav mode="over" position="end" [(opened)]="opened" (keydown.escape)="toggleBurger()">
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav mode="over" position="end">
       <mat-nav-list>
         <h3 mat-subheader>Site Navigation</h3>
-        <a mat-list-item *ngFor="let item of siteNav" (click)="sidenav.close();toggleBurger()" [routerLink]="[item.link]"
+        <a mat-list-item *ngFor="let item of siteNav" (click)="sidenav.close()" [routerLink]="[item.link]"
           routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
           {{item.label}}
         </a>
         <mat-divider></mat-divider>
         <h3 mat-subheader>Hosted Projects</h3>
-        <a mat-list-item *ngFor="let item of projectNav" (click)="sidenav.close();toggleBurger()" [routerLink]="[item.link]"
+        <a mat-list-item *ngFor="let item of projectNav" (click)="sidenav.close()" [routerLink]="[item.link]"
           routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
           {{item.label}}
         </a>
