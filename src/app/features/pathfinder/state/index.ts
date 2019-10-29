@@ -2,7 +2,7 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromRoot from '../../../core/core.state';
 import * as fromPathfinder from './pathfinder.reducer';
 
-export interface State extends fromRoot.State {
+export interface State extends fromRoot.AppState {
   pathfinder: fromPathfinder.PathfinderState;
 }
 

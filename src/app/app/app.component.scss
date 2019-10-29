@@ -1,7 +1,7 @@
 @import "../../sass/styles-variables.scss";
 @import "../../sass/variables";
 
-.default-theme {
+.theme-wrapper {
   height: 100%;
   width: 100%;
 }
@@ -12,12 +12,93 @@
   display: flex;
   z-index: 10;
 
-  .spacer {
-    flex: 1 1 auto;
+  mat-toolbar {
+    padding: 0;
 
-    a {
-      text-decoration: none;
+    .container-fluid {
+      padding: 0;
+
+      .title {
+        text-decoration: none;
+
+        nav a {
+          position: relative;
+          display: inline-block;
+          margin: 15px 25px;
+          outline: none;
+          color: #fff;
+          text-decoration: none;
+          // text-transform: uppercase;
+          letter-spacing: 1px;
+          // font-weight: 400;
+          text-shadow: 0 0 1px rgba(255,255,255,0.3);
+          // font-size: 1.35em;
+        }
+        
+        nav a:hover,
+        nav a:focus {
+          outline: none;
+        }
+        
+        .title-link a {
+          // color: #10649b;
+          text-shadow: none;
+          // padding: 10px 0;
+        }
+        
+        .title-link a::before {
+          color: #fff;
+          text-shadow: 0 0 1px rgba(255,255,255,0.3);
+          content: attr(data-hover);
+          position: absolute;
+          -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+          -moz-transition: -moz-transform 0.3s, opacity 0.3s;
+          transition: transform 0.3s, opacity 0.3s;
+          pointer-events: none;
+        }
+        
+        .title-link a::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          height: 2px;
+          background: #fff;
+          opacity: 0;
+          -webkit-transform: translateY(5px);
+          -moz-transform: translateY(5px);
+          transform: translateY(5px);
+          -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+          -moz-transition: -moz-transform 0.3s, opacity 0.3s;
+          transition: transform 0.3s, opacity 0.3s;
+          pointer-events: none;
+        }
+        
+        // .title-link a:focus::before, 
+        .title-link a:hover::before
+        {
+          opacity: 0;
+          -webkit-transform: translateY(-2px);
+          -moz-transform: translateY(-2px);
+          transform: translateY(-2px);
+        }
+        
+        // .title-link a:focus::after, 
+        .title-link a:hover::after
+        {
+          opacity: 1;
+          -webkit-transform: translateY(0px);
+          -moz-transform: translateY(0px);
+          transform: translateY(0px);
+        }
+      }
     }
+  }
+
+  .toolbar-inner {
+    padding: 0;
+    margin: 0;
   }
 
   button:focus {
@@ -67,7 +148,6 @@ mat-sidenav-container {
             &:hover {
               text-decoration: none;
             }
-
           }
         }
       }

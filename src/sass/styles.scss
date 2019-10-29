@@ -3,16 +3,16 @@
 @import "./variables";
 @import './styles-variables';
 
-@import '../themes/default-theme';
 
 // @import '@angular/material/prebuilt-themes/indigo-pink.css';
 @import '~@angular/material/theming';
 
-@import './hamburger-settings.scss';
-
-
 @include mat-core();
 
+@import '../themes/default-theme';
+@import '../themes/dark-theme';
+
+@import './hamburger-settings.scss';
 @import '../app/app/app.component.scss-theme';
 @import '../app/features/pathfinder/container/pathfinder-container.component.scss-theme';
 
@@ -22,9 +22,15 @@
   @include app-component-theme($theme);
   @include feature-pathfinder-container-theme($theme);
   @include app-projects-theme($theme);
+  // @include hamburger-theme($theme);
 }
 
 .default-theme {
   @include angular-material-theme($default-theme);
   @include components-theme($default-theme);
+}
+
+.dark-theme {
+  @include angular-material-theme($dark-theme);
+  @include components-theme($dark-theme);
 }

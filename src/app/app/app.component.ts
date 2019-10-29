@@ -1,13 +1,19 @@
+import { routeAnimations } from './../core/animations/route.animations';
 import { Title } from '@angular/platform-browser';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material';
 import { filter, map } from 'rxjs/operators';
+import { AppState } from '../core/core.state';
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import * as fromSettings from '../core/settings';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [routeAnimations]
 })
 export class AppComponent implements OnInit {
 
@@ -27,8 +33,11 @@ export class AppComponent implements OnInit {
   opened: boolean;
   hamburger: any;
 
+  theme$: Observable<string>;
+
   constructor(
-    private router: Router, 
+    private router: Router,
+    private store: Store<AppState>,
     private activeatedRoute: ActivatedRoute, 
     private titleService: Title) {
   }
@@ -56,5 +65,7 @@ export class AppComponent implements OnInit {
     });
     this.sidenav.openedStart.subscribe(() => {this.hamburger.add('is-active')});
     this.sidenav.closedStart.subscribe(() => {this.hamburger.remove('is-active')});
+
+    this.theme$ = this.store.pipe(select(fromSettings.selectTheme));
   }
 }
