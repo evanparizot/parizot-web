@@ -1,3 +1,4 @@
+import { TitleService } from './title/title.service';
 import { routeAnimations } from './animations/route.animations';
 import { GoogleAnalyticsEffects } from './google-analytics/google-analytics.effects';
 import { environment } from '../../environments/environment';
@@ -16,6 +17,7 @@ import { reducers, metaReducers } from './core.state';
 
 export {
   routeAnimations,
+  TitleService
 };
 
 @NgModule({

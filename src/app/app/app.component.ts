@@ -1,3 +1,4 @@
+import { TitleService } from './../core/title/title.service';
 import { routeAnimations } from './../core/animations/route.animations';
 import { Title } from '@angular/platform-browser';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
@@ -36,33 +37,14 @@ export class AppComponent implements OnInit {
   theme$: Observable<string>;
 
   constructor(
-    private router: Router,
     private store: Store<AppState>,
-    private activeatedRoute: ActivatedRoute, 
-    private titleService: Title) {
+    private TitleService: TitleService
+    ) {
   }
 
   ngOnInit(): void {
     this.hamburger = document.querySelector('.hamburger').classList;
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd),
-      map(() => {
-        let child = this.activeatedRoute.firstChild;
-        let title = "Evan Parizot"
-        while (child) {
-          if(child.firstChild) {
-            child = child.firstChild;
-          } else if (child.snapshot.data && child.snapshot.data['title']) {
-            return `${child.snapshot.data['title']} | ${title}`;
-          } else {
-            return title;
-          }
-        }
-        return title;
-      })
-    ).subscribe((title: string) => {
-      this.titleService.setTitle(title);
-    });
+
     this.sidenav.openedStart.subscribe(() => {this.hamburger.add('is-active')});
     this.sidenav.closedStart.subscribe(() => {this.hamburger.remove('is-active')});
 
