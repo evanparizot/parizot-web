@@ -1,18 +1,30 @@
-<div class="default-theme">
+<div [class]="'theme-wrapper ' + (theme$ | async)">
 
-  <div class="toolbar">
+  <div class="toolbar mat-elevation-z4">
     <mat-toolbar color="primary">
-      <span class="spacer text-center"><a [routerLink]="['']" (click)="sidenav.close()">Evan Parizot</a></span>
-      <button class="hamburger hamburger--spin" type="button" (click)="sidenav.toggle()">
-        <span class="hamburger-box">
-          <span class="hamburger-inner"></span>
-        </span>
-      </button>
+      <div class="container-fluid">
+        <div class="row align-items-center toolbar-inner">
+          <div class="col text-left">
+            <button class="hamburger hamburger--spin" type="button" (click)="sidenav.toggle()">
+              <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+              </span>
+            </button>
+          </div>
+          <div class="col text-center title">
+            <nav class="title-link">
+              <a [routerLink]="['']" (click)="sidenav.close()">evan parizot</a>
+            </nav>
+          </div>
+          <div class="col"></div>
+        </div>
+      </div>
+
     </mat-toolbar>
   </div> <!-- end toolbar -->
 
   <mat-sidenav-container>
-    <mat-sidenav #sidenav mode="over" position="end">
+    <mat-sidenav #sidenav mode="over">
       <mat-nav-list>
         <h3 mat-subheader>Site Navigation</h3>
         <a mat-list-item *ngFor="let item of siteNav" (click)="sidenav.close()" [routerLink]="[item.link]"
@@ -29,7 +41,7 @@
     </mat-sidenav>
 
     <div class="wrapper">
-      <div class="content">
+      <div class="content" [@routeAnimations]="o.isActivated">
         <router-outlet #o="outlet"></router-outlet>
       </div>
 

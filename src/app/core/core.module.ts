@@ -1,3 +1,5 @@
+import { TitleService } from './title/title.service';
+import { routeAnimations } from './animations/route.animations';
 import { GoogleAnalyticsEffects } from './google-analytics/google-analytics.effects';
 import { environment } from '../../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
@@ -11,6 +13,12 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { reducers, metaReducers } from './core.state';
+
+export {
+  routeAnimations,
+  TitleService
+};
 
 @NgModule({
   imports: [
@@ -18,7 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
 
     //NgRx
-    StoreModule.forRoot({}),
+    StoreModule.forRoot(reducers, { metaReducers }),
     StoreRouterConnectingModule.forRoot(),
     EffectsModule.forRoot([
       GoogleAnalyticsEffects
