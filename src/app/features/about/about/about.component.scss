@@ -1,5 +1,17 @@
 .about-content {
   padding-top: 40px;
+
+  .experience-container {
+    .profile-section {
+      list-style-type: none;
+      padding-inline-start: 0px;
+
+      .positions-section {
+        list-style-type: disc;
+      }
+    }
+  }
+
 }
 
 .row {

@@ -5,61 +5,74 @@
         <img src='http://assets.parizot.info/evan/projects/catan.jpg'>
       </div>
     </div>
-    <div class="about-text col-lg-8">
+    <div class="about-text-container col-lg-8">
       <h3>Evan Parizot</h3>
       <i>Software Developer | Engineer</i>
       <hr>
-      <p>
-        Originally from Houston, Texas, I currently reside in the Detroit, Michigan area. I
-        do full stack software development at Quickenloans, a Detroit headquartered mortgage company. While
-        primarily writing software, I graduated from university with a degree in Electrical Engineering
-        and have experience with hardware as well.
-      </p>
 
-      <h5>Work Experience</h5>
-      <hr>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-2">
-            <p>
-              <b>Quickenloans</b>
-            </p>
-            <i>2018-2019</i>
-          </div>
-          <div class="col">
-            <ul>
-              <li>Software Developer</li>
-              <li>Software Quality Engineer</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-2">
-            <b>Cognizant</b>
-            <i>2016-2018</i>
-          </div>
-          <div class="col">
-            <ul>
-              <li>Quality Assurance Engineer and Analyst</li>
-            </ul>
-          </div>
-        </div>
+      <div class="about-description-container">
+        <p>
+          Originally from Houston, Texas, I currently reside in the Detroit, Michigan area. I currently
+          do full stack software development at Quickenloans, a Detroit headquartered mortgage company. While
+          primarily writing software, I graduated from university with a degree in Electrical Engineering
+          and have experience with hardware as well.
+        </p>
       </div>
 
-      <h5>Education</h5>
-      <hr>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-2">
-            Texas A&M University
-            2011-2015
-          </div>
-          <div class="col">
-            B.S. Electrical and Electronics Engineering
-            Minor: Mathematics
-          </div>
-        </div>
+      <div class="experience-container">
+        <section id="experience-section" class="experience-section">
+          <header>
+            <h5>Work Experience</h5>
+            <hr>
+          </header>
+          <ul class="profile-section">
+            <li *ngFor="let experience of experiences">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col col-lg-2 col-xs-12">
+                    <div *ngIf="experience.company as company" class="company">
+                      <h6>{{company.name}}</h6>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <ul class="positions-section">
+                      <li *ngFor="let position of experience.positions">
+                        {{position.title}}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </section>
       </div>
+
+      <div class="education-container">
+        <section id="education-section" class="education-section">
+          <header>
+            <h5>Education</h5>
+            <hr>
+
+          </header>
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <h6>Texas A&M University</h6>
+              </div>
+              <div class="col text-right">
+                <i>2011-2015</i>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                B.S. Electrical and Electronics Engineering
+                Minor: Mathematics
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
     </div>
   </div>
