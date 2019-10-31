@@ -1,10 +1,7 @@
 import { TitleService } from './../core/title/title.service';
 import { routeAnimations } from './../core/animations/route.animations';
-import { Title } from '@angular/platform-browser';
-import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material';
-import { filter, map } from 'rxjs/operators';
 import { AppState } from '../core/core.state';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -44,7 +41,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.hamburger = document.querySelector('.hamburger').classList;
-
     this.sidenav.openedStart.subscribe(() => {this.hamburger.add('is-active')});
     this.sidenav.closedStart.subscribe(() => {this.hamburger.remove('is-active')});
 
