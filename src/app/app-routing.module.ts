@@ -21,7 +21,7 @@ const routes: Routes = [
   },
   {
     path: 'pathfinder',
-    data: {title: "Pathfinder"},
+    data: {title: "Pathfinder", showFooter: false},
     loadChildren: () => import('./features/pathfinder/pathfinder.module')
       .then(m => m.PathfinderModule)
   },

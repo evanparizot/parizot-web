@@ -1,12 +1,15 @@
 import { Injectable } from "@angular/core";
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd, RoutesRecognized, NavigationStart } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TitleService {
+  showFooter: boolean;
+
   constructor(
     private titleService: Title,
     private router: Router,
@@ -18,7 +21,7 @@ export class TitleService {
         let child = this.activatedRoute.firstChild;
         let title = "Evan Parizot"
         while (child) {
-          if(child.firstChild) {
+          if (child.firstChild) {
             child = child.firstChild;
           } else if (child.snapshot.data && child.snapshot.data['title']) {
             return `${child.snapshot.data['title']} | ${title}`;
@@ -31,5 +34,21 @@ export class TitleService {
     ).subscribe((title: string) => {
       this.titleService.setTitle(title);
     });
+
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd),
+      map(() => {
+        let child = this.activatedRoute.firstChild;
+        while(child) {
+          if(child.snapshot.data && child.snapshot.data['showFooter'] != null) {
+            return child.snapshot.data['showFooter'];
+          }
+          return true;
+        }
+        return true;
+      })
+    ).subscribe((showFooter: boolean) => {
+        this.showFooter = showFooter;
+      });
   }
 }

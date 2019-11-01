@@ -6,6 +6,7 @@ import { AppState } from '../core/core.state';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import * as fromSettings from '../core/settings';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -35,7 +36,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     private store: Store<AppState>,
-    private TitleService: TitleService
+    private titleService: TitleService
     ) {
   }
 
@@ -43,7 +44,6 @@ export class AppComponent implements OnInit {
     this.hamburger = document.querySelector('.hamburger').classList;
     this.sidenav.openedStart.subscribe(() => {this.hamburger.add('is-active')});
     this.sidenav.closedStart.subscribe(() => {this.hamburger.remove('is-active')});
-
     this.theme$ = this.store.pipe(select(fromSettings.selectTheme));
   }
 }
