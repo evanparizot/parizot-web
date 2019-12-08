@@ -15,13 +15,16 @@
 @import './hamburger-settings.scss';
 @import '../app/app/app.component.scss-theme';
 @import '../app/features/pathfinder/container/pathfinder-container.component.scss-theme';
+@import '../app/features/pathfinder/components/toolbar/pathfinder-toolbar.component.scss-theme';
 
 @import '../app/features/projects/projects/projects.component.scss-theme';
 
 @mixin components-theme($theme) {
   @include app-component-theme($theme);
-  @include feature-pathfinder-container-theme($theme);
   @include app-projects-theme($theme);
+  
+  @include feature-pathfinder-container-theme($theme);
+  @include feature-pathfinder-toolbar-theme($theme);
   // @include hamburger-theme($theme);
 }
 

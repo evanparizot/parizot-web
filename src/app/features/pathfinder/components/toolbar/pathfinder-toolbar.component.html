@@ -1,1 +1,26 @@
-<p>pathfinder-toolbar works!</p>
+<div class="pathfinder-toolbar text-center">
+    <mat-form-field>
+      <!-- <mat-label>Algorithm</mat-label> -->
+      <mat-select 
+          placeholder="Algorithm" 
+          formControlName="algorithm">
+        <mat-option [value]="A">A*</mat-option>
+        <mat-option [value]="Djikstra">Djikstra</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+    <mat-label>Heuristic</mat-label>
+    <mat-select 
+            name="heuristic"
+            formControlName="heuristic">
+          <mat-option [value]="manhattan">Manhattan</mat-option>
+          <mat-option [value]="euclidean">Euclidean</mat-option>
+          <mat-option [value]="octile">Octile</mat-option>
+          <mat-option [value]="chebyshev">Chebyshev</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+
+
+</div>

@@ -7,6 +7,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { MaterialElevationDirective } from './directives/material-elevation.directive';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FontawesomeModule } from './fontawesome.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,14 +20,16 @@ import { FontawesomeModule } from './fontawesome.module';
     MaterialModule,
     FontawesomeModule,
     FlexLayoutModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ReactiveFormsModule
   ],
   exports: [
     MaterialModule,
     FontawesomeModule,
     FlexLayoutModule,
     FooterComponent,
-    DeferLoadDirective
+    DeferLoadDirective,
+    ReactiveFormsModule
   ]
 })
 export class SharedModule { }

@@ -1,4 +1,5 @@
 import {Action} from '@ngrx/store';
+import { PathNode } from '../models/node';
 
 /*
   Actions get dispatched by components (this.store.dispatch())
@@ -6,7 +7,7 @@ import {Action} from '@ngrx/store';
 
 export enum PathfinderActionTypes {
   InitializeNodes = '[Pathfinder] Initialize Nodes',
-  DrawNode = '[Pathfinder] Draw Node'
+  DrawNode        = '[Pathfinder] Draw Node'
 }
 
 
@@ -16,7 +17,13 @@ export class DrawNode implements Action {
   // constructor(public payload:boolean) {}
 }
 
+export class InitializeNodes implements Action {
+  readonly type = PathfinderActionTypes.InitializeNodes;
+
+  constructor(public nodes: PathNode[][]) {}
+}
 
 
 export type PathfinderActions =
+  InitializeNodes |
   DrawNode;

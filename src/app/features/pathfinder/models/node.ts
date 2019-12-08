@@ -1,4 +1,4 @@
-export class Node {
+export class PathNode {
   x: number;
   y: number;
   traversable: boolean;

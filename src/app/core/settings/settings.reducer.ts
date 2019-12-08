@@ -5,7 +5,7 @@ export interface SettingsState {
 }
 
 const initialState: SettingsState = {
-  theme: 'DARK-THEME'
+  theme: 'DEFAULT-THEME'
 }
 
 export function settingsReducer(state: SettingsState | undefined, action: SettingsActions) {

@@ -1,13 +1,13 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import * as fromRoot from '../../../core/core.state';
-import * as fromPathfinder from './pathfinder.reducer';
+import { PathfinderState } from './pathfinder.reducer';
+import { AppState } from '../../../core/core.state';
 
-export interface State extends fromRoot.AppState {
-  pathfinder: fromPathfinder.PathfinderState;
+export interface State extends AppState {
+  pathfinder: PathfinderState;
 }
 
 export const FEATURE_NAME = 'pathfinder';
-const getPathfinderState = createFeatureSelector<fromPathfinder.PathfinderState>(
+const getPathfinderState = createFeatureSelector<PathfinderState>(
   FEATURE_NAME
 );
 
