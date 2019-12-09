@@ -1,11 +1,12 @@
+import { selectNodes } from './../state/pathfinder.selectors';
 import { Component, OnInit, HostListener } from '@angular/core';
 
 // NgRx
-import * as fromPathfinder from './../state';
-import * as pathfinderActions from './../state/pathfinder.actions';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { PathNode } from '../models/node';
+import { State } from '../pathfinder.state';
+import { actionPathfinderInitializeNodes } from '../state/pathfinder.actions';
 
 @Component({
   selector: 'app-pathfinder-container',
@@ -21,13 +22,13 @@ export class PathfinderContainerComponent implements OnInit {
   screenHeight: number;
 
   constructor(
-    private store: Store<fromPathfinder.State>
+    private store: Store<State>
   ) {
     this.getScreenSize();
   }
   
   ngOnInit() {
-    this.nodes$ = this.store.pipe(select(fromPathfinder.getNodes));
+    this.nodes$ = this.store.pipe(select(selectNodes));
     this.initializeNodes();
   }
 
@@ -39,8 +40,8 @@ export class PathfinderContainerComponent implements OnInit {
   }
 
   initializeNodes(): void {
-    let tempHeight = this.screenHeight/20;
-    let tempWidth = this.screenWidth/20;
+    let tempHeight = this.screenHeight/30;
+    let tempWidth = this.screenWidth/30;
 
     var nodes: PathNode[][] = new Array<Array<PathNode>>();
     for(var y=0;y<tempHeight;y++) {
@@ -50,6 +51,6 @@ export class PathfinderContainerComponent implements OnInit {
       }
       nodes.push(nodeRow);
     }
-    this.store.dispatch(new pathfinderActions.InitializeNodes(nodes));
+    this.store.dispatch(actionPathfinderInitializeNodes({nodes}));
   }
 }

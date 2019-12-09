@@ -1,5 +1,7 @@
-import { PathfinderActions, PathfinderActionTypes } from './pathfinder.actions';
-import { PathNode } from '../models/node';
+import { actionPathfinderInitializeNodes } from './pathfinder.actions';
+import { PathfinderState } from '.';
+import { reducers } from 'src/app/core/core.state';
+import { Action, createReducer, on } from '@ngrx/store';
 
 /*
   Reducers alter a slice of state and returns a new state. Actions trigger reducers by passing an action.
@@ -8,30 +10,18 @@ import { PathNode } from '../models/node';
   Reducers should be pure functions
 */
 
-
-export interface PathfinderState {
-  nodes: PathNode[][];
+export const initialState: PathfinderState = {
+  nodes: []
 }
 
-const initialState: PathfinderState = {
-  nodes: []
-};
+const reducer = createReducer(
+  initialState,
+  on(actionPathfinderInitializeNodes, (state, { nodes }) => ({
+    ...state,
+    nodes
+  }))
+)
 
-export function reducer(state = initialState, action: PathfinderActions): PathfinderState {
-  switch(action.type) {
-    case PathfinderActionTypes.InitializeNodes:
-      return {
-        ...state,
-        nodes: action.nodes
-      };
-
-    // case PathfinderActionTypes.DrawNode:
-    //   return {
-    //     ...state,
-
-    //   };
-
-    default:
-      return state;
-  }
+export function pathfinderReducer(state: PathfinderState | undefined, action: Action) {
+  return reducer(state, action);
 }
