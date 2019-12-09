@@ -1,12 +1,6 @@
-import { Action } from '@ngrx/store';
+import { props, createAction } from '@ngrx/store';
 
-export enum SettingsActionTypes {
-  SetTheme = '[Settings] Set Theme'
-}
-
-export class SetTheme implements Action {
-  readonly type = SettingsActionTypes.SetTheme;
-  constructor(public payload: string) {}
-}
-
-export type SettingsActions = SetTheme;
+export const actionSettingsSetTheme = createAction(
+  '[Settings] Set Theme',
+  props<{ theme: string }>()
+)

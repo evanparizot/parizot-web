@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'pathfinder-toolbar',
@@ -9,6 +9,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 export class PathfinderToolbarComponent implements OnInit {
 
   pathfinderForm: FormGroup;
+  form = new FormControl('');
 
   constructor(private fb: FormBuilder) { }
 
