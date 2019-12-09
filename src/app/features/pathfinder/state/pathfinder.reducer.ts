@@ -1,4 +1,5 @@
 import { PathfinderActions, PathfinderActionTypes } from './pathfinder.actions';
+import { PathNode } from '../models/node';
 
 /*
   Reducers alter a slice of state and returns a new state. Actions trigger reducers by passing an action.
@@ -9,7 +10,7 @@ import { PathfinderActions, PathfinderActionTypes } from './pathfinder.actions';
 
 
 export interface PathfinderState {
-  nodes: Node[][];
+  nodes: PathNode[][];
 }
 
 const initialState: PathfinderState = {
@@ -18,6 +19,12 @@ const initialState: PathfinderState = {
 
 export function reducer(state = initialState, action: PathfinderActions): PathfinderState {
   switch(action.type) {
+    case PathfinderActionTypes.InitializeNodes:
+      return {
+        ...state,
+        nodes: action.nodes
+      };
+
     // case PathfinderActionTypes.DrawNode:
     //   return {
     //     ...state,

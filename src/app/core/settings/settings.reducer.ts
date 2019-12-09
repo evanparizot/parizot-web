@@ -1,27 +1,24 @@
-import { SettingsActions, SettingsActionTypes } from './settings.actions';
+import { AppState } from './../core.state';
+import { actionSettingsSetTheme } from './settings.actions';
+import { createReducer, on, Action } from '@ngrx/store'
+import { SettingsState } from './settings.model';
 
-export interface SettingsState {
-  theme: string;
-}
 
 const initialState: SettingsState = {
   theme: 'DARK-THEME'
 }
 
-export function settingsReducer(state: SettingsState | undefined, action: SettingsActions) {
+const reducer = createReducer(
+  initialState,
+  on(
+    actionSettingsSetTheme,
+    (state, action) => ({ ...state, ...action })
+  )
+);
+
+export function settingsReducer(
+  state: SettingsState | undefined,
+  action: Action
+) {
   return reducer(state, action);
-}
-
-export function reducer(state = initialState, action: SettingsActions): SettingsState {
-  switch (action.type) {
-    case SettingsActionTypes.SetTheme:
-      return {
-        ...state,
-        theme: action.payload
-      }
-
-
-    default:
-      return state;
-  }
 }

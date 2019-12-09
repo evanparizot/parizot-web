@@ -1,5 +1,4 @@
 <div [class]="'theme-wrapper ' + (theme$ | async)">
-
   <div class="toolbar mat-elevation-z4">
     <mat-toolbar color="primary">
       <div class="container-fluid">
@@ -13,7 +12,7 @@
           </div>
           <div class="col text-center title">
             <nav class="title-link">
-              <a [routerLink]="['']" (click)="sidenav.close()">evan parizot</a>
+              <a [routerLink]="['']" (click)="sidenav.close()">ekp</a>
             </nav>
           </div>
           <div class="col"></div>
@@ -45,7 +44,7 @@
         <router-outlet #o="outlet"></router-outlet>
       </div>
 
-      <div class="footer">
+      <div class="footer" *ngIf="titleService.showFooter">
         <div class="row">
           <div class="col-sm-12 links">
             <a href="https://github.com/evanparizot" target="_blank">

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'pathfinder-toolbar',
@@ -7,10 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PathfinderToolbarComponent implements OnInit {
 
-  constructor() { }
+  pathfinderForm: FormGroup;
+  form = new FormControl('');
+
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.pathfinderForm = this.fb.group({
+      algorithm: [''],
+      heuristic: [''],
+      options: ['']
+    })
   }
+
 
   /*
   Algorithms

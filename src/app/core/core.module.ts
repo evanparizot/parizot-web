@@ -14,6 +14,7 @@ import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { reducers, metaReducers } from './core.state';
+import { SettingsEffects } from './settings/settings.effects';
 
 export {
   routeAnimations,
@@ -29,6 +30,7 @@ export {
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreRouterConnectingModule.forRoot(),
     EffectsModule.forRoot([
+      SettingsEffects,
       GoogleAnalyticsEffects
     ]),
     environment.production ? [] : StoreDevtoolsModule.instrument({name: 'Main site'})

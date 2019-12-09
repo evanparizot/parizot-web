@@ -3,6 +3,9 @@
 @import "./variables";
 @import './styles-variables';
 
+@import '~bootstrap/scss/bootstrap-reboot';
+@import '~bootstrap/scss/bootstrap-grid';
+@import 'styles-reset';
 
 // @import '@angular/material/prebuilt-themes/indigo-pink.css';
 @import '~@angular/material/theming';
@@ -12,16 +15,23 @@
 @import '../themes/default-theme';
 @import '../themes/dark-theme';
 
+@import 'styles-reset.scss-theme';
 @import './hamburger-settings.scss';
 @import '../app/app/app.component.scss-theme';
 @import '../app/features/pathfinder/container/pathfinder-container.component.scss-theme';
+@import '../app/features/pathfinder/components/toolbar/pathfinder-toolbar.component.scss-theme';
 
 @import '../app/features/projects/projects/projects.component.scss-theme';
 
 @mixin components-theme($theme) {
+  @include styles-reset-theme($theme);
+
   @include app-component-theme($theme);
-  @include feature-pathfinder-container-theme($theme);
   @include app-projects-theme($theme);
+
+  
+  @include feature-pathfinder-container-theme($theme);
+  @include feature-pathfinder-toolbar-theme($theme);
   // @include hamburger-theme($theme);
 }
 
