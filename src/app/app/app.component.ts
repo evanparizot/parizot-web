@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
   
   projectNav = [
     { link: 'pathfinder', label: 'Pathfinder' },
-    { link: 'pathfinder3d', label: 'Pathfinder 3D'}
+    // { link: 'pathfinder3d', label: 'Pathfinder 3D'}
   ]
 
   @ViewChild('sidenav', {static: true}) sidenav: MatSidenav;
