@@ -67,7 +67,7 @@ jobs:
             - dist/staging
             - dist/prod
 
-  push_to_s3_dev:
+  push_to_s3_staging:
     docker:
       - image: circleci/python:3.7
     steps:
