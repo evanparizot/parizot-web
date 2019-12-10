@@ -4,7 +4,7 @@
   <table>
     <tr *ngFor="let row of nodes$ | async">
       <td *ngFor="let node of row">
-        
+        <app-node [node]='node'></app-node>
       </td>
     </tr>
   </table>

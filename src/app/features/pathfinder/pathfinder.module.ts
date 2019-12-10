@@ -10,6 +10,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { PathfinderEffects } from './state/pathfinder.effects';
 import { reducers, FEATURE_NAME } from './pathfinder.state';
+import { NodeComponent } from './components/node/node.component';
 
 //https://github.com/qiao/PathFinding.js
 //https://github.com/clementmihailescu/Pathfinding-Visualizer
@@ -21,7 +22,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     PathfinderContainerComponent,
-    PathfinderToolbarComponent
+    PathfinderToolbarComponent,
+    NodeComponent
   ],
   imports: [
     CommonModule,

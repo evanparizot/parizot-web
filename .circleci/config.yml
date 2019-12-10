@@ -10,31 +10,44 @@ workflows:
       - build_and_test
       - cypress/run:
           start: npm start
-          wait-on: 'http://localhost:4200'
+          wait-on: "http://localhost:4200"
           post-steps:
             - store_test_results:
                 path: cypress/results
 
-      - push_to_gcs_staging:
-          context: gcp-storage-parizot
-          requires: [ 'cypress/run', 'build_and_test' ]
+      - push_to_s3_staging:
+          context: aws-s3-parizot
+          requires: ["cypress/run", "build_and_test"]
           filters:
             branches:
               only: master
 
       - hold:
-          type: 'approval'
-          requires: [ 'push_to_gcs_staging' ]
+          type: "approval"
+          requires: ["push_to_s3_staging"]
 
-      - push_to_gcs_prod:
-          context: gcp-storage-parizot
-          requires: ['hold']
+      - push_to_s3_prod:
+          context: aws-s3-parizot
+          requires: ["hold"]
+
+      # - push_to_gcs_staging:
+      #     context: gcp-storage-parizot
+      #     requires: [ 'cypress/run', 'build_and_test' ]
+      #     filters:
+      #       branches:
+      #         only: master
+      # - hold:
+      #     type: 'approval'
+      #     requires: [ 'push_to_gcs_staging' ]
+      # - push_to_gcs_prod:
+      #     context: gcp-storage-parizot
+      #     requires: ['hold']
 
 jobs:
   build_and_test:
     docker:
       - image: circleci/node:10.16.0-browsers
-    working_directory: '~/project'
+    working_directory: "~/project"
     steps:
       - checkout
       - restore_cache:
@@ -49,10 +62,36 @@ jobs:
       - run: npm run build -- --configuration=staging --output-path=dist/staging --progress=false
       - run: npm run build -- --configuration=production --output-path=dist/prod --progress=false
       - persist_to_workspace:
-          root: '~/project'
+          root: "~/project"
           paths:
             - dist/staging
             - dist/prod
+
+  push_to_s3_dev:
+    docker:
+      - image: circleci/python:3.7
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - run: find . -type f -follow -print
+      - run: pip3 install awscli --upgrade --user
+      - aws-s3/sync:
+          from: ./dist/staging
+          to: "s3://staging.evanparizot.com/"
+          overwrite: true
+
+  push_to_s3_prod:
+    docker:
+      - image: circleci/python:3.7
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - run: find . -type f -follow -print
+      - run: pip3 install awscli --upgrade --user
+      - aws-s3/sync:
+          from: ./dist/staging
+          to: "s3://evanparizot.com/"
+          overwrite: true
 
   push_to_gcs_staging:
     docker:
@@ -79,5 +118,5 @@ jobs:
           gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
           gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
       - run: find . -type f -follow -print
-      - run: gsutil -m rm -r gs://evanparizot.com/** 
+      - run: gsutil -m rm -r gs://evanparizot.com/**
       - run: gsutil -m cp -r dist/prod/** gs://evanparizot.com/
