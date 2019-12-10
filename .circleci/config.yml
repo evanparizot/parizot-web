@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   cypress: cypress-io/cypress@1
+  aws-s3: circleci/aws-s3@1.0.12
 
 workflows:
   version: 2.1
