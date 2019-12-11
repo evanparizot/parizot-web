@@ -7,7 +7,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { MaterialElevationDirective } from './directives/material-elevation.directive';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FontawesomeModule } from './fontawesome.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     MaterialModule,
     FontawesomeModule,
     FlexLayoutModule,
@@ -24,6 +25,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
   ],
   exports: [
+    FormsModule,
     MaterialModule,
     FontawesomeModule,
     FlexLayoutModule,

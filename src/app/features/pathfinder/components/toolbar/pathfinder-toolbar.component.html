@@ -1,21 +1,54 @@
-<ng-container>
+<ng-container *ngIf="settings$ | async as settings">
   <div class="pathfinder-toolbar text-center">
-    <form class="input-form" [formGroup]="pathfinderForm">
-      <mat-form-field>
-        <mat-select class='mat-select' placeholder="Algorithm" formControlName="algorithm">
-          <mat-option value="A">A*</mat-option>
-          <mat-option value="Djikstra">Djikstra</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-        <!-- <mat-label>Heuristic</mat-label> -->
-        <mat-select placeholder="Heuristic" name="heuristic" formControlName="heuristic">
-          <mat-option value="manhattan">Manhattan</mat-option>
-          <mat-option value="euclidean">Euclidean</mat-option>
-          <mat-option value="octile">Octile</mat-option>
-          <mat-option value="chebyshev">Chebyshev</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </form>
+
+    <mat-form-field>
+      <mat-select placeholder="Algorithm" 
+      [ngModel]=settings.algorithm 
+      (selectionChange)="onSelectedAlgorithm($event)">
+        <mat-option *ngFor="let algo of algorithms" [value]="algo.name">
+          {{algo.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="Heuristic" 
+      [ngModel]=settings.heuristic 
+      (selectionChange)="onSelectedHeuristic($event)">
+        <mat-option value="Manhattan">Manhattan</mat-option>
+        <mat-option value="Euclidean">Euclidean</mat-option>
+        <mat-option value="Octile">Octile</mat-option>
+        <mat-option value="Chebyshev">Chebyshev</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-checkbox class="allow-diagonal"
+      [disabled]="disableAllowDiagonal"
+      [ngModel]="settings.allowDiagonal"
+      [checked]="settings.allowDiagonal"
+      (change)="onSelectedAllowDiagonal($event)">
+      Allow Diagonal
+    </mat-checkbox>
+
+    <mat-checkbox class="bi-directional" 
+      [disabled]="disableBiDirectional"
+      [ngModel]="settings.biDirectional"
+      [checked]="settings.biDirectional"
+      (change)="onSelectedBiDirectional($event)">
+      Bi-Directional
+    </mat-checkbox>
+
+    <mat-checkbox class="dont-cross-corners" 
+      [disabled]="disableDontCrossCorners"
+      [ngModel]="settings.dontCrossCorners"
+      [checked]="settings.dontCrossCorners"
+      (change)="onSelectedDontCrossCorners($event)">
+      Don't Cross Corners
+    </mat-checkbox>
+
+    <button mat-button>Start</button>
+    <button mat-button>Pause</button>
+    <button mat-button>Clear</button>
+
   </div>
 </ng-container>
