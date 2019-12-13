@@ -28,7 +28,9 @@ export const initialState: PathfinderState = {
     dontCrossCorners: false,
     weight: 1
   },
-  nodes: []
+  nodes: [],
+  startNode: null,
+  finishNode: null
 }
 
 const reducer = createReducer(

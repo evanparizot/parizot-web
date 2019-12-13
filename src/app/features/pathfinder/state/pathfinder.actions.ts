@@ -41,3 +41,15 @@ export const actionPathfinderSetOptionWeight = createAction(
   '[Pathfinder] Set option: Allow Diagonal',
   props<{ weight: number }>()
 );
+
+// Node manipulation
+
+export const actionPathfinderSetStartNode = createAction(
+  '[Pathfinder] Set Start Node',
+  props<{ startNode: Node }>()
+);
+
+export const actionPathfinderSetFinishNode = createAction(
+  '[Pathfinder] Set Finish Node',
+  props<{ finishNode: Node }>()
+);

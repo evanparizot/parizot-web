@@ -36,7 +36,6 @@ export class AppComponent implements OnInit {
 
   constructor(
     private store: Store<AppState>,
-    public titleService: TitleService
     ) {
   }
 

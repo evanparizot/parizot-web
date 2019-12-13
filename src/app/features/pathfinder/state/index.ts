@@ -15,4 +15,6 @@ import { AlgorithmOptions, PathfinderSettings } from '../models/algorithm';
 export interface PathfinderState {
   pathfinderSettings: PathfinderSettings;
   nodes: PathNode[][];
+  startNode: Node;
+  finishNode: Node;
 }
