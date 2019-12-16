@@ -10,9 +10,11 @@ const initialState: SettingsState = {
 
 const reducer = createReducer(
   initialState,
-  on(
-    actionSettingsSetTheme,
-    (state, action) => ({ ...state, ...action })
+  on(actionSettingsSetTheme, (state, { theme }) => 
+  ({ 
+    ...state, 
+    theme
+  })
   )
 );
 

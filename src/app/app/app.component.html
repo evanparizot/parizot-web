@@ -3,6 +3,7 @@
     <mat-toolbar color="primary">
       <div class="container-fluid">
         <div class="row align-items-center toolbar-inner">
+
           <div class="col text-left">
             <button class="hamburger hamburger--spin" type="button" (click)="sidenav.toggle()">
               <span class="hamburger-box">
@@ -10,15 +11,18 @@
               </span>
             </button>
           </div>
+
           <div class="col text-center title">
             <nav class="title-link">
               <a [routerLink]="['']" (click)="sidenav.close()">ekp</a>
             </nav>
           </div>
-          <div class="col"></div>
+
+          <div class="col text-right settings">
+            <app-theme-selector></app-theme-selector>
+          </div>
         </div>
       </div>
-
     </mat-toolbar>
   </div> <!-- end toolbar -->
 
@@ -37,6 +41,8 @@
           {{item.label}}
         </a>
       </mat-nav-list>
+
+
     </mat-sidenav>
 
     <div class="wrapper">

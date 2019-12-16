@@ -8,10 +8,13 @@ import { MaterialElevationDirective } from './directives/material-elevation.dire
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FontawesomeModule } from './fontawesome.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ThemeSelectorOptions, ThemeSelectorComponent } from './components/theme-selector/theme-selector.component';
 
 @NgModule({
   declarations: [
     FooterComponent,
+    ThemeSelectorComponent,
+    ThemeSelectorOptions,
     MaterialElevationDirective,
     DeferLoadDirective
   ],
@@ -30,8 +33,13 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     FontawesomeModule,
     FlexLayoutModule,
     FooterComponent,
+    ThemeSelectorComponent,
+    ThemeSelectorOptions,
     DeferLoadDirective,
     ReactiveFormsModule
+  ],
+  entryComponents: [
+    ThemeSelectorOptions
   ]
 })
 export class SharedModule { }
