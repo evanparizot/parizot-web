@@ -1,3 +1,4 @@
+import { environment } from 'src/environments/environment';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, ExtraOptions, PreloadAllModules } from '@angular/router';
 
@@ -32,7 +33,7 @@ const routes: Routes = [
 ];
 
 const configs: ExtraOptions = { 
-  enableTracing: true, 
+  enableTracing: environment.production ? false : true, 
   scrollPositionRestoration: 'enabled',
   preloadingStrategy: PreloadAllModules
 };

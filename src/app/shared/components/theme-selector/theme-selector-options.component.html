@@ -1,6 +1,0 @@
-<div *ngIf="settings$ | async as settings">
-  <mat-select [ngModel]="settings.theme" (selectionChange)="onThemeSelect($event)" name="themes">
-    <mat-option value="DARK-THEME">Dark Theme</mat-option>
-    <mat-option value="DEFAULT-THEME">Blue Theme</mat-option>
-  </mat-select>
-</div>

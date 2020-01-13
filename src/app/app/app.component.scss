@@ -155,6 +155,9 @@ mat-sidenav-container {
   }
 
   @media (max-width: $toolbar-breakpoint) {
+    top: $mat-toolbar-height-mobile;
+    height: calc(100vh - 56px);
+
     .content {
       margin-top: 56px !important;
     }

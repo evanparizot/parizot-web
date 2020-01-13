@@ -18,6 +18,7 @@ import {
   MatSelectModule,
   MatCheckboxModule,
   MatBottomSheetModule,
+  MatButtonToggleModule
 } from '@angular/material';
 import {NgModule} from '@angular/core';
 
@@ -43,6 +44,7 @@ import {NgModule} from '@angular/core';
     MatSelectModule,
     MatCheckboxModule,
     MatBottomSheetModule,
+    MatButtonToggleModule
   ],
   exports: [
     MatButtonModule,
@@ -65,6 +67,7 @@ import {NgModule} from '@angular/core';
     MatSelectModule,
     MatCheckboxModule,
     MatBottomSheetModule,
+    MatButtonToggleModule
   ],
 })
 

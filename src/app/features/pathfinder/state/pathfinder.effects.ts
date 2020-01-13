@@ -1,4 +1,7 @@
 import { Injectable } from "@angular/core";
+import { Actions } from '@ngrx/effects';
+import { Store } from '@ngrx/store';
+import { State } from '../pathfinder.state';
 
 // Effects take an action, do work and dispatch a new action
 /*
@@ -14,6 +17,11 @@ import { Injectable } from "@angular/core";
 
 @Injectable()
 export class PathfinderEffects {
-  constructor() {}
+  constructor(
+    private actions$: Actions,
+    private store: Store<State>
+  ) {}
+
+  
 
 }

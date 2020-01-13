@@ -8,7 +8,7 @@ import {
 //   faBars,
 //   faUserCircle,
 //   faPowerOff,
-  faCog, faImages,
+  faCog, faImages, faAdjust
 //   faPlayCircle,
 //   faRocket,
 //   faPlus,
@@ -89,7 +89,8 @@ export class FontawesomeModule {
       faLinkedin,
       faTwitter,
       faCog,
-      faImages
+      faImages,
+      faAdjust
     );
   }
 }
