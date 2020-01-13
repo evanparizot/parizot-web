@@ -23,7 +23,7 @@ export class ThemeSelectorComponent implements OnInit {
     this.settings$ = this.store.pipe(select(selectSettings));
   }
 
-  setTheme({value:theme}) {
+  setTheme(theme:string) {
     this.store.dispatch(actionSettingsSetTheme({theme}))
   }
 
