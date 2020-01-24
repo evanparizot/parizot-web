@@ -1,5 +1,5 @@
 import { PathNode } from './../models/node';
-import { AlgorithmOptions, PathfinderSettings } from '../models/algorithm';
+import { AlgorithmOptions, Settings } from '../models/algorithm';
 
 /*
   Provide a strongly typed API
@@ -13,8 +13,9 @@ import { AlgorithmOptions, PathfinderSettings } from '../models/algorithm';
 */
 
 export interface PathfinderState {
-  pathfinderSettings: PathfinderSettings;
+  settings: Settings;
   nodes: PathNode[][];
   startNode: Node;
   finishNode: Node;
+  search: boolean;
 }

@@ -5,19 +5,13 @@
   <fa-icon icon="adjust"></fa-icon>
 </button>
 
-
 <mat-menu #menu="matMenu">
   <div *ngIf="settings$ | async as settings">
 
     <mat-action-list >
       <button mat-list-item (click)="setTheme('DARK-THEME')">Dark Theme</button>
+      <button mat-list-item (click)="setTheme('REPLY-THEME')">Reply Theme</button>
       <button mat-list-item (click)="setTheme('DEFAULT-THEME')">Light Theme</button>
     </mat-action-list>
-
-
-    <!-- <mat-button-toggle-group [ngModel]="settings.theme" (change)="setTheme($event)">
-      <mat-button-toggle value="DARK-THEME">Dark Theme</mat-button-toggle>
-      <mat-button-toggle value="DEFAULT-THEME">Light Theme</mat-button-toggle>
-    </mat-button-toggle-group> -->
   </div>
 </mat-menu>

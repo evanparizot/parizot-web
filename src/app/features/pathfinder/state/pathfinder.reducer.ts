@@ -5,11 +5,13 @@ import { actionPathfinderInitializeNodes,
   actionPathfinderSetOptionBiDirectional, 
   actionPathfinderSetOptionDontCrossCorners, 
   actionPathfinderSetOptionWeight, 
-  actionPathfinderSetPathfinderSettings 
+  actionPathfinderSetPathfinderSettings, 
+  actionPathfinderClearBoard,
+  actionPathfinderClearSettings
 } from './pathfinder.actions';
 import { PathfinderState } from '.';
 import { reducers } from 'src/app/core/core.state';
-import { Action, createReducer, on } from '@ngrx/store';
+import { Action, createReducer, on, combineReducers } from '@ngrx/store';
 import { AlgorithmOptions } from '../models/algorithm';
 
 /*
@@ -20,7 +22,7 @@ import { AlgorithmOptions } from '../models/algorithm';
 */
 
 export const initialState: PathfinderState = {
-  pathfinderSettings: {
+  settings: {
     algorithm: '',
     heuristic: '',
     allowDiagonal: false,
@@ -30,45 +32,72 @@ export const initialState: PathfinderState = {
   },
   nodes: [],
   startNode: null,
-  finishNode: null
+  finishNode: null,
+  search: false
 }
 
 const reducer = createReducer(
   initialState,
+
+  // Board actions
   on(actionPathfinderInitializeNodes, (state, { nodes }) => ({
     ...state,
     nodes
   })),
-  on(actionPathfinderSetPathfinderSettings, (state, { pathfinderSettings })=> ({
+
+  // Settings
+  on(actionPathfinderSetPathfinderSettings, (state, { settings })=> ({
     ...state,
-    pathfinderSettings
+    settings
   })),
   on(actionPathfinderSetAlgorithm, (state, { algorithm })=> ({
     ...state,
-    pathfinderSettings: { ...state.pathfinderSettings, algorithm }
+    settings: { ...state.settings, algorithm }
   })),
   on(actionPathfinderSetHeuristic, (state, { heuristic })=> ({
     ...state,
-    pathfinderSettings: { ...state.pathfinderSettings, heuristic }
+    settings: { ...state.settings, heuristic }
   })),
   on(actionPathfinderSetOptionAllowDiagonal, (state, { allowDiagonal })=> ({
     ...state,
-    pathfinderSettings: { ...state.pathfinderSettings, allowDiagonal }
+    settings: { ...state.settings, allowDiagonal }
   })),
   on(actionPathfinderSetOptionBiDirectional, (state, { biDirectional })=> ({
     ...state,
-    pathfinderSettings: { ...state.pathfinderSettings, biDirectional }
+    settings: { ...state.settings, biDirectional }
   })),
   on(actionPathfinderSetOptionDontCrossCorners, (state, { dontCrossCorners })=> ({
     ...state,
-    pathfinderSettings: { ...state.pathfinderSettings, dontCrossCorners }
+    settings: { ...state.settings, dontCrossCorners }
   })),
   on(actionPathfinderSetOptionWeight, (state, { weight })=> ({
     ...state,
-    pathfinderSettings: { ...state.pathfinderSettings, weight }
+    settings: { ...state.settings, weight }
+  })),
+  on(actionPathfinderClearSettings, (state) => ({
+    ...state,
+    settings: { 
+                algorithm: initialState.settings.algorithm, 
+                heuristic: initialState.settings.heuristic, 
+                allowDiagonal: initialState.settings.allowDiagonal, 
+                biDirectional: initialState.settings.biDirectional, 
+                dontCrossCorners: initialState.settings.dontCrossCorners,
+                weight: initialState.settings.weight
+              }
   }))
+
+
 )
 
 export function pathfinderReducer(state: PathfinderState | undefined, action: Action) {
   return reducer(state, action);
 }
+
+export function pathfinderSettingsReducer(state: PathfinderState | undefined, action: Action) {
+  return
+}
+
+export default combineReducers({
+  pathfinderReducer,
+  pathfinderSettingsReducer
+});

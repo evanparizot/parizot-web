@@ -11,3 +11,8 @@ export const selectTheme = createSelector(
   selectSettings,
   settings => settings.theme.toLowerCase()
 );
+
+export const selectDisableFooter = createSelector(
+  selectSettings,
+  settings => settings.disableFooter
+)

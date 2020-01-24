@@ -35,8 +35,7 @@ export class PathfinderContainerComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   getScreenSize(event?) {
     this.screenWidth = window.innerWidth;
-    this.screenHeight = window.innerHeight - 100;
-    console.log(`Width: ${window.innerWidth}, Height: ${window.innerHeight}`);
+    this.screenHeight = window.innerHeight - 170;
   }
 
   initializeNodes(): void {

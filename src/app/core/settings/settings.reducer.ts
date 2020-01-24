@@ -1,21 +1,24 @@
 import { AppState } from './../core.state';
-import { actionSettingsSetTheme } from './settings.actions';
+import { actionSettingsSetTheme, actionSettingsToggleFooter } from './settings.actions';
 import { createReducer, on, Action } from '@ngrx/store'
 import { SettingsState } from './settings.model';
 
 
 const initialState: SettingsState = {
-  theme: 'DARK-THEME'
+  theme: 'DARK-THEME',
+  disableFooter: false
 }
 
 const reducer = createReducer(
   initialState,
-  on(actionSettingsSetTheme, (state, { theme }) => 
-  ({ 
+  on(actionSettingsSetTheme, (state, { theme }) => ({ 
     ...state, 
     theme
-  })
-  )
+  })),
+  on(actionSettingsToggleFooter, (state, { disableFooter }) => ({
+    ...state,
+    disableFooter
+  }))
 );
 
 export function settingsReducer(

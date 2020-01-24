@@ -1,4 +1,3 @@
-import { TitleService } from './../core/title/title.service';
 import { routeAnimations } from './../core/animations/route.animations';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material';
@@ -6,7 +5,6 @@ import { AppState } from '../core/core.state';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import * as fromSettings from '../core/settings';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -33,6 +31,7 @@ export class AppComponent implements OnInit {
   hamburger: any;
 
   theme$: Observable<string>;
+  disableFooter$: Observable<boolean>;
 
   constructor(
     private store: Store<AppState>,
@@ -44,5 +43,6 @@ export class AppComponent implements OnInit {
     this.sidenav.openedStart.subscribe(() => {this.hamburger.add('is-active')});
     this.sidenav.closedStart.subscribe(() => {this.hamburger.remove('is-active')});
     this.theme$ = this.store.pipe(select(fromSettings.selectTheme));
+    this.disableFooter$ = this.store.pipe(select(fromSettings.selectDisableFooter));
   }
 }

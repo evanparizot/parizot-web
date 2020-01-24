@@ -50,7 +50,8 @@
         <router-outlet #o="outlet"></router-outlet>
       </div>
 
-      <div class="footer">
+
+      <div class="footer" *ngIf="!(disableFooter$ | async)">
         <div class="row">
           <div class="col-sm-12 links">
             <a href="https://github.com/evanparizot" target="_blank">
@@ -65,6 +66,7 @@
           </div>
         </div>
       </div> <!-- end footer -->
+
     </div>
   </mat-sidenav-container>
 </div>

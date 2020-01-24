@@ -13,35 +13,35 @@ export const selectNodes = createSelector(
 
 export const selectPathfinderSettings = createSelector(
   selectPathfinder,
-  (state) => state.pathfinderSettings
+  (state) => state.settings
 );
 
 export const selectAlgorithm = createSelector(
   selectPathfinder,
-  (state) => state.pathfinderSettings.algorithm
+  (state) => state.settings.algorithm
 );
 
 export const selectHeuristic = createSelector(
   selectPathfinder,
-  (state) => state.pathfinderSettings.heuristic
+  (state) => state.settings.heuristic
 );
 
 export const selectOptionAllowDiagonal = createSelector(
   selectPathfinder,
-  (state) => state.pathfinderSettings.allowDiagonal
+  (state) => state.settings.allowDiagonal
 );
 
 export const selectOptionBiDirectional = createSelector(
   selectPathfinder,
-  (state) => state.pathfinderSettings.biDirectional
+  (state) => state.settings.biDirectional
 );
 
 export const selectOptionDontCrossCorners = createSelector(
   selectPathfinder,
-  (state) => state.pathfinderSettings.dontCrossCorners
+  (state) => state.settings.dontCrossCorners
 );
 
 export const selectOptionWeight = createSelector(
   selectPathfinder,
-  (state) => state.pathfinderSettings.weight
+  (state) => state.settings.weight
 );

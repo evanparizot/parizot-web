@@ -24,7 +24,7 @@ export enum Heuristics {
   Chebyshev = 4
 }
 
-export class PathfinderSettings {
+export class Settings {
   algorithm: string;
   heuristic: string;
   allowDiagonal: boolean;

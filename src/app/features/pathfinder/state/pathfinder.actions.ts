@@ -1,15 +1,14 @@
 import { createAction, props } from '@ngrx/store';
 import { PathNode } from '../models/node';
-import { AlgorithmOptions, PathfinderSettings } from '../models/algorithm';
+import { AlgorithmOptions, Settings } from '../models/algorithm';
 
-export const actionPathfinderInitializeNodes = createAction(
-  '[Pathfinder] Initialize Nodes',
-  props<{ nodes: PathNode[][] }>()
-);
-
+// ---------------------------------------------------------------
+//      Settings manipulation
+// ---------------------------------------------------------------
+//#region
 export const actionPathfinderSetPathfinderSettings = createAction(
   '[Pathfinder] Set Pathfinder Settings',
-  props<{ pathfinderSettings: PathfinderSettings }>()
+  props<{ settings: Settings }>()
 );
 
 export const actionPathfinderSetAlgorithm = createAction(
@@ -42,8 +41,15 @@ export const actionPathfinderSetOptionWeight = createAction(
   props<{ weight: number }>()
 );
 
-// Node manipulation
+export const actionPathfinderClearSettings = createAction(
+  '[Pathfinder] Clear settings'
+);
+//#endregion
 
+// ---------------------------------------------------------------
+//      Node manipulation
+// ---------------------------------------------------------------
+//#region
 export const actionPathfinderSetStartNode = createAction(
   '[Pathfinder] Set Start Node',
   props<{ startNode: Node }>()
@@ -53,3 +59,54 @@ export const actionPathfinderSetFinishNode = createAction(
   '[Pathfinder] Set Finish Node',
   props<{ finishNode: Node }>()
 );
+//#endregion
+
+// ---------------------------------------------------------------
+//      Search events
+// ---------------------------------------------------------------
+//#region
+export const actionPathfinderStartSearch = createAction(
+  '[Pathfinder] Start Search'
+);
+
+export const actionPathfinderPauseSearch = createAction(
+  '[Pathfinder] Pause Search'
+);
+
+export const actionPathfinderStopSearch = createAction(
+  '[Pathfinder] Stop Search'
+);
+//#endregion
+
+// ---------------------------------------------------------------
+//      Board events
+// ---------------------------------------------------------------
+//#region
+export const actionPathfinderInitializeNodes = createAction(
+  '[Pathfinder] Initialize Nodes',
+  props<{ nodes: PathNode[][] }>()
+);
+
+export const actionPathfinderClearBoard = createAction(
+  '[Pathfinder] Clear board',
+);
+
+export const actionPathfinderClearWalls = createAction(
+  '[Pathfinder] Clear walls'
+);
+
+export const actionPathfinderClearPath = createAction(
+  '[Pathfinder] Clear path'
+);
+
+export const actionPathfinderSetSpeed = createAction(
+  '[Pathfinder] Set speed'
+);
+//#endregion
+
+// ---------------------------------------------------------------
+//      Algorithm events
+// ---------------------------------------------------------------
+//#region
+
+//#endregion

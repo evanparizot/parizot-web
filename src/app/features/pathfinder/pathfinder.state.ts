@@ -15,7 +15,6 @@ export const reducers: ActionReducerMap<PathfindingState> = {
 
 export interface PathfindingState {
   pathfinder: PathfinderState;
-  // pathfinder3d: Pathfinder3dState;
 }
 
 export interface State extends AppState {

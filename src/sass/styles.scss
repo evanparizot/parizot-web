@@ -14,6 +14,7 @@
 
 @import '../themes/default-theme';
 @import '../themes/dark-theme';
+@import '../themes/reply-theme';
 
 @import 'styles-reset.scss-theme';
 @import './hamburger-settings.scss';
@@ -44,3 +45,9 @@
   @include angular-material-theme($dark-theme);
   @include components-theme($dark-theme);
 }
+
+.reply-theme {
+  @include angular-material-theme($reply-theme);
+  @include components-theme($reply-theme);
+}
+//https://material.io/design/color/#tools-for-picking-colors

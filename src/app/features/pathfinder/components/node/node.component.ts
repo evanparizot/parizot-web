@@ -12,6 +12,10 @@ export class NodeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
 
+  wasClicked() {
+    console.log('was clicked');
+  }
 }
