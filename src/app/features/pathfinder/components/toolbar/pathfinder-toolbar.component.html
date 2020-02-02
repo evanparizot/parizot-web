@@ -48,8 +48,8 @@
 
     <button mat-button (click)="clearSettings()">Clear Settings</button>
     <button mat-button (click)="emitClearBoard()">Clear Board</button>
-    <button mat-button>Start</button>
-    <button mat-button>Pause</button>
+    <button mat-button (click)="onSelectedStartSearch()">Start</button>
+    <button mat-button (click)="onSelectedPauseSearch()">Pause</button>
 
   </div>
 </ng-container>

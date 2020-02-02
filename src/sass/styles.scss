@@ -30,7 +30,6 @@
   @include app-component-theme($theme);
   @include app-projects-theme($theme);
 
-  
   @include feature-pathfinder-container-theme($theme);
   @include feature-pathfinder-toolbar-theme($theme);
   // @include hamburger-theme($theme);

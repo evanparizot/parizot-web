@@ -24,15 +24,6 @@ export enum Heuristics {
   Chebyshev = 4
 }
 
-export class Settings {
-  algorithm: string;
-  heuristic: string;
-  allowDiagonal: boolean;
-  biDirectional: boolean;
-  dontCrossCorners: boolean;
-  weight: number;
-}
-
 export class Algorithm {
   name: string;
   description: string;

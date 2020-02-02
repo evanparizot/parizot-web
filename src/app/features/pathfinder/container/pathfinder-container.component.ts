@@ -1,12 +1,13 @@
 import {
-  actionPathfinderInitializeNodes,
+  actionPathfinderSetStartNode, actionPathfinderSetFinishNode, actionPathfinderSetNodes
 } from './../state/pathfinder.actions';
-import { selectNodes } from './../state/pathfinder.selectors';
+import { selectNodes, selectStartNode, selectFinishNode } from './../state/pathfinder.selectors';
 import { Component, OnInit, HostListener } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { PathNode } from '../models/node';
+import { Observable, merge, combineLatest } from 'rxjs';
+import { PathNode, PathNodeState } from '../models/node';
 import { State } from '../pathfinder.state';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-pathfinder-container',
@@ -17,6 +18,8 @@ import { State } from '../pathfinder.state';
 export class PathfinderContainerComponent implements OnInit {
 
   nodes$: Observable<PathNode[][]>;
+  startNode$: Observable<PathNode>;
+  finishNode$: Observable<PathNode>;
 
   screenWidth: number;
   screenHeight: number;
@@ -29,6 +32,9 @@ export class PathfinderContainerComponent implements OnInit {
 
   ngOnInit() {
     this.nodes$ = this.store.pipe(select(selectNodes));
+    this.startNode$ = this.store.pipe(select(selectStartNode));
+    this.finishNode$ = this.store.pipe(select(selectFinishNode));
+
     this.initializeNodes();
   }
 
@@ -50,6 +56,32 @@ export class PathfinderContainerComponent implements OnInit {
       }
       nodes.push(nodeRow);
     }
-    this.store.dispatch(actionPathfinderInitializeNodes({ nodes }));
+    this.store.dispatch(actionPathfinderSetNodes({ nodes }));
+  }
+
+  setStartNode(node: PathNode) {
+    console.log('Set start node');
+    node.state = 4;
+    
+    this.nodes$.pipe(take(1)).subscribe(nodes => {
+      let newNodes = [...nodes];
+      newNodes[node.y][node.x] = node;
+      this.store.dispatch(actionPathfinderSetNodes({ nodes: newNodes}));
+    });
+
+    this.store.dispatch(actionPathfinderSetStartNode({startNode: node}));
+  }
+
+  setFinishNode(node: PathNode) {
+    console.log('Set finish node');
+    node.state = 5;
+    // need to subscribe to finishNode$ and get coordinates in order to update it
+    // 
+    this.nodes$.pipe(take(1)).subscribe(nodes => {
+      let newNodes = [...nodes];
+      newNodes[node.y][node.x] = node;
+      this.store.dispatch(actionPathfinderSetNodes({ nodes: newNodes }));
+    });
+    this.store.dispatch(actionPathfinderSetFinishNode({finishNode: node}));
   }
 }

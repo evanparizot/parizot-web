@@ -6,42 +6,55 @@ export const selectPathfinder = createSelector(
   (state: PathfindingState) => state.pathfinder
 );
 
-export const selectNodes = createSelector(
-  selectPathfinder,
-  (state) => state.nodes
-);
-
+// Settings Selectors
 export const selectPathfinderSettings = createSelector(
   selectPathfinder,
   (state) => state.settings
 );
 
 export const selectAlgorithm = createSelector(
-  selectPathfinder,
-  (state) => state.settings.algorithm
+  selectPathfinderSettings,
+  (settings) => settings.algorithm
 );
 
 export const selectHeuristic = createSelector(
-  selectPathfinder,
-  (state) => state.settings.heuristic
+  selectPathfinderSettings,
+  (settings) => settings.heuristic
 );
 
 export const selectOptionAllowDiagonal = createSelector(
-  selectPathfinder,
-  (state) => state.settings.allowDiagonal
+  selectPathfinderSettings,
+  (settings) => settings.allowDiagonal
 );
 
 export const selectOptionBiDirectional = createSelector(
-  selectPathfinder,
-  (state) => state.settings.biDirectional
+  selectPathfinderSettings,
+  (settings) => settings.biDirectional
 );
 
 export const selectOptionDontCrossCorners = createSelector(
-  selectPathfinder,
-  (state) => state.settings.dontCrossCorners
+  selectPathfinderSettings,
+  (settings) => settings.dontCrossCorners
 );
 
 export const selectOptionWeight = createSelector(
+  selectPathfinderSettings,
+  (settings) => settings.weight
+);
+
+
+// Node selection
+export const selectNodes = createSelector(
   selectPathfinder,
-  (state) => state.settings.weight
+  (state) => state.nodes
+);
+
+export const selectStartNode = createSelector(
+  selectPathfinder,
+  (state) => state.startNode
+);
+
+export const selectFinishNode = createSelector(
+  selectPathfinder,
+  (state) => state.finishNode
 );

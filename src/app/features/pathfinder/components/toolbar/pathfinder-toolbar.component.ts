@@ -1,7 +1,7 @@
 import { selectPathfinderSettings } from './../../state/pathfinder.selectors';
 import { Observable } from 'rxjs';
 import { Algorithms } from './../../data/algo-data';
-import { Algorithm, Settings } from './../../models/algorithm';
+import { Algorithm } from './../../models/algorithm';
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { State } from '../../pathfinder.state';
@@ -12,9 +12,13 @@ import {
   actionPathfinderSetOptionDontCrossCorners,
   actionPathfinderSetAlgorithm,
   actionPathfinderClearSettings,
-  actionPathfinderClearBoard
+  actionPathfinderClearBoard,
+  actionPathfinderStartSearch,
+  actionPathfinderPauseSearch,
+  actionPathfinderStopSearch
 } from './../../state/pathfinder.actions';
 import { map } from 'rxjs/operators';
+import { Settings } from '../../state';
 
 @Component({
   selector: 'pathfinder-toolbar',
@@ -81,6 +85,18 @@ export class PathfinderToolbarComponent implements OnInit {
 
   onSelectedDontCrossCorners({ checked: dontCrossCorners }) {
     this.store.dispatch(actionPathfinderSetOptionDontCrossCorners({ dontCrossCorners }));
+  }
+
+  onSelectedStartSearch() {
+    this.store.dispatch(actionPathfinderStartSearch());
+  }
+
+  onSelectedPauseSearch() {
+    this.store.dispatch(actionPathfinderPauseSearch());
+  }
+
+  onSelectedStopSearch() {
+    this.store.dispatch(actionPathfinderStopSearch());
   }
 
   clearSettings() {

@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { PathNode } from '../models/node';
-import { AlgorithmOptions, Settings } from '../models/algorithm';
+import { Settings } from '.';
 
 // ---------------------------------------------------------------
 //      Settings manipulation
@@ -47,22 +47,7 @@ export const actionPathfinderClearSettings = createAction(
 //#endregion
 
 // ---------------------------------------------------------------
-//      Node manipulation
-// ---------------------------------------------------------------
-//#region
-export const actionPathfinderSetStartNode = createAction(
-  '[Pathfinder] Set Start Node',
-  props<{ startNode: Node }>()
-);
-
-export const actionPathfinderSetFinishNode = createAction(
-  '[Pathfinder] Set Finish Node',
-  props<{ finishNode: Node }>()
-);
-//#endregion
-
-// ---------------------------------------------------------------
-//      Search events
+//      Execution events
 // ---------------------------------------------------------------
 //#region
 export const actionPathfinderStartSearch = createAction(
@@ -82,8 +67,18 @@ export const actionPathfinderStopSearch = createAction(
 //      Board events
 // ---------------------------------------------------------------
 //#region
-export const actionPathfinderInitializeNodes = createAction(
-  '[Pathfinder] Initialize Nodes',
+export const actionPathfinderSetStartNode = createAction(
+  '[Pathfinder] Set Start Node',
+  props<{ startNode: PathNode }>()
+);
+
+export const actionPathfinderSetFinishNode = createAction(
+  '[Pathfinder] Set Finish Node',
+  props<{ finishNode: PathNode }>()
+);
+
+export const actionPathfinderSetNodes = createAction(
+  '[Pathfinder] Set Nodes',
   props<{ nodes: PathNode[][] }>()
 );
 

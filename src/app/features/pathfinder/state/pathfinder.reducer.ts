@@ -1,13 +1,19 @@
-import { actionPathfinderInitializeNodes, 
-  actionPathfinderSetAlgorithm, 
-  actionPathfinderSetHeuristic, 
-  actionPathfinderSetOptionAllowDiagonal, 
-  actionPathfinderSetOptionBiDirectional, 
-  actionPathfinderSetOptionDontCrossCorners, 
-  actionPathfinderSetOptionWeight, 
-  actionPathfinderSetPathfinderSettings, 
+import {
+  actionPathfinderSetAlgorithm,
+  actionPathfinderSetHeuristic,
+  actionPathfinderSetOptionAllowDiagonal,
+  actionPathfinderSetOptionBiDirectional,
+  actionPathfinderSetOptionDontCrossCorners,
+  actionPathfinderSetOptionWeight,
+  actionPathfinderSetPathfinderSettings,
   actionPathfinderClearBoard,
-  actionPathfinderClearSettings
+  actionPathfinderClearSettings,
+  actionPathfinderStartSearch,
+  actionPathfinderPauseSearch,
+  actionPathfinderStopSearch,
+  actionPathfinderSetStartNode,
+  actionPathfinderSetFinishNode,
+  actionPathfinderSetNodes,
 } from './pathfinder.actions';
 import { PathfinderState } from '.';
 import { reducers } from 'src/app/core/core.state';
@@ -40,64 +46,77 @@ const reducer = createReducer(
   initialState,
 
   // Board actions
-  on(actionPathfinderInitializeNodes, (state, { nodes }) => ({
+  on(actionPathfinderSetNodes, (state, { nodes }) => ({
     ...state,
     nodes
   })),
 
   // Settings
-  on(actionPathfinderSetPathfinderSettings, (state, { settings })=> ({
+  on(actionPathfinderSetPathfinderSettings, (state, { settings }) => ({
     ...state,
     settings
   })),
-  on(actionPathfinderSetAlgorithm, (state, { algorithm })=> ({
+  on(actionPathfinderSetAlgorithm, (state, { algorithm }) => ({
     ...state,
     settings: { ...state.settings, algorithm }
   })),
-  on(actionPathfinderSetHeuristic, (state, { heuristic })=> ({
+  on(actionPathfinderSetHeuristic, (state, { heuristic }) => ({
     ...state,
     settings: { ...state.settings, heuristic }
   })),
-  on(actionPathfinderSetOptionAllowDiagonal, (state, { allowDiagonal })=> ({
+  on(actionPathfinderSetOptionAllowDiagonal, (state, { allowDiagonal }) => ({
     ...state,
     settings: { ...state.settings, allowDiagonal }
   })),
-  on(actionPathfinderSetOptionBiDirectional, (state, { biDirectional })=> ({
+  on(actionPathfinderSetOptionBiDirectional, (state, { biDirectional }) => ({
     ...state,
     settings: { ...state.settings, biDirectional }
   })),
-  on(actionPathfinderSetOptionDontCrossCorners, (state, { dontCrossCorners })=> ({
+  on(actionPathfinderSetOptionDontCrossCorners, (state, { dontCrossCorners }) => ({
     ...state,
     settings: { ...state.settings, dontCrossCorners }
   })),
-  on(actionPathfinderSetOptionWeight, (state, { weight })=> ({
+  on(actionPathfinderSetOptionWeight, (state, { weight }) => ({
     ...state,
     settings: { ...state.settings, weight }
   })),
   on(actionPathfinderClearSettings, (state) => ({
     ...state,
-    settings: { 
-                algorithm: initialState.settings.algorithm, 
-                heuristic: initialState.settings.heuristic, 
-                allowDiagonal: initialState.settings.allowDiagonal, 
-                biDirectional: initialState.settings.biDirectional, 
-                dontCrossCorners: initialState.settings.dontCrossCorners,
-                weight: initialState.settings.weight
-              }
+    settings: {
+      algorithm: initialState.settings.algorithm,
+      heuristic: initialState.settings.heuristic,
+      allowDiagonal: initialState.settings.allowDiagonal,
+      biDirectional: initialState.settings.biDirectional,
+      dontCrossCorners: initialState.settings.dontCrossCorners,
+      weight: initialState.settings.weight
+    }
+  })),
+
+  // Execution Events
+  on(actionPathfinderStartSearch, (state) => ({
+    ...state,
+    search: true
+  })),
+  on(actionPathfinderPauseSearch, (state) => ({
+    ...state,
+    search: false
+  })),
+  on(actionPathfinderStopSearch, (state) => ({
+    ...state,
+    search: false
+  })),
+
+  // Node events
+  on(actionPathfinderSetStartNode, (state, { startNode }) => ({
+    ...state,
+    startNode: startNode
+  })),
+  on(actionPathfinderSetFinishNode, (state, { finishNode }) => ({
+    ...state,
+    finishNode: finishNode
   }))
-
-
 )
 
 export function pathfinderReducer(state: PathfinderState | undefined, action: Action) {
   return reducer(state, action);
 }
-
-export function pathfinderSettingsReducer(state: PathfinderState | undefined, action: Action) {
-  return
-}
-
-export default combineReducers({
-  pathfinderReducer,
-  pathfinderSettingsReducer
-});

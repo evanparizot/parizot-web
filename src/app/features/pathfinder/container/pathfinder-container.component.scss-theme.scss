@@ -1,6 +1,10 @@
 @import '~@angular/material/theming';
 
 @mixin feature-pathfinder-container-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
 
   app-pathfinder-container {
     table {
@@ -9,6 +13,16 @@
     }
     table, td {
       border: 1px solid black;
+      
+    }
+    table {
+      tr {
+        td {
+          div[state="4"] {
+            background-color: mat-color($primary);
+          }
+        }
+      }
     }
   }
 }
