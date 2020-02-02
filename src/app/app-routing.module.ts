@@ -20,12 +20,12 @@ const routes: Routes = [
     loadChildren: () => import('./features/projects/projects.module')
       .then(m => m.ProjectsModule)
   },
-  {
-    path: 'pathfinder',
-    data: {title: "Pathfinder", showFooter: false},
-    loadChildren: () => import('./features/pathfinder/pathfinder.module')
-      .then(m => m.PathfinderModule)
-  },
+  // {
+  //   path: 'pathfinder',
+  //   data: {title: "Pathfinder", showFooter: false},
+  //   loadChildren: () => import('./features/pathfinder/pathfinder.module')
+  //     .then(m => m.PathfinderModule)
+  // },
   {
     path: '**',
     redirectTo: ''

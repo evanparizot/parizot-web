@@ -1,12 +1,4 @@
-## Description
-
-The source code for my personal website. It has some features:
-
-| Feature  | Path  | Status  | 
-|---|---|---|
-| Home  | '/'  | _In Progress_  |
-| Pathfinder  | '/pathfinder'  | _In Progress_  |
-| Pathfinder3D  | '/pathfinder3D' | _Not Started_  |
+Code for my in progress website.
 
 ## Frameworks
 - [Angular](https://angular.io/)

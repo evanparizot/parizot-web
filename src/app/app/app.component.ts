@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
   ];
   
   projectNav = [
-    { link: 'pathfinder', label: 'Pathfinder' },
+    // { link: 'pathfinder', label: 'Pathfinder' },
     // { link: 'pathfinder3d', label: 'Pathfinder 3D'}
   ]
 
