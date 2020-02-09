@@ -11,6 +11,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { PathfinderEffects } from './state/pathfinder.effects';
 import { reducers, FEATURE_NAME } from './pathfinder.state';
 import { NodeComponent } from './components/node/node.component';
+import { OnNodeHoverDirective } from './directives/node-hover.directive';
 
 //https://github.com/qiao/PathFinding.js
 //https://github.com/clementmihailescu/Pathfinding-Visualizer
@@ -23,6 +24,7 @@ const routes: Routes = [
   declarations: [
     PathfinderContainerComponent,
     PathfinderToolbarComponent,
+    OnNodeHoverDirective,
     NodeComponent
   ],
   imports: [

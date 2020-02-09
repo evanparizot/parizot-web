@@ -103,6 +103,8 @@ const reducer = createReducer(
   // Node events
   on(actionPathfinderInitializeBoard, (state, { x, y }) => ({
     ...state,
+    startNode: { x: Math.floor(x / 3), y: Math.floor(y / 2), state: PathNodeState.start },
+    finishNode: { x: Math.floor((2 * x) / 3), y: Math.floor(y / 2), state: PathNodeState.finish },
     nodes: initializeNodes(x, y)
   })),
   on(actionPathfinderToggleWall, (state, { node }) => ({
@@ -139,10 +141,17 @@ export function pathfinderReducer(state: PathfinderState | undefined, action: Ac
 
 export function initializeNodes(width: number, height: number): PathNode[][] {
   let nodes = new Array<Array<PathNode>>();
+
   for (var y = 0; y < height; y++) {
     let nodeRow: PathNode[] = new Array<PathNode>();
     for (var x = 0; x < width; x++) {
-      nodeRow.push(new PathNode(x, y));
+      if(x == Math.floor(width/3) && y == Math.floor(height/2)) {
+        nodeRow.push(new PathNode(x, y, true, PathNodeState.start));
+      } else if (x == Math.floor((2 * width)/ 3) && y == Math.floor(height/2)) {
+        nodeRow.push(new PathNode(x, y, true, PathNodeState.finish));
+      } else {
+        nodeRow.push(new PathNode(x, y));
+      }
     }
     nodes.push(nodeRow);
   }

@@ -87,23 +87,19 @@ export class PathfinderToolbarComponent implements OnInit {
     this.store.dispatch(actionPathfinderSetOptionDontCrossCorners({ dontCrossCorners }));
   }
 
-  onSelectedStartSearch() {
+  startSearch() {
     this.store.dispatch(actionPathfinderStartSearch());
   }
 
-  onSelectedPauseSearch() {
+  pauseSearch() {
     this.store.dispatch(actionPathfinderPauseSearch());
-  }
-
-  onSelectedStopSearch() {
-    this.store.dispatch(actionPathfinderStopSearch());
   }
 
   clearSettings() {
     this.store.dispatch(actionPathfinderClearSettings());
   }
   
-  emitClearBoard(){
+  emitResetBoard(){
     this.resetBoard.emit();
   }
 

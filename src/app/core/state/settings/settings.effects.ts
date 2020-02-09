@@ -2,7 +2,7 @@ import { selectTheme } from './settings.selectors';
 import { Store, select } from '@ngrx/store';
 import { ofType, Actions, Effect } from '@ngrx/effects';
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { of, merge } from 'rxjs';
 import { withLatestFrom, map } from 'rxjs/operators';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { actionSettingsSetTheme, actionSettingsToggleFooter } from './settings.actions';
@@ -23,8 +23,7 @@ export class SettingsEffects {
   ) { }
 
   @Effect({ dispatch: false })
-  updateTheme$ = this.actions$.pipe(
-    ofType(actionSettingsSetTheme),
+  updateTheme$ = merge(INIT, this.actions$.pipe(ofType(actionSettingsSetTheme))).pipe(
     withLatestFrom(this.store.pipe(select(selectTheme))),
     map(([, theme]) => {
       const classList = this.overlayContainer.getContainerElement()

@@ -9,7 +9,6 @@
   app-pathfinder-container {
     table {
       border-collapse: collapse;
-
     }
     table, td {
       border: 1px solid black;
@@ -21,8 +20,14 @@
           div[state="4"] {
             background-color: mat-color($accent);
           }
+          div[state="5"]  {
+            background-color: mat-color($warn);
+          }
           div[traversable="false"] {
             background-color: mat-color($primary);
+          }
+          .hover {
+            background-color: mat-color($primary, darker);
           }
         }
       }

@@ -44,20 +44,20 @@ export class PathfinderContainerComponent implements OnInit {
   }
 
   initializeNodes(): void {
-    let tempHeight = this.screenHeight / 30;
-    let tempWidth = this.screenWidth / 30;
+    let tempHeight = Math.ceil(this.screenHeight / 30);
+    let tempWidth = Math.ceil(this.screenWidth / 30);
     this.store.dispatch(actionPathfinderInitializeBoard({ x: tempWidth, y: tempHeight }));
   }
 
-  toggleNodeWall(node: PathNode) {
+  toggleNodeWall(node: PathNode): void {
     this.store.dispatch(actionPathfinderToggleWall({ node }));
   }
 
-  setStartNode(startNode: PathNode) {
+  setStartNode(startNode: PathNode): void {
     this.store.dispatch(actionPathfinderSetStartNode({ startNode }));
   }
 
-  setFinishNode(finishNode: PathNode) {
+  setFinishNode(finishNode: PathNode): void {
     this.store.dispatch(actionPathfinderSetFinishNode({ finishNode }));
   }
 }
