@@ -1,7 +1,7 @@
 import {
-  actionPathfinderInitializeNodes,
+  actionPathfinderSetStartNode, actionPathfinderSetFinishNode, actionPathfinderToggleWall, actionPathfinderInitializeBoard
 } from './../state/pathfinder.actions';
-import { selectNodes } from './../state/pathfinder.selectors';
+import { selectNodes, selectStartNode, selectFinishNode } from './../state/pathfinder.selectors';
 import { Component, OnInit, HostListener } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -17,6 +17,8 @@ import { State } from '../pathfinder.state';
 export class PathfinderContainerComponent implements OnInit {
 
   nodes$: Observable<PathNode[][]>;
+  startNode$: Observable<PathNode>;
+  finishNode$: Observable<PathNode>;
 
   screenWidth: number;
   screenHeight: number;
@@ -29,28 +31,33 @@ export class PathfinderContainerComponent implements OnInit {
 
   ngOnInit() {
     this.nodes$ = this.store.pipe(select(selectNodes));
+    this.startNode$ = this.store.pipe(select(selectStartNode));
+    this.finishNode$ = this.store.pipe(select(selectFinishNode));
+
     this.initializeNodes();
   }
 
   @HostListener('window:resize', ['$event'])
   getScreenSize(event?) {
     this.screenWidth = window.innerWidth;
-    this.screenHeight = window.innerHeight - 100;
-    console.log(`Width: ${window.innerWidth}, Height: ${window.innerHeight}`);
+    this.screenHeight = window.innerHeight - 170;
   }
 
   initializeNodes(): void {
-    let tempHeight = this.screenHeight / 30;
-    let tempWidth = this.screenWidth / 30;
+    let tempHeight = Math.ceil(this.screenHeight / 30);
+    let tempWidth = Math.ceil(this.screenWidth / 30);
+    this.store.dispatch(actionPathfinderInitializeBoard({ x: tempWidth, y: tempHeight }));
+  }
 
-    var nodes: PathNode[][] = new Array<Array<PathNode>>();
-    for (var y = 0; y < tempHeight; y++) {
-      let nodeRow: PathNode[] = new Array<PathNode>();
-      for (var x = 0; x < tempWidth; x++) {
-        nodeRow.push(new PathNode(x, y));
-      }
-      nodes.push(nodeRow);
-    }
-    this.store.dispatch(actionPathfinderInitializeNodes({ nodes }));
+  toggleNodeWall(node: PathNode): void {
+    this.store.dispatch(actionPathfinderToggleWall({ node }));
+  }
+
+  setStartNode(startNode: PathNode): void {
+    this.store.dispatch(actionPathfinderSetStartNode({ startNode }));
+  }
+
+  setFinishNode(finishNode: PathNode): void {
+    this.store.dispatch(actionPathfinderSetFinishNode({ finishNode }));
   }
 }

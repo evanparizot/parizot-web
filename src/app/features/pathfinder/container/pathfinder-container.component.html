@@ -1,10 +1,12 @@
-<pathfinder-toolbar></pathfinder-toolbar>
+<pathfinder-toolbar (resetBoard)="initializeNodes()"></pathfinder-toolbar>
 
 <div class="grid-layout">
   <table>
     <tr *ngFor="let row of nodes$ | async">
       <td *ngFor="let node of row">
-        <app-node [node]='node'></app-node>
+        <div nodeHover (click)="setStartNode(node)" [attr.state]="node.state" [attr.traversable]="node.traversable"></div>
+
+        <!-- <app-node [node]='node'></app-node> -->
       </td>
     </tr>
   </table>

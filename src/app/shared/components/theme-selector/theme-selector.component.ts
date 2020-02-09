@@ -1,10 +1,9 @@
-import { selectSettings } from './../../../core/settings/index';
-import { SettingsState } from './../../../core/settings/settings.model';
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { State } from 'src/app/core/settings/settings.model';
 import { Observable } from 'rxjs';
-import { actionSettingsSetTheme } from 'src/app/core/settings/settings.actions';
+import { actionSettingsSetTheme } from 'src/app/core/state/settings/settings.actions';
+import { selectSettings } from 'src/app/core/state/settings/settings.selectors';
+import { SettingsState, State } from 'src/app/core/state/settings';
 
 @Component({
   selector: 'app-theme-selector',

@@ -1,15 +1,14 @@
 import { createAction, props } from '@ngrx/store';
 import { PathNode } from '../models/node';
-import { AlgorithmOptions, PathfinderSettings } from '../models/algorithm';
+import { Settings } from '.';
 
-export const actionPathfinderInitializeNodes = createAction(
-  '[Pathfinder] Initialize Nodes',
-  props<{ nodes: PathNode[][] }>()
-);
-
+// ---------------------------------------------------------------
+//      Settings
+// ---------------------------------------------------------------
+//#region
 export const actionPathfinderSetPathfinderSettings = createAction(
   '[Pathfinder] Set Pathfinder Settings',
-  props<{ pathfinderSettings: PathfinderSettings }>()
+  props<{ settings: Settings }>()
 );
 
 export const actionPathfinderSetAlgorithm = createAction(
@@ -42,14 +41,77 @@ export const actionPathfinderSetOptionWeight = createAction(
   props<{ weight: number }>()
 );
 
-// Node manipulation
+export const actionPathfinderClearSettings = createAction(
+  '[Pathfinder] Clear settings'
+);
+//#endregion
 
+// ---------------------------------------------------------------
+//      Execution events
+// ---------------------------------------------------------------
+//#region
+export const actionPathfinderStartSearch = createAction(
+  '[Pathfinder] Start Search'
+);
+
+export const actionPathfinderPauseSearch = createAction(
+  '[Pathfinder] Pause Search'
+);
+
+export const actionPathfinderStopSearch = createAction(
+  '[Pathfinder] Stop Search'
+);
+//#endregion
+
+// ---------------------------------------------------------------
+//      Board events
+// ---------------------------------------------------------------
+//#region
 export const actionPathfinderSetStartNode = createAction(
   '[Pathfinder] Set Start Node',
-  props<{ startNode: Node }>()
+  props<{ startNode: PathNode }>()
 );
 
 export const actionPathfinderSetFinishNode = createAction(
   '[Pathfinder] Set Finish Node',
-  props<{ finishNode: Node }>()
+  props<{ finishNode: PathNode }>()
 );
+
+export const actionPathfinderSetNodes = createAction(
+  '[Pathfinder] Set Nodes',
+  props<{ nodes: PathNode[][] }>()
+);
+
+export const actionPathfinderInitializeBoard = createAction(
+  '[Pathfinder] Initialize Board',
+  props<{ x: number, y: number }>()
+);
+
+export const actionPathfinderToggleWall = createAction(
+  '[Pathfinder] Toggle Wall',
+  props<{ node: PathNode }>()
+);
+
+export const actionPathfinderClearBoard = createAction(
+  '[Pathfinder] Clear board',
+);
+
+export const actionPathfinderClearWalls = createAction(
+  '[Pathfinder] Clear walls'
+);
+
+export const actionPathfinderClearPath = createAction(
+  '[Pathfinder] Clear path'
+);
+
+export const actionPathfinderSetSpeed = createAction(
+  '[Pathfinder] Set speed'
+);
+//#endregion
+
+// ---------------------------------------------------------------
+//      Algorithm events
+// ---------------------------------------------------------------
+//#region
+
+//#endregion

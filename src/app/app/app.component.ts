@@ -1,12 +1,10 @@
-import { TitleService } from './../core/title/title.service';
 import { routeAnimations } from './../core/animations/route.animations';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSidenav } from '@angular/material';
 import { AppState } from '../core/core.state';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import * as fromSettings from '../core/settings';
-import { ActivatedRoute } from '@angular/router';
+import { selectTheme, selectDisableFooter } from '../core/state/settings/settings.selectors';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +21,7 @@ export class AppComponent implements OnInit {
   ];
   
   projectNav = [
-    // { link: 'pathfinder', label: 'Pathfinder' },
+    { link: 'pathfinder', label: 'Pathfinder' },
     // { link: 'pathfinder3d', label: 'Pathfinder 3D'}
   ]
 
@@ -33,6 +31,7 @@ export class AppComponent implements OnInit {
   hamburger: any;
 
   theme$: Observable<string>;
+  disableFooter$: Observable<boolean>;
 
   constructor(
     private store: Store<AppState>,
@@ -43,6 +42,7 @@ export class AppComponent implements OnInit {
     this.hamburger = document.querySelector('.hamburger').classList;
     this.sidenav.openedStart.subscribe(() => {this.hamburger.add('is-active')});
     this.sidenav.closedStart.subscribe(() => {this.hamburger.remove('is-active')});
-    this.theme$ = this.store.pipe(select(fromSettings.selectTheme));
+    this.theme$ = this.store.pipe(select(selectTheme));
+    this.disableFooter$ = this.store.pipe(select(selectDisableFooter));
   }
 }

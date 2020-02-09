@@ -1,0 +1,5 @@
+$reply-primary: mat-palette($mat-blue-gray, 600, 200, 800);
+$reply-accent: mat-palette($mat-orange, A200, A100, A400);
+$reply-warn: mat-palette($mat-red, 700);
+
+$reply-theme: mat-light-theme($reply-primary, $reply-accent, $reply-warn);

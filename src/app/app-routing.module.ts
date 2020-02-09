@@ -20,12 +20,12 @@ const routes: Routes = [
     loadChildren: () => import('./features/projects/projects.module')
       .then(m => m.ProjectsModule)
   },
-  // {
-  //   path: 'pathfinder',
-  //   data: {title: "Pathfinder", showFooter: false},
-  //   loadChildren: () => import('./features/pathfinder/pathfinder.module')
-  //     .then(m => m.PathfinderModule)
-  // },
+  {
+    path: 'pathfinder',
+    data: {title: "Pathfinder", disableFooter: true},
+    loadChildren: () => import('./features/pathfinder/pathfinder.module')
+      .then(m => m.PathfinderModule)
+  },
   {
     path: '**',
     redirectTo: ''
@@ -33,7 +33,7 @@ const routes: Routes = [
 ];
 
 const configs: ExtraOptions = { 
-  enableTracing: environment.production ? false : true, 
+  enableTracing: !environment.production, 
   scrollPositionRestoration: 'enabled',
   preloadingStrategy: PreloadAllModules
 };

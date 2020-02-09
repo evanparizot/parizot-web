@@ -46,9 +46,10 @@
       Don't Cross Corners
     </mat-checkbox>
 
-    <button mat-button>Start</button>
-    <button mat-button>Pause</button>
-    <button mat-button>Clear</button>
+    <button mat-button (click)="clearSettings()">Clear Settings</button>
+    <button mat-button (click)="emitResetBoard()">Clear Board</button>
+    <button mat-button [disabled]="!settings.algorithm || !settings.heuristic" (click)="startSearch()">Start</button>
+    <button mat-button [disabled]="!settings.algorithm || !settings.heuristic" (click)="pauseSearch()">Pause</button>
 
   </div>
 </ng-container>

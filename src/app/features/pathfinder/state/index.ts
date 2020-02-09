@@ -1,5 +1,4 @@
 import { PathNode } from './../models/node';
-import { AlgorithmOptions, PathfinderSettings } from '../models/algorithm';
 
 /*
   Provide a strongly typed API
@@ -13,8 +12,23 @@ import { AlgorithmOptions, PathfinderSettings } from '../models/algorithm';
 */
 
 export interface PathfinderState {
-  pathfinderSettings: PathfinderSettings;
+  settings: Settings;
   nodes: PathNode[][];
-  startNode: Node;
-  finishNode: Node;
+  startNode: PathNode;
+  finishNode: PathNode;
+  search: boolean;
+}
+
+export class Settings {
+  algorithm: string;
+  heuristic: string;
+  allowDiagonal: boolean;
+  biDirectional: boolean;
+  dontCrossCorners: boolean;
+  weight: number;
+}
+
+export class AStarDetails {
+  openSet: PathNode[];
+  closedSet: PathNode[];
 }

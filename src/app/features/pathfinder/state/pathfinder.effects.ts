@@ -1,7 +1,10 @@
 import { Injectable } from "@angular/core";
-import { Actions } from '@ngrx/effects';
-import { Store } from '@ngrx/store';
+import { Actions, ofType, createEffect } from '@ngrx/effects';
+import { Store, select } from '@ngrx/store';
 import { State } from '../pathfinder.state';
+import { actionPathfinderSetStartNode } from './pathfinder.actions';
+import { withLatestFrom, tap } from 'rxjs/operators';
+import { selectPathfinder, selectStartNode } from './pathfinder.selectors';
 
 // Effects take an action, do work and dispatch a new action
 /*
@@ -20,8 +23,6 @@ export class PathfinderEffects {
   constructor(
     private actions$: Actions,
     private store: Store<State>
-  ) {}
-
-  
+  ) { }
 
 }

@@ -1,8 +1,8 @@
 import { selectPathfinderSettings } from './../../state/pathfinder.selectors';
 import { Observable } from 'rxjs';
 import { Algorithms } from './../../data/algo-data';
-import { Algorithm, PathfinderSettings } from './../../models/algorithm';
-import { Component, OnInit } from '@angular/core';
+import { Algorithm } from './../../models/algorithm';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { State } from '../../pathfinder.state';
 import {
@@ -10,9 +10,15 @@ import {
   actionPathfinderSetOptionAllowDiagonal,
   actionPathfinderSetOptionBiDirectional,
   actionPathfinderSetOptionDontCrossCorners,
-  actionPathfinderSetAlgorithm
+  actionPathfinderSetAlgorithm,
+  actionPathfinderClearSettings,
+  actionPathfinderClearBoard,
+  actionPathfinderStartSearch,
+  actionPathfinderPauseSearch,
+  actionPathfinderStopSearch
 } from './../../state/pathfinder.actions';
 import { map } from 'rxjs/operators';
+import { Settings } from '../../state';
 
 @Component({
   selector: 'pathfinder-toolbar',
@@ -21,9 +27,11 @@ import { map } from 'rxjs/operators';
 })
 export class PathfinderToolbarComponent implements OnInit {
 
+  @Output() resetBoard: EventEmitter<any> = new EventEmitter();
+
   algorithms: Algorithm[] = Algorithms;
 
-  settings$: Observable<PathfinderSettings>;
+  settings$: Observable<Settings>;
 
   disableAllowDiagonal: boolean;
   disableBiDirectional: boolean;
@@ -78,6 +86,23 @@ export class PathfinderToolbarComponent implements OnInit {
   onSelectedDontCrossCorners({ checked: dontCrossCorners }) {
     this.store.dispatch(actionPathfinderSetOptionDontCrossCorners({ dontCrossCorners }));
   }
+
+  startSearch() {
+    this.store.dispatch(actionPathfinderStartSearch());
+  }
+
+  pauseSearch() {
+    this.store.dispatch(actionPathfinderPauseSearch());
+  }
+
+  clearSettings() {
+    this.store.dispatch(actionPathfinderClearSettings());
+  }
+  
+  emitResetBoard(){
+    this.resetBoard.emit();
+  }
+
 
   // onSelectedWeight(){
   //   this.store.dispatch(actionPathfinderSetOptionWeight({ weight: this.weight }));

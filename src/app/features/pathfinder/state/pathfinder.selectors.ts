@@ -6,42 +6,55 @@ export const selectPathfinder = createSelector(
   (state: PathfindingState) => state.pathfinder
 );
 
+// Settings Selectors
+export const selectPathfinderSettings = createSelector(
+  selectPathfinder,
+  (state) => state.settings
+);
+
+export const selectAlgorithm = createSelector(
+  selectPathfinderSettings,
+  (settings) => settings.algorithm
+);
+
+export const selectHeuristic = createSelector(
+  selectPathfinderSettings,
+  (settings) => settings.heuristic
+);
+
+export const selectOptionAllowDiagonal = createSelector(
+  selectPathfinderSettings,
+  (settings) => settings.allowDiagonal
+);
+
+export const selectOptionBiDirectional = createSelector(
+  selectPathfinderSettings,
+  (settings) => settings.biDirectional
+);
+
+export const selectOptionDontCrossCorners = createSelector(
+  selectPathfinderSettings,
+  (settings) => settings.dontCrossCorners
+);
+
+export const selectOptionWeight = createSelector(
+  selectPathfinderSettings,
+  (settings) => settings.weight
+);
+
+
+// Node selection
 export const selectNodes = createSelector(
   selectPathfinder,
   (state) => state.nodes
 );
 
-export const selectPathfinderSettings = createSelector(
+export const selectStartNode = createSelector(
   selectPathfinder,
-  (state) => state.pathfinderSettings
+  (state) => state.startNode
 );
 
-export const selectAlgorithm = createSelector(
+export const selectFinishNode = createSelector(
   selectPathfinder,
-  (state) => state.pathfinderSettings.algorithm
-);
-
-export const selectHeuristic = createSelector(
-  selectPathfinder,
-  (state) => state.pathfinderSettings.heuristic
-);
-
-export const selectOptionAllowDiagonal = createSelector(
-  selectPathfinder,
-  (state) => state.pathfinderSettings.allowDiagonal
-);
-
-export const selectOptionBiDirectional = createSelector(
-  selectPathfinder,
-  (state) => state.pathfinderSettings.biDirectional
-);
-
-export const selectOptionDontCrossCorners = createSelector(
-  selectPathfinder,
-  (state) => state.pathfinderSettings.dontCrossCorners
-);
-
-export const selectOptionWeight = createSelector(
-  selectPathfinder,
-  (state) => state.pathfinderSettings.weight
+  (state) => state.finishNode
 );

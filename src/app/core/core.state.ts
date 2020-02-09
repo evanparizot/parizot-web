@@ -1,18 +1,17 @@
-import { settingsReducer } from './settings/settings.reducer';
+import { settingsReducer } from './state/settings/settings.reducer';
 import { ActionReducerMap, MetaReducer, createFeatureSelector } from '@ngrx/store';
-import { initStateFromLocalStorage } from './meta-reducers/init-from-local.reducer';
-import { SettingsState } from './settings/settings.model';
+import { initStateFromLocalStorage } from './state/meta-reducers/init-from-local.reducer';
+import { routerReducer } from '@ngrx/router-store';
 
 export const reducers: ActionReducerMap<AppState> = {
-  settings: settingsReducer
+  settings: settingsReducer,
+  router: routerReducer
 }
 
 export const metaReducers: MetaReducer<AppState>[] = [
   initStateFromLocalStorage
 ];
 
-export const selectSettingsState = createFeatureSelector<AppState, SettingsState>('settings');
-
 export interface AppState {
-  settings: SettingsState;
+
 }
