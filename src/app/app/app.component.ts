@@ -4,7 +4,7 @@ import { MatSidenav } from '@angular/material';
 import { AppState } from '../core/core.state';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import * as fromSettings from '../core/settings';
+import { selectTheme, selectDisableFooter } from '../core/state/settings/settings.selectors';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
   ];
   
   projectNav = [
-    // { link: 'pathfinder', label: 'Pathfinder' },
+    { link: 'pathfinder', label: 'Pathfinder' },
     // { link: 'pathfinder3d', label: 'Pathfinder 3D'}
   ]
 
@@ -42,7 +42,7 @@ export class AppComponent implements OnInit {
     this.hamburger = document.querySelector('.hamburger').classList;
     this.sidenav.openedStart.subscribe(() => {this.hamburger.add('is-active')});
     this.sidenav.closedStart.subscribe(() => {this.hamburger.remove('is-active')});
-    this.theme$ = this.store.pipe(select(fromSettings.selectTheme));
-    this.disableFooter$ = this.store.pipe(select(fromSettings.selectDisableFooter));
+    this.theme$ = this.store.pipe(select(selectTheme));
+    this.disableFooter$ = this.store.pipe(select(selectDisableFooter));
   }
 }

@@ -25,28 +25,28 @@ export class PathfinderEffects {
     private store: Store<State>
   ) { }
 
-  setStartNode = createEffect(
-    () =>
-      this.actions$.pipe(
-        ofType(actionPathfinderSetStartNode),
-        withLatestFrom(this.store.pipe(select(selectPathfinder))),
-        tap(([action, pathfinderState]) => {
-          let row = pathfinderState.nodes[action.startNode.y];
-          row.splice(action.startNode.x,1,action.startNode);
+  // setStartNode = createEffect(
+  //   () =>
+  //     this.actions$.pipe(
+  //       ofType(actionPathfinderSetStartNode),
+  //       withLatestFrom(this.store.pipe(select(selectPathfinder))),
+  //       tap(([action, pathfinderState]) => {
+  //         let row = pathfinderState.nodes[action.startNode.y];
+  //         row.splice(action.startNode.x,1,action.startNode);
 
-          let blah = pathfinderState.nodes.splice(action.startNode.y, 1, row);
-          let something = pathfinderState.nodes
+  //         let blah = pathfinderState.nodes.splice(action.startNode.y, 1, row);
+  //         let something = pathfinderState.nodes
 
-          // let nodes = pathfinderState.nodes
-          //               .splice(action.startNode.y, 1, row);
-          // let row = nodes[action.startNode.y];
-          // row.splice(action.startNode.x, 1, action.startNode);
-          // nodes.splice(action.startNode.y, 1, row);
-          // let result = nodes;
+  //         // let nodes = pathfinderState.nodes
+  //         //               .splice(action.startNode.y, 1, row);
+  //         // let row = nodes[action.startNode.y];
+  //         // row.splice(action.startNode.x, 1, action.startNode);
+  //         // nodes.splice(action.startNode.y, 1, row);
+  //         // let result = nodes;
           
-        }
-      )),
-      {dispatch: false}
-  )
+  //       }
+  //     )),
+  //     {dispatch: false}
+  // )
 
 }

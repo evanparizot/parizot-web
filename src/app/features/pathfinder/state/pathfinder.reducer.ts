@@ -6,7 +6,6 @@ import {
   actionPathfinderSetOptionDontCrossCorners,
   actionPathfinderSetOptionWeight,
   actionPathfinderSetPathfinderSettings,
-  actionPathfinderClearBoard,
   actionPathfinderClearSettings,
   actionPathfinderStartSearch,
   actionPathfinderPauseSearch,
@@ -14,11 +13,13 @@ import {
   actionPathfinderSetStartNode,
   actionPathfinderSetFinishNode,
   actionPathfinderSetNodes,
+  actionPathfinderToggleWall,
+  actionPathfinderInitializeBoard,
 } from './pathfinder.actions';
 import { PathfinderState } from '.';
-import { reducers } from 'src/app/core/core.state';
 import { Action, createReducer, on, combineReducers } from '@ngrx/store';
-import { AlgorithmOptions } from '../models/algorithm';
+import { produce } from 'immer';
+import { PathNodeState, PathNode } from '../models/node';
 
 /*
   Reducers alter a slice of state and returns a new state. Actions trigger reducers by passing an action.
@@ -82,14 +83,7 @@ const reducer = createReducer(
   })),
   on(actionPathfinderClearSettings, (state) => ({
     ...state,
-    settings: {
-      algorithm: initialState.settings.algorithm,
-      heuristic: initialState.settings.heuristic,
-      allowDiagonal: initialState.settings.allowDiagonal,
-      biDirectional: initialState.settings.biDirectional,
-      dontCrossCorners: initialState.settings.dontCrossCorners,
-      weight: initialState.settings.weight
-    }
+    settings: initialState.settings
   })),
 
   // Execution Events
@@ -107,16 +101,50 @@ const reducer = createReducer(
   })),
 
   // Node events
+  on(actionPathfinderInitializeBoard, (state, { x, y }) => ({
+    ...state,
+    nodes: initializeNodes(x, y)
+  })),
+  on(actionPathfinderToggleWall, (state, { node }) => ({
+    ...state,
+    nodes: produce(state.nodes, draft => {
+      draft[node.y][node.x].traversable = !draft[node.y][node.x].traversable;
+    })
+  })),
   on(actionPathfinderSetStartNode, (state, { startNode }) => ({
     ...state,
-    startNode: startNode
+    startNode: startNode,
+    nodes: produce(state.nodes, draft => {
+      draft[startNode.y][startNode.x].state = PathNodeState.start;
+      if (state.startNode !== null) {
+        draft[state.startNode.y][state.startNode.x].state = PathNodeState.unknown;
+      }
+    })
   })),
   on(actionPathfinderSetFinishNode, (state, { finishNode }) => ({
     ...state,
-    finishNode: finishNode
+    finishNode: finishNode,
+    nodes: produce(state.nodes, draft => {
+      draft[finishNode.y][finishNode.x].state = PathNodeState.finish;
+      if (state.finishNode !== null) {
+        draft[state.finishNode.y][state.finishNode.x].state = PathNodeState.unknown;
+      }
+    })
   }))
 )
 
 export function pathfinderReducer(state: PathfinderState | undefined, action: Action) {
   return reducer(state, action);
+}
+
+export function initializeNodes(width: number, height: number): PathNode[][] {
+  let nodes = new Array<Array<PathNode>>();
+  for (var y = 0; y < height; y++) {
+    let nodeRow: PathNode[] = new Array<PathNode>();
+    for (var x = 0; x < width; x++) {
+      nodeRow.push(new PathNode(x, y));
+    }
+    nodes.push(nodeRow);
+  }
+  return nodes;
 }

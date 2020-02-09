@@ -1,8 +1,6 @@
-import { AppState } from './../core.state';
 import { actionSettingsSetTheme, actionSettingsToggleFooter } from './settings.actions';
 import { createReducer, on, Action } from '@ngrx/store'
-import { SettingsState } from './settings.model';
-
+import { SettingsState } from './index';
 
 const initialState: SettingsState = {
   theme: 'DARK-THEME',

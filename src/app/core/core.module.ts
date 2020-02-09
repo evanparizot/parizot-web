@@ -14,7 +14,7 @@ import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { reducers, metaReducers } from './core.state';
-import { SettingsEffects } from './settings/settings.effects';
+import { SettingsEffects } from './state/settings/settings.effects';
 
 export {
   routeAnimations,
@@ -28,7 +28,9 @@ export {
 
     //NgRx
     StoreModule.forRoot(reducers, { metaReducers }),
-    StoreRouterConnectingModule.forRoot(),
+    StoreRouterConnectingModule.forRoot({
+      stateKey: 'router'
+    }),
     EffectsModule.forRoot([
       SettingsEffects,
       GoogleAnalyticsEffects

@@ -4,7 +4,7 @@
   <table>
     <tr *ngFor="let row of nodes$ | async">
       <td *ngFor="let node of row">
-        <div (click)="setStartNode(node)" [attr.state]="node.state"></div>
+        <div (click)="setStartNode(node)" [attr.state]="node.state" [attr.traversable]="node.traversable"></div>
 
         <!-- <app-node [node]='node'></app-node> -->
       </td>

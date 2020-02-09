@@ -1,4 +1,4 @@
-import { AppState } from '../core.state';
+import { AppState } from '../../core.state';
 
 export interface SettingsState {
   theme: string;

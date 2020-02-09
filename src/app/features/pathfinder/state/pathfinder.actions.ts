@@ -3,7 +3,7 @@ import { PathNode } from '../models/node';
 import { Settings } from '.';
 
 // ---------------------------------------------------------------
-//      Settings manipulation
+//      Settings
 // ---------------------------------------------------------------
 //#region
 export const actionPathfinderSetPathfinderSettings = createAction(
@@ -80,6 +80,16 @@ export const actionPathfinderSetFinishNode = createAction(
 export const actionPathfinderSetNodes = createAction(
   '[Pathfinder] Set Nodes',
   props<{ nodes: PathNode[][] }>()
+);
+
+export const actionPathfinderInitializeBoard = createAction(
+  '[Pathfinder] Initialize Board',
+  props<{ x: number, y: number }>()
+);
+
+export const actionPathfinderToggleWall = createAction(
+  '[Pathfinder] Toggle Wall',
+  props<{ node: PathNode }>()
 );
 
 export const actionPathfinderClearBoard = createAction(

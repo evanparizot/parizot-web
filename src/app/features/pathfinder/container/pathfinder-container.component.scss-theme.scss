@@ -19,6 +19,9 @@
       tr {
         td {
           div[state="4"] {
+            background-color: mat-color($accent);
+          }
+          div[traversable="false"] {
             background-color: mat-color($primary);
           }
         }
