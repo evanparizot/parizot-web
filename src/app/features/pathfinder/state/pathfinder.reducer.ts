@@ -103,8 +103,8 @@ const reducer = createReducer(
   // Node events
   on(actionPathfinderInitializeBoard, (state, { x, y }) => ({
     ...state,
-    startNode: { x: Math.floor(x / 3), y: Math.floor(y / 2), state: PathNodeState.start },
-    finishNode: { x: Math.floor((2 * x) / 3), y: Math.floor(y / 2), state: PathNodeState.finish },
+    startNode: { x: Math.floor(x / 3), y: Math.floor(y / 2), traversable: true, state: PathNodeState.start },
+    finishNode: { x: Math.floor((2 * x) / 3), y: Math.floor(y / 2), traversable: true, state: PathNodeState.finish },
     nodes: initializeNodes(x, y)
   })),
   on(actionPathfinderToggleWall, (state, { node }) => ({

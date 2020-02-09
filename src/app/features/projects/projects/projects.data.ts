@@ -13,9 +13,8 @@ export const projects: Project [] = [
     title: "Catan",
     description: "Custom laser cut Settlers of Catan",
     backgroundUrl: "http://assets.parizot.info/evan/projects/catan.jpg",
-    source: "Github",
-    sourceIcon: "github",
-    sourceUrl: "https://github.com/evanparizot/catan"
+    source: "Imgur",
+    sourceUrl: "https://imgur.com/a/GNPO1"
   },
   {
     title: "Cutting Board",
@@ -43,9 +42,8 @@ export const projects: Project [] = [
     title: "Topographic Map",
     description: "Laser cut topographic map of Austin, Texas using public GIS information",
     backgroundUrl: "http://assets.parizot.info/evan/projects/austin-map.jpg",
-    source: "github",
-    sourceIcon: "github",
-    sourceUrl: "https://github.com/evanparizot/austin-map"
+    source: "Imgur",
+    sourceUrl: "https://imgur.com/a/pkqeI0n"
   },
   {
     title: "Website",
