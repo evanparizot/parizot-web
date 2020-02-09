@@ -5,11 +5,6 @@ export const FEATURE_NAME = 'settings';
 
 export const selectSettings = createFeatureSelector<State, SettingsState>(FEATURE_NAME);
 
-// export const selectSettings = createSelector(
-//   selectSettingsState,
-//   (state: SettingsState) => state
-// );
-
 export const selectTheme = createSelector(
   selectSettings,
   settings => settings.theme.toLowerCase()

@@ -1,10 +1,10 @@
 import { routeAnimations } from './../core/animations/route.animations';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSidenav } from '@angular/material';
 import { AppState } from '../core/core.state';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { selectTheme, selectDisableFooter } from '../core/state/settings/settings.selectors';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-root',

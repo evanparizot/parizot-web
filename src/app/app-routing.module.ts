@@ -33,7 +33,7 @@ const routes: Routes = [
 ];
 
 const configs: ExtraOptions = { 
-  enableTracing: environment.production ? false : true, 
+  enableTracing: !environment.production, 
   scrollPositionRestoration: 'enabled',
   preloadingStrategy: PreloadAllModules
 };
