@@ -17,6 +17,8 @@ export interface PathfinderState {
   startNode: PathNode;
   finishNode: PathNode;
   search: boolean;
+
+  aStarDetails: AStarDetails;
 }
 
 export class Settings {

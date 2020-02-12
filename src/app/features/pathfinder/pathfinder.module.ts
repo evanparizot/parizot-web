@@ -15,6 +15,8 @@ import { OnNodeHoverDirective } from './directives/node-hover.directive';
 
 //https://github.com/qiao/PathFinding.js
 //https://github.com/clementmihailescu/Pathfinding-Visualizer
+//https://github.com/bgrins/javascript-astar
+//http://theory.stanford.edu/~amitp/GameProgramming/
 
 const routes: Routes = [
   { path: '', component: PathfinderContainerComponent }
@@ -24,8 +26,9 @@ const routes: Routes = [
   declarations: [
     PathfinderContainerComponent,
     PathfinderToolbarComponent,
-    OnNodeHoverDirective,
-    NodeComponent
+    NodeComponent,
+
+    OnNodeHoverDirective
   ],
   imports: [
     CommonModule,

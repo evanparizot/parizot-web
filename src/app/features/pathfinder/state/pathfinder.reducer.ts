@@ -40,7 +40,12 @@ export const initialState: PathfinderState = {
   nodes: [],
   startNode: null,
   finishNode: null,
-  search: false
+  search: false,
+
+  aStarDetails: {
+    openSet: [],
+    closedSet: []
+  }
 }
 
 const reducer = createReducer(

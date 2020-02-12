@@ -1,10 +1,11 @@
 import { Injectable } from "@angular/core";
-import { Actions, ofType, createEffect } from '@ngrx/effects';
+import { Actions, ofType, createEffect, Effect } from '@ngrx/effects';
 import { Store, select } from '@ngrx/store';
 import { State } from '../pathfinder.state';
-import { actionPathfinderSetStartNode } from './pathfinder.actions';
-import { withLatestFrom, tap } from 'rxjs/operators';
-import { selectPathfinder, selectStartNode } from './pathfinder.selectors';
+import { actionPathfinderStartSearch } from './pathfinder.actions';
+import { withLatestFrom, tap, map } from 'rxjs/operators';
+import { selectNodes, selectPathfinderSettings, selectPathfinderSearch } from './pathfinder.selectors';
+import { AlgorithmService } from '../services/algorithm.service';
 
 // Effects take an action, do work and dispatch a new action
 /*
@@ -22,7 +23,46 @@ import { selectPathfinder, selectStartNode } from './pathfinder.selectors';
 export class PathfinderEffects {
   constructor(
     private actions$: Actions,
-    private store: Store<State>
+    private store: Store<State>,
+    private algorithmService: AlgorithmService
   ) { }
+
+  @Effect()
+  startSearchAlgorithm$ = this.actions$.pipe(
+    ofType(actionPathfinderStartSearch),
+    withLatestFrom(
+      this.store.pipe(select(selectNodes)),
+      this.store.pipe(select(selectPathfinderSettings)),
+      this.store.pipe(select(selectPathfinderSearch))
+      ),
+    map(([, nodes, settings, search]) => {
+      
+    })
+  )
+
+  /*
+    AStart
+
+    var open list (can be a heap)
+    var closed list 
+    add start to open
+
+    while open set not empty:
+      current = node from opent with lowest f
+      remove current from open
+      add current to closed
+
+      if current == goal:
+        return
+      
+      foreach neighbor of current:
+        if neighbor is not traversable || neighbor == closed:
+          continue
+        if new path to neighbor is shorter || neighbor not in open:
+          set f cost of neighbor
+          set parent of neighbor to current
+          if neighbor not in open:
+            add neighbor to open
+  */
 
 }

@@ -1,5 +1,6 @@
 import { selectPathfinding, PathfindingState } from './../pathfinder.state';
 import { createSelector } from '@ngrx/store';
+import { create } from 'domain';
 
 export const selectPathfinder = createSelector(
   selectPathfinding,
@@ -57,4 +58,11 @@ export const selectStartNode = createSelector(
 export const selectFinishNode = createSelector(
   selectPathfinder,
   (state) => state.finishNode
+);
+
+
+
+export const selectPathfinderSearch = createSelector(
+  selectPathfinder,
+  (state) => state.search
 );
