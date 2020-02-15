@@ -3,9 +3,10 @@ import { Actions, ofType, createEffect, Effect } from '@ngrx/effects';
 import { Store, select } from '@ngrx/store';
 import { State } from '../pathfinder.state';
 import { actionPathfinderStartSearch } from './pathfinder.actions';
-import { withLatestFrom, tap, map } from 'rxjs/operators';
-import { selectNodes, selectPathfinderSettings, selectPathfinderSearch } from './pathfinder.selectors';
-import { AlgorithmService } from '../services/algorithm.service';
+import { withLatestFrom, tap, map, switchMap } from 'rxjs/operators';
+import { selectNodes, selectPathfinderSettings, selectPathfinderSearching, selectStartNode } from './pathfinder.selectors';
+import { actionPathfinderAStarAddToClosedSet, actionPathfinderAStarAddToOpenSet } from './astar/astar.actions';
+import { of } from 'rxjs';
 
 // Effects take an action, do work and dispatch a new action
 /*
@@ -23,46 +24,23 @@ import { AlgorithmService } from '../services/algorithm.service';
 export class PathfinderEffects {
   constructor(
     private actions$: Actions,
-    private store: Store<State>,
-    private algorithmService: AlgorithmService
+    private store: Store<State>
   ) { }
 
-  @Effect()
-  startSearchAlgorithm$ = this.actions$.pipe(
-    ofType(actionPathfinderStartSearch),
-    withLatestFrom(
-      this.store.pipe(select(selectNodes)),
-      this.store.pipe(select(selectPathfinderSettings)),
-      this.store.pipe(select(selectPathfinderSearch))
-      ),
-    map(([, nodes, settings, search]) => {
-      
-    })
-  )
+  // @Effect()
+  // startSearchAlgorithm$ = this.actions$.pipe(
+  //   ofType(actionPathfinderStartSearch),
+  //   withLatestFrom(
+  //     this.store.pipe(select(selectPathfinderSettings)),
+  //     this.store.pipe(select(selectStartNode))
+  //   ),
+  //   map(([, settings, start]) => {
+  //     if (settings.algorithm === "A*") {
 
-  /*
-    AStart
+  //       return actionPathfinderAStarAddToOpenSet({ node: start })
+  //     }
 
-    var open list (can be a heap)
-    var closed list 
-    add start to open
-
-    while open set not empty:
-      current = node from opent with lowest f
-      remove current from open
-      add current to closed
-
-      if current == goal:
-        return
-      
-      foreach neighbor of current:
-        if neighbor is not traversable || neighbor == closed:
-          continue
-        if new path to neighbor is shorter || neighbor not in open:
-          set f cost of neighbor
-          set parent of neighbor to current
-          if neighbor not in open:
-            add neighbor to open
-  */
+  //   })
+  // );
 
 }

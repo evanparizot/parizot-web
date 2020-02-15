@@ -11,13 +11,23 @@ export class PathNode {
   x: number;
   y: number;
 
+  // A* properties
+  g?: number;
+  h?: number;
+  f?: number;
+  parent?: PathNode;
+
   traversable: boolean; // if false, means that node is a wall
   state: PathNodeState;
 
-  constructor(x: number, y:number, traversable:boolean = true, state:PathNodeState = 1) {
+  constructor(x: number, y: number, g: number = 0, h: number = 0, f: number = 0, parent: PathNode = null, traversable: boolean = true, state: PathNodeState = 0) {
     this.x = x;
     this.y = y;
     this.traversable = traversable;
     this.state = state;
+    this.g = g;
+    this.h = h;
+    this.f = f;
+    this.parent = parent;
   }
 }

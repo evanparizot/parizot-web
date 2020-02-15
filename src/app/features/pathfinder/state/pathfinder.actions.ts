@@ -3,7 +3,7 @@ import { PathNode } from '../models/node';
 import { Settings } from '.';
 
 // ---------------------------------------------------------------
-//      Settings
+//      Settings Actions
 // ---------------------------------------------------------------
 //#region
 export const actionPathfinderSetPathfinderSettings = createAction(
@@ -47,24 +47,20 @@ export const actionPathfinderClearSettings = createAction(
 //#endregion
 
 // ---------------------------------------------------------------
-//      Execution events
+//      Execution Actions
 // ---------------------------------------------------------------
 //#region
 export const actionPathfinderStartSearch = createAction(
   '[Pathfinder] Start Search'
 );
 
-export const actionPathfinderPauseSearch = createAction(
-  '[Pathfinder] Pause Search'
-);
-
-export const actionPathfinderStopSearch = createAction(
-  '[Pathfinder] Stop Search'
+export const actionPathfinderTogglePauseSearch = createAction(
+  '[Pathfinder] Toggle Pause Search'
 );
 //#endregion
 
 // ---------------------------------------------------------------
-//      Board events
+//      Board & Node Actions
 // ---------------------------------------------------------------
 //#region
 export const actionPathfinderSetStartNode = createAction(
@@ -107,11 +103,4 @@ export const actionPathfinderClearPath = createAction(
 export const actionPathfinderSetSpeed = createAction(
   '[Pathfinder] Set speed'
 );
-//#endregion
-
-// ---------------------------------------------------------------
-//      Algorithm events
-// ---------------------------------------------------------------
-//#region
-
 //#endregion

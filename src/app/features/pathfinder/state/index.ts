@@ -16,9 +16,36 @@ export interface PathfinderState {
   nodes: PathNode[][];
   startNode: PathNode;
   finishNode: PathNode;
-  search: boolean;
 
-  aStarDetails: AStarDetails;
+  searching: boolean;
+  pauseSearch: boolean;
+
+  aStarDetails: {
+    openSet: PathNode[];
+    closedSet: PathNode[];
+  }
+}
+
+export const initialState: PathfinderState = {
+  settings: {
+    algorithm: '',
+    heuristic: '',
+    allowDiagonal: false,
+    biDirectional: false,
+    dontCrossCorners: false,
+    weight: 1
+  },
+  nodes: [],
+  startNode: null,
+  finishNode: null,
+
+  searching: false,
+  pauseSearch: false,
+
+  aStarDetails: {
+    openSet: new Array<PathNode>(),
+    closedSet: new Array<PathNode>()
+  }
 }
 
 export class Settings {
@@ -28,9 +55,4 @@ export class Settings {
   biDirectional: boolean;
   dontCrossCorners: boolean;
   weight: number;
-}
-
-export class AStarDetails {
-  openSet: PathNode[];
-  closedSet: PathNode[];
 }

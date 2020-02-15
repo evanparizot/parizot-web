@@ -12,6 +12,7 @@ import { PathfinderEffects } from './state/pathfinder.effects';
 import { reducers, FEATURE_NAME } from './pathfinder.state';
 import { NodeComponent } from './components/node/node.component';
 import { OnNodeHoverDirective } from './directives/node-hover.directive';
+import { AStarEffects } from './state/astar/astar.effects';
 
 //https://github.com/qiao/PathFinding.js
 //https://github.com/clementmihailescu/Pathfinding-Visualizer
@@ -35,7 +36,7 @@ const routes: Routes = [
     SharedModule,
     RouterModule.forChild(routes),
     StoreModule.forFeature(FEATURE_NAME, reducers),
-    EffectsModule.forFeature([PathfinderEffects])
+    EffectsModule.forFeature([PathfinderEffects, AStarEffects])
   ]
 })
 export class PathfinderModule { }

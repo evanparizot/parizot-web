@@ -1,13 +1,19 @@
 <pathfinder-toolbar (resetBoard)="initializeNodes()"></pathfinder-toolbar>
 
-<div class="grid-layout">
+<div class="grid-layout" *ngIf="nodes$ | async as nodes">
   <table>
-    <tr *ngFor="let row of nodes$ | async">
+    <tr *ngFor="let row of nodes">
       <td *ngFor="let node of row">
-        <div nodeHover (click)="setStartNode(node)" [attr.state]="node.state" [attr.traversable]="node.traversable"></div>
+        <div nodeHover (click)="toggleNodeWall(node)" [attr.state]="node.state" [attr.traversable]="node.traversable"></div>
 
         <!-- <app-node [node]='node'></app-node> -->
       </td>
     </tr>
   </table>
+  <div *ngIf="startNode$ | async as start">
+    <div *ngIf="finishNode$ | async as finish">
+      <button mat-button (click)="listenForSearch(nodes, start, finish)">Clear Settings</button>
+    </div>
+  </div>
 </div>
+

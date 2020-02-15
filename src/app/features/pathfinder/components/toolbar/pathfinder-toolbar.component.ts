@@ -1,4 +1,4 @@
-import { selectPathfinderSettings } from './../../state/pathfinder.selectors';
+import { selectPathfinderSettings, selectPathfinderSearching, selectPathfinderPauseSearch } from './../../state/pathfinder.selectors';
 import { Observable } from 'rxjs';
 import { Algorithms } from './../../data/algo-data';
 import { Algorithm } from './../../models/algorithm';
@@ -12,10 +12,8 @@ import {
   actionPathfinderSetOptionDontCrossCorners,
   actionPathfinderSetAlgorithm,
   actionPathfinderClearSettings,
-  actionPathfinderClearBoard,
   actionPathfinderStartSearch,
-  actionPathfinderPauseSearch,
-  actionPathfinderStopSearch
+  actionPathfinderTogglePauseSearch
 } from './../../state/pathfinder.actions';
 import { map } from 'rxjs/operators';
 import { Settings } from '../../state';
@@ -32,6 +30,8 @@ export class PathfinderToolbarComponent implements OnInit {
   algorithms: Algorithm[] = Algorithms;
 
   settings$: Observable<Settings>;
+  searching$: Observable<boolean>;
+  pauseSearch$: Observable<boolean>;
 
   disableAllowDiagonal: boolean;
   disableBiDirectional: boolean;
@@ -43,6 +43,8 @@ export class PathfinderToolbarComponent implements OnInit {
 
   ngOnInit() {
     this.settings$ = this.store.pipe(select(selectPathfinderSettings));
+    this.searching$ = this.store.pipe(select(selectPathfinderSearching));
+    this.pauseSearch$ = this.store.pipe(select(selectPathfinderPauseSearch));
     this.checkToDisableOptions();
   }
 
@@ -91,8 +93,8 @@ export class PathfinderToolbarComponent implements OnInit {
     this.store.dispatch(actionPathfinderStartSearch());
   }
 
-  pauseSearch() {
-    this.store.dispatch(actionPathfinderPauseSearch());
+  toggleSearching() {
+    this.store.dispatch(actionPathfinderTogglePauseSearch());
   }
 
   clearSettings() {

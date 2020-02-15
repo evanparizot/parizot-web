@@ -48,8 +48,8 @@
 
     <button mat-button (click)="clearSettings()">Clear Settings</button>
     <button mat-button (click)="emitResetBoard()">Clear Board</button>
-    <button mat-button [disabled]="!settings.algorithm || !settings.heuristic" (click)="startSearch()">Start</button>
-    <button mat-button [disabled]="!settings.algorithm || !settings.heuristic" (click)="pauseSearch()">Pause</button>
+    <button mat-button [disabled]="!settings.algorithm || !settings.heuristic || (searching$ | async)" (click)="startSearch()">Start</button>
+    <button mat-button [disabled]="!settings.algorithm || !settings.heuristic || !(searching$ | async)" (click)="toggleSearching()">Pause/Resume</button>
 
   </div>
 </ng-container>

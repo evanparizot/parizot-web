@@ -17,6 +17,12 @@
     table {
       tr {
         td {
+          div[state="1"] {
+            background-color: yellow;
+          }
+          div[state="2"] {
+            background-color: green;
+          }
           div[state="4"] {
             background-color: mat-color($accent);
           }
