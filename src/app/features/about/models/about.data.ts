@@ -1,33 +1,4 @@
-export class Company {
-  name: string;
-  headquarters: Partial<Address>;
-  type: string;
-  industry: string;
-  areaServed: string;
-  website: string;
-}
-
-export class Address {
-  addressLineOne: string;
-  addressLineTwo: string;
-  city: string;
-  state: string;
-  zip: string;
-  country: string;
-}
-
-export class Position {
-  title: string;
-  description: string;
-}
-
-export class Experience {
-  positions: Partial<Position>[];
-  company: Partial<Company>;
-  location: Partial<Address>;
-  startDate?: Date;
-  endDate?: Date;
-}
+import { Experience, Company, Profile, Certification, Education } from './about'
 
 export const Quickenloans: Company = {
   name: "Quickenloans",
@@ -41,7 +12,7 @@ export const Quickenloans: Company = {
   type: "Private",
   website: "https://www.quickenloans.com/",
   industry: "Mortgage",
-  areaServed: "United States of Ameria"
+  areaServed: "United States of America"
 }
 
 export const Cognizant: Company = {
@@ -56,7 +27,7 @@ export const Cognizant: Company = {
   areaServed: "Worldwide"
 }
 
-export const experiences: Experience[] = [
+export const experience: Experience[] = [
   {
     positions: [
       {
@@ -84,3 +55,31 @@ export const experiences: Experience[] = [
   }
 ]
 
+export const certifications: Certification[] = [
+  {
+    name: 'Amazon Web Services Developer - Associate',
+    issuer: 'AWS',
+    issueDate: 'FEB 2020',
+    experationDate: 'FEB 2023',
+    verification: ''
+  },
+  {
+    name: 'Amazon Web Services Solutions Architect - Associate',
+    issuer: 'AWS',
+    issueDate: 'NOV 2019',
+    experationDate: 'NOV 2022',
+    verification: ''
+  }
+]
+
+export const education: Education = {
+
+}
+
+export const profile: Profile = {
+  name: 'Evan Parizot',
+  about: 'Originally from Houston, Texas, I currently reside in the Detroit, Michigan area. I do software development at Quickenloans, a Detroit headquartered mortgage company.',
+  experience: experience,
+  education: education,
+  certifications: certifications
+}
