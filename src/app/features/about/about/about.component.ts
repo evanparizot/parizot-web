@@ -1,5 +1,6 @@
-import { experiences, Experience } from './about.data';
 import { Component, OnInit } from '@angular/core';
+import { Profile } from '../models/about';
+import { profile } from '../models/about.data';
 
 @Component({
   selector: 'app-about',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
-  experiences: Experience [] = experiences;
+  profile: Profile = profile;
 
   constructor() { }
 

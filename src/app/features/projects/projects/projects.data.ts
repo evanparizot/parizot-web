@@ -12,21 +12,21 @@ export const projects: Project [] = [
   {
     title: "Catan",
     description: "Custom laser cut Settlers of Catan",
-    backgroundUrl: "http://assets.parizot.info/evan/projects/catan.jpg",
+    backgroundUrl: "https://assets.evanparizot.com/projects/catan.jpg",
     source: "Imgur",
     sourceUrl: "https://imgur.com/a/GNPO1"
   },
   {
     title: "Cutting Board",
     description: "3d cutting board using cherry, walnut, and maple",
-    backgroundUrl: "http://assets.parizot.info/evan/projects/3DcuttingBoard.jpg",
+    backgroundUrl: "https://assets.evanparizot.com/projects/3DcuttingBoard.jpg",
     source: "Imgur",
     sourceUrl: "https://imgur.com/a/9ZtARZi"
   },
   {
     title: "Wordclock",
     description: "PCB and code for prototype wordclock",
-    backgroundUrl: "http://assets.parizot.info/evan/projects/wordclock-3d.png",
+    backgroundUrl: "https://assets.evanparizot.com/projects/wordclock-3d.png",
     source: "Github",
     sourceIcon: "github",
     sourceUrl: "https://github.com/evanparizot/wordclock"
@@ -34,21 +34,21 @@ export const projects: Project [] = [
   {
     title: "Toolboxes",
     description: "Japanese style toolboxes made out of walnut, maple, and cherry",
-    backgroundUrl: "http://assets.parizot.info/evan/projects/japanese_toolbox.jpg",
+    backgroundUrl: "https://assets.evanparizot.com/projects/japanese_toolbox.jpg",
     source: "Imgur",
     sourceUrl: "https://imgur.com/a/yiolIla"
   },
   {
     title: "Topographic Map",
     description: "Laser cut topographic map of Austin, Texas using public GIS information",
-    backgroundUrl: "http://assets.parizot.info/evan/projects/austin-map.jpg",
+    backgroundUrl: "https://assets.evanparizot.com/projects/austin-map.jpg",
     source: "Imgur",
     sourceUrl: "https://imgur.com/a/pkqeI0n"
   },
   {
     title: "Website",
     description: "",
-    backgroundUrl: "",
+    backgroundUrl: "https://assets.evanparizot.com/projects/website.jpg",
     source: "Github",
     sourceIcon: "github",
     sourceUrl: "https://github.com/evanparizot/website"
@@ -56,7 +56,7 @@ export const projects: Project [] = [
   {
     title: "PC",
     description: "Hardline, watercooled PC",
-    backgroundUrl: "http://assets.parizot.info/evan/projects/watercooledPC.jpg",
+    backgroundUrl: "https://assets.evanparizot.com/projects/watercooledPC.jpg",
     source: "Imgur",
     sourceIcon: "",
     sourceUrl: "https://imgur.com/a/PeQ0E"
@@ -64,7 +64,7 @@ export const projects: Project [] = [
   {
     title: "JBL Speakers",
     description: "Restored, vintage JBL L26 Century Speakers",
-    backgroundUrl: "",
+    backgroundUrl: "https://assets.evanparizot.com/projects/jbl_speakers.jpg",
     source: "Imgur",
     sourceIcon: "",
     sourceUrl: "https://imgur.com/a/pdVpFP3"
@@ -72,7 +72,7 @@ export const projects: Project [] = [
   {
     title: "Plant Stands",
     description: "Simple plants stands with mortise and tenon joints. Made out of cherry.",
-    backgroundUrl: "http://assets.parizot.info/evan/projects/plant-stands.jpg",
+    backgroundUrl: "https://assets.evanparizot.com/projects/plant-stands.jpg",
     source: "Imgur",
     sourceIcon: "",
     sourceUrl: "https://imgur.com/a/DSSKPzK"
