@@ -1,4 +1,29 @@
-<mat-grid-list [cols]="cols" gutterSize="0px">
+
+<ul id="og-grid" class="og-grid">
+  <li *ngFor="let project of projects">
+    <a>
+      <img [src]="project.backgroundUrl">
+    </a>
+
+    <div class="og-expander">
+      <div class="og-expander-inner">
+        <span class="og-close"></span>
+        <div class="og-fullimg">
+          <div class="og-loading"></div>
+          <img [src]="project.backgroundUrl">
+        </div>
+        <div class="og-details">
+          <h3>Blah blah blah</h3>
+          <p>jasjdfjasdjfasjdf</p>
+          <a [href]="project.sourceUrl">Visit</a>
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>
+
+
+<!-- <mat-grid-list [cols]="cols" gutterSize="0px">
   <mat-grid-tile *ngFor="let project of projects" [style.background]="lightblue" [colspan]="1" [rowspan]="1" (deferLoad)="project.show=true">
     <div @fadeIn *ngIf="project.show" class="tile-content">
       <a [href]="project.sourceUrl" target="_blank">
@@ -14,4 +39,4 @@
       </a>
     </div>
   </mat-grid-tile>
-</mat-grid-list>
+</mat-grid-list> -->
