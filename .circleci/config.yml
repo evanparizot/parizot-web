@@ -19,30 +19,17 @@ workflows:
       - push_to_s3_staging:
           context: aws-s3-parizot
           requires: ["cypress/run", "build_and_test"]
-          filters:
-            branches:
-              only: master
 
       - hold:
           type: "approval"
           requires: ["push_to_s3_staging"]
+          filters:
+            branches:
+              only: master
 
       - push_to_s3_prod:
           context: aws-s3-parizot
           requires: ["hold"]
-
-      # - push_to_gcs_staging:
-      #     context: gcp-storage-parizot
-      #     requires: [ 'cypress/run', 'build_and_test' ]
-      #     filters:
-      #       branches:
-      #         only: master
-      # - hold:
-      #     type: 'approval'
-      #     requires: [ 'push_to_gcs_staging' ]
-      # - push_to_gcs_prod:
-      #     context: gcp-storage-parizot
-      #     requires: ['hold']
 
 jobs:
   build_and_test:
@@ -74,7 +61,6 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/project
-      - run: find . -type f -follow -print
       - run: pip3 install awscli --upgrade --user
       - aws-s3/sync:
           from: ./dist/staging
@@ -87,37 +73,8 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/project
-      - run: find . -type f -follow -print
       - run: pip3 install awscli --upgrade --user
       - aws-s3/sync:
-          from: ./dist/staging
+          from: ./dist/prod
           to: "s3://evanparizot.com/"
           overwrite: true
-
-  # push_to_gcs_staging:
-  #   docker:
-  #     - image: google/cloud-sdk
-  #   steps:
-  #     - attach_workspace:
-  #         at: ~/project
-  #     - run: |
-  #         echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --key-file=-
-  #         gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
-  #         gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
-  #     - run: find . -type f -follow -print
-  #     - run: gsutil -m rm -r gs://staging.evanparizot.com/**
-  #     - run: gsutil -m cp -r dist/staging/** gs://staging.evanparizot.com/
-
-  # push_to_gcs_prod:
-  #   docker:
-  #     - image: google/cloud-sdk
-  #   steps:
-  #     - attach_workspace:
-  #         at: ~/project
-  #     - run: |
-  #         echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --key-file=-
-  #         gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
-  #         gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
-  #     - run: find . -type f -follow -print
-  #     - run: gsutil -m rm -r gs://evanparizot.com/**
-  #     - run: gsutil -m cp -r dist/prod/** gs://evanparizot.com/
