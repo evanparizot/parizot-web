@@ -1,0 +1,94 @@
+<div class="container about-content">
+    <div class="row">
+      <div class="col-lg-4 profile-image-wrap">
+        <div class="profile-image">
+          <img src='https://assets.evanparizot.com/profile/reinvent_300x300.jpg'>
+        </div>
+      </div>
+      <div class="about-text-container col-lg-8">
+        <h3>{{profile.name}}</h3>
+        <hr>
+  
+        <div class="about-description-container">
+          <p>
+            {{profile.about}}
+          </p>
+        </div>
+  
+        <app-about-experience></app-about-experience>
+        <app-about-education></app-about-education>
+        <app-about-certification></app-about-certification>
+
+        <!-- <div class="experience-container">
+          <section id="experience-section" class="experience-section">
+            <header>
+              <h5>Work Experience</h5>
+              <hr>
+            </header>
+            <ul class="profile-section">
+              <li *ngFor="let exp of profile.experience">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col col-lg-2 col-xs-12">
+                      <div *ngIf="exp.company as company" class="company">
+                        <h6>{{company.name}}</h6>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <ul class="positions-section">
+                        <li *ngFor="let position of exp.positions">
+                          {{position.title}}
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </section>
+        </div> -->
+  
+        <!-- <div class="education-container">
+          <section id="education-section" class="education-section">
+            <header>
+              <h5>Education</h5>
+              <hr>
+  
+            </header>
+            <div class="container">
+              <div class="row">
+                <div class="col">
+                  <h6>Texas A&M University</h6>
+                </div>
+                <div class="col text-right">
+                  <i>2011-2015</i>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  B.S. Electrical and Electronics Engineering
+                  Minor: Mathematics
+                </div>
+              </div>
+            </div>
+          </section>
+        </div> -->
+  
+        <!-- <div class="certification-container">
+          <section id="certification-section" class="certification-section">
+            <header>
+              <h5>Certifications</h5>
+              <hr>
+            </header>
+            
+            <ul class="certification-section">
+              <li *ngFor="let cert of profile.certifications">
+                {{cert.name}}
+              </li>
+            </ul>
+  
+          </section>
+        </div> -->
+  
+      </div>
+    </div>

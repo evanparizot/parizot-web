@@ -1,6 +1,7 @@
 export class Profile {
     name: string;
     about: string;
+    pictureUrl: string;
     experience: Experience[];
     education: Education;
     certifications: Certification[];

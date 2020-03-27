@@ -133,7 +133,7 @@ const reducer = createReducer(
       }
     })
   }))
-)
+);
 
 export function pathfinderReducer(state: PathfinderState | undefined, action: Action) {
   return reducer(state, action);

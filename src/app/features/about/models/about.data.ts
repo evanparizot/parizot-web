@@ -79,6 +79,7 @@ export const education: Education = {
 export const profile: Profile = {
   name: 'Evan Parizot',
   about: 'Originally from Houston, Texas, I currently reside in the Detroit, Michigan area. I do software development at Quickenloans, a Detroit headquartered mortgage company.',
+  pictureUrl: 'https://assets.evanparizot.com/profile/reinvent_300x300.jpg',
   experience: experience,
   education: education,
   certifications: certifications
