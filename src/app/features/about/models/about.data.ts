@@ -72,9 +72,14 @@ export const certifications: Certification[] = [
   }
 ]
 
-export const education: Education = {
-
-}
+export const education: Education[] = [
+  {
+    schoolName: "Texas A&M University",
+    degree: "Bachelor's",
+    areaOfStudy: "Electrical Engineering",
+    graduationYear: "2015"
+  }
+]
 
 export const profile: Profile = {
   name: 'Evan Parizot',
