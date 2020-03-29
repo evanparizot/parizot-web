@@ -1,13 +1,18 @@
-<div class="education-container">
-  <section id="education-section" class="education-section">
+<div class="education-container container-fluid">
+  <div *ngFor="let edu of education">
+    <div class="row justify-content-center">
 
+      <div class="col">
+        <div class="img-wrap inline-block">
+          <img src="{{edu.iconUrl}}">
+        </div>
+        <div class="inline-block">
 
-    <div *ngFor="let edu of education">
-      {{edu.schoolName}}
-      {{edu.degree}}
-      {{edu.areaOfStudy}}
-      {{edu.graduationYear}}
+          <h2>{{edu.schoolName}}</h2>
+          <h3>{{edu.areaOfStudy}}, {{edu.degree}} <i>{{edu.graduationYear}}</i></h3>
+        </div>
+      </div>
+
     </div>
-
-  </section>
+  </div>
 </div>

@@ -9,6 +9,7 @@ export class Profile {
 
 export class Company {
   name: string;
+  iconUrl?: string;
   headquarters: Partial<Address>;
   type: string;
   industry: string;
@@ -30,6 +31,7 @@ export class Education {
   degree: string;
   areaOfStudy: string;
   graduationYear: string;
+  iconUrl?: string;
 }
 
 export class Position {

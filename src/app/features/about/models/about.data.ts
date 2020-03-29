@@ -1,7 +1,8 @@
 import { Experience, Company, Profile, Certification, Education } from './about'
 
-export const Quickenloans: Company = {
-  name: "Quickenloans",
+export const QuickenLoans: Company = {
+  name: "Quicken Loans",
+  iconUrl: "https://assets.evanparizot.com/icons/ql_100x100.png",
   headquarters: {
     addressLineOne: "1050 Woodward Ave",
     city: "Detroit",
@@ -17,6 +18,7 @@ export const Quickenloans: Company = {
 
 export const Cognizant: Company = {
   name: "Cognizant",
+  iconUrl: "https://assets.evanparizot.com/icons/cognizant_100x100.jpg",
   headquarters: {
     city: "Teaneck",
     state: "New Jersey"
@@ -37,7 +39,7 @@ export const experience: Experience[] = [
         title: "Software Quality Engineer"
       }
     ],
-    company: Quickenloans,
+    company: QuickenLoans,
     location: {
       city: "Detroit",
       state: "Michigan"
@@ -79,7 +81,8 @@ export const education: Education[] = [
     schoolName: "Texas A&M University",
     degree: "Bachelor's",
     areaOfStudy: "Electrical Engineering",
-    graduationYear: "2015"
+    graduationYear: "2015",
+    iconUrl: "https://assets.evanparizot.com/icons/texasA&M_371x371.svg"
   }
 ]
 
