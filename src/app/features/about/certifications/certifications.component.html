@@ -1,0 +1,21 @@
+<div class="certification-container container-fluid">
+  <div *ngFor="let cert of certifications">
+    <div class="row justify-content-center">
+      <div class="col">
+        <div class="inline-block">
+          <img src="{{cert.iconUrl}}">
+        </div>
+        <div class="inline-block">
+          <h3>{{cert.name}}</h3>
+          <h4><i>{{cert.issuer}}</i></h4>
+          <!-- {{cert.issueDate}} -->
+          <!-- {{cert.experationDate}} -->
+        </div>
+      </div>
+
+      </div>
+
+
+
+  </div>
+</div>

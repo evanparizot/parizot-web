@@ -1,7 +1,8 @@
 import { Experience, Company, Profile, Certification, Education } from './about'
 
-export const Quickenloans: Company = {
-  name: "Quickenloans",
+export const QuickenLoans: Company = {
+  name: "Quicken Loans",
+  iconUrl: "https://assets.evanparizot.com/icons/ql_100x100.png",
   headquarters: {
     addressLineOne: "1050 Woodward Ave",
     city: "Detroit",
@@ -17,6 +18,7 @@ export const Quickenloans: Company = {
 
 export const Cognizant: Company = {
   name: "Cognizant",
+  iconUrl: "https://assets.evanparizot.com/icons/cognizant_100x100.jpg",
   headquarters: {
     city: "Teaneck",
     state: "New Jersey"
@@ -37,7 +39,7 @@ export const experience: Experience[] = [
         title: "Software Quality Engineer"
       }
     ],
-    company: Quickenloans,
+    company: QuickenLoans,
     location: {
       city: "Detroit",
       state: "Michigan"
@@ -61,24 +63,33 @@ export const certifications: Certification[] = [
     issuer: 'AWS',
     issueDate: 'FEB 2020',
     experationDate: 'FEB 2023',
-    verification: ''
+    verification: '',
+    iconUrl: 'https://assets.evanparizot.com/icons/aws_100x100.jpg'
   },
   {
     name: 'Amazon Web Services Solutions Architect - Associate',
     issuer: 'AWS',
     issueDate: 'NOV 2019',
     experationDate: 'NOV 2022',
-    verification: ''
+    verification: '',
+    iconUrl: 'https://assets.evanparizot.com/icons/aws_100x100.jpg'
   }
 ]
 
-export const education: Education = {
-
-}
+export const education: Education[] = [
+  {
+    schoolName: "Texas A&M University",
+    degree: "Bachelor's",
+    areaOfStudy: "Electrical Engineering",
+    graduationYear: "2015",
+    iconUrl: "https://assets.evanparizot.com/icons/texasA&M_371x371.svg"
+  }
+]
 
 export const profile: Profile = {
   name: 'Evan Parizot',
   about: 'Originally from Houston, Texas, I currently reside in the Detroit, Michigan area. I do software development at Quickenloans, a Detroit headquartered mortgage company.',
+  pictureUrl: 'https://assets.evanparizot.com/profile/reinvent_300x300.jpg',
   experience: experience,
   education: education,
   certifications: certifications

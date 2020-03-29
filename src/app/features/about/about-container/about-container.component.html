@@ -1,0 +1,46 @@
+<div class="container-fluid about-content" *ngIf="profile$ | async as profile">
+  <div class="row justify-content-center">
+    <div class="col-lg-5">
+
+      <div class="profile-image-wrap">
+        <div class="profile-image">
+          <img src="{{ profile.pictureUrl }}" />
+        </div>
+      </div>
+
+      <div class="about-text-container">
+        <h1 class="mat-display-2">{{ profile.name }}</h1>
+
+        <div class="about-description-container">
+          <p>
+            {{ profile.about }}
+          </p>
+        </div>
+
+
+        <div class="content-section">
+          <h2>Work Experience</h2>
+          <hr />
+          <app-about-experience [experience]="profile.experience">
+
+          </app-about-experience>
+        </div>
+
+        <div class="content-section">
+          <h2>Education</h2>
+          <hr />
+          <app-about-education [education]="profile.education">
+          </app-about-education>
+        </div>
+
+        <div class="content-section">
+          <h2>Certifications</h2>
+          <hr />
+          <app-about-certifications [certifications]="profile.certifications">
+          </app-about-certifications>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

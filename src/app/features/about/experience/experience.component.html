@@ -1,0 +1,27 @@
+<div class="experience-container">
+
+
+    <div *ngFor="let exp of experience" class="exp-wrap">
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col">
+
+            <div class="icon-wrap inline-block">
+              <img src="{{exp.company.iconUrl}}">
+            </div>
+            <div class="inline-block">
+              <h2>{{exp.company.name}}</h2>
+            </div>
+          </div>
+          <div class="col">
+            <div *ngFor="let pos of exp.positions">
+              {{pos.title}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+</div>
