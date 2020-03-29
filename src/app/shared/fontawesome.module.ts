@@ -35,7 +35,8 @@ import {
   faTwitter,
   faInstagram,
   faYoutube,
-  faLinkedin
+  faLinkedin,
+  faAws
 } from '@fortawesome/free-brands-svg-icons';
 
 // icons: IconDefinition[] = {
@@ -88,6 +89,7 @@ export class FontawesomeModule {
       faGithub,
       faLinkedin,
       faTwitter,
+      faAws,
       faCog,
       faImages,
       faAdjust

@@ -61,14 +61,16 @@ export const certifications: Certification[] = [
     issuer: 'AWS',
     issueDate: 'FEB 2020',
     experationDate: 'FEB 2023',
-    verification: ''
+    verification: '',
+    iconUrl: 'https://assets.evanparizot.com/icons/aws_100x100.jpg'
   },
   {
     name: 'Amazon Web Services Solutions Architect - Associate',
     issuer: 'AWS',
     issueDate: 'NOV 2019',
     experationDate: 'NOV 2022',
-    verification: ''
+    verification: '',
+    iconUrl: 'https://assets.evanparizot.com/icons/aws_100x100.jpg'
   }
 ]
 

@@ -1,7 +1,20 @@
 @import '~@angular/material/theming';
-
+// mat-typography-level(font-size, line-height, font-weight)
 $website-typography: mat-typography-config(
   $font-family: 'Roboto, monospace',
-  $headline: mat-typography-level(32px, 48px, 700),
-  $body-1: mat-typography-level(16px, 24px, 500)
+  $headline: mat-typography-level(32px, 48px, 500),
+  $subheading-1: mat-typography-level(20px, 20px, 100),
+  $body-1: mat-typography-level(16px, 24px, 300)
 )
+
+// mat-display-4
+// mat-display-3
+// mat-display-2
+// mat-display-1
+// mat-h1, mat-headline     (<h1>)
+// mat-h2, mat-title        (<h2>)
+// mat-h3, mat-subheading-2 (<h3>)
+// mat-h4, mat-subheading-1 (<h4>)
+// mat-body, mat-body-1
+// mat-body-strong, mat-body-2
+// mat-small, mat-caption

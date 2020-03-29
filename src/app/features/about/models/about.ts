@@ -49,6 +49,7 @@ export class Certification {
   name: string;
   issuer: string;
   issueDate: string;
-  experationDate: string;
-  verification: string;
+  iconUrl?: string;
+  experationDate?: string;
+  verification?: string;
 }

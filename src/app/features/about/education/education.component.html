@@ -1,35 +1,13 @@
 <div class="education-container">
   <section id="education-section" class="education-section">
-    <header>
-      <h5>Education</h5>
-      <hr />
-    </header>
-
-    <div class="container">
-      <div class="row">
-
-        <li *ngFor="let edu of education">
-          {{edu.schoolName}}
-        </li>
 
 
-      </div>
-
-
-
-        <!-- <div class="col">
-          <h6>Texas A&M University</h6>
-        </div>
-        <div class="col text-right">
-          <i>2011-2015</i>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          B.S. Electrical Engineering Minor: Mathematics
-        </div>
-      </div> -->
-
+    <div *ngFor="let edu of education">
+      {{edu.schoolName}}
+      {{edu.degree}}
+      {{edu.areaOfStudy}}
+      {{edu.graduationYear}}
     </div>
+
   </section>
 </div>
