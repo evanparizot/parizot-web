@@ -5,6 +5,7 @@ import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { selectTheme, selectDisableFooter } from '../core/state/settings/settings.selectors';
 import { MatSidenav } from '@angular/material/sidenav';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -44,5 +45,9 @@ export class AppComponent implements OnInit {
     this.sidenav.closedStart.subscribe(() => {this.hamburger.remove('is-active')});
     this.theme$ = this.store.pipe(select(selectTheme));
     this.disableFooter$ = this.store.pipe(select(selectDisableFooter));
+  }
+
+  prepareRoute(outlet: RouterOutlet) {
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['title'];
   }
 }

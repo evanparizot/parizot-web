@@ -46,8 +46,8 @@
     </mat-sidenav>
 
     <div class="wrapper mat-typography">
-      <div class="content" [@routeAnimations]="o.isActivated">
-        <router-outlet #o="outlet"></router-outlet>
+      <div class="content" [@routeAnimations]="prepareRoute(outlet)">
+        <router-outlet #outlet="outlet"></router-outlet>
       </div>
 
 

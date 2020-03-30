@@ -17,7 +17,11 @@ import { OnNodeHoverDirective } from './directives/node-hover.directive';
 //https://github.com/clementmihailescu/Pathfinding-Visualizer
 
 const routes: Routes = [
-  { path: '', component: PathfinderContainerComponent }
+  { 
+    path: '', 
+    component: PathfinderContainerComponent,
+    data: {title: "Pathfinder", disableFooter: true}
+  }
 ]
 
 @NgModule({
