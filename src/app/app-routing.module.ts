@@ -10,19 +10,16 @@ const routes: Routes = [
   },
   {
     path: 'about',
-    data: {title: "About"},
     loadChildren: () => import('./features/about/about.module')
       .then(m => m.AboutModule)
   },
   {
     path: 'projects',
-    data: {title: "Projects"},
     loadChildren: () => import('./features/projects/projects.module')
       .then(m => m.ProjectsModule)
   },
   {
     path: 'pathfinder',
-    data: {title: "Pathfinder", disableFooter: true},
     loadChildren: () => import('./features/pathfinder/pathfinder.module')
       .then(m => m.PathfinderModule)
   },

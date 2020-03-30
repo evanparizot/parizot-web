@@ -15,7 +15,8 @@ import { CertificationsComponent } from './certifications/certifications.compone
 const routes: Routes = [
   {
     path: '',
-    component: AboutContainerComponent
+    component: AboutContainerComponent,
+    data: {title: "About"}
   }
 ]
 
