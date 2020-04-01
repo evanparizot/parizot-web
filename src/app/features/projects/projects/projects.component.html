@@ -1,4 +1,25 @@
+<div class="container-fluid">
 
+  <mat-card *ngFor="let project of projects">
+    <img mat-card-image src="{{project.thumbnailUrl}}">
+    <mat-card-title>{{project.title}}</mat-card-title>
+    <mat-card-content>
+      <p>
+        {{project.description}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions *ngIf="!!project.sources && project.sources.length > 0">
+      <a *ngFor="let source of project.sources" [href]="source.sourceUrl" target="_blank">
+        <button mat-button>
+          <fa-icon *ngIf="!!source.sourceIcon" icon="{{source.sourceIcon}}"></fa-icon>
+          {{source.sourceName}}
+        </button>
+      </a>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<!-- 
 <ul id="og-grid" class="og-grid">
   <li *ngFor="let project of projects">
     <a>
@@ -20,7 +41,7 @@
       </div>
     </div>
   </li>
-</ul>
+</ul> -->
 
 
 <!-- <mat-grid-list [cols]="cols" gutterSize="0px">
