@@ -1,63 +1,25 @@
-<div class="container-fluid">
+<div class="container">
+  <div class="row align-items-end">
+    <div class="col-md-6 col-lg-4" *ngFor="let project of projects" [ngClass]="routeAnimationsElements">
+      
+      <mat-card>
+        <img mat-card-image src="{{project.thumbnailUrl}}">
+        <mat-card-title>{{project.title}}</mat-card-title>
+        <mat-card-content>
+          <p>
+            {{project.description}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions *ngIf="!!project.sources && project.sources.length > 0">
+          <a *ngFor="let source of project.sources" [href]="source.sourceUrl" target="_blank">
+            <button mat-button>
+              <fa-icon *ngIf="!!source.sourceIcon" icon="{{source.sourceIcon}}"></fa-icon>
+              {{source.sourceName}}
+            </button>
+          </a>
+        </mat-card-actions>
+      </mat-card>
 
-  <mat-card *ngFor="let project of projects">
-    <img mat-card-image src="{{project.thumbnailUrl}}">
-    <mat-card-title>{{project.title}}</mat-card-title>
-    <mat-card-content>
-      <p>
-        {{project.description}}
-      </p>
-    </mat-card-content>
-    <mat-card-actions *ngIf="!!project.sources && project.sources.length > 0">
-      <a *ngFor="let source of project.sources" [href]="source.sourceUrl" target="_blank">
-        <button mat-button>
-          <fa-icon *ngIf="!!source.sourceIcon" icon="{{source.sourceIcon}}"></fa-icon>
-          {{source.sourceName}}
-        </button>
-      </a>
-    </mat-card-actions>
-  </mat-card>
+    </div>
+  </div>
 </div>
-
-<!-- 
-<ul id="og-grid" class="og-grid">
-  <li *ngFor="let project of projects">
-    <a>
-      <img [src]="project.backgroundUrl">
-    </a>
-
-    <div class="og-expander">
-      <div class="og-expander-inner">
-        <span class="og-close"></span>
-        <div class="og-fullimg">
-          <div class="og-loading"></div>
-          <img [src]="project.backgroundUrl">
-        </div>
-        <div class="og-details">
-          <h3>Blah blah blah</h3>
-          <p>jasjdfjasdjfasjdf</p>
-          <a [href]="project.sourceUrl">Visit</a>
-        </div>
-      </div>
-    </div>
-  </li>
-</ul> -->
-
-
-<!-- <mat-grid-list [cols]="cols" gutterSize="0px">
-  <mat-grid-tile *ngFor="let project of projects" [style.background]="lightblue" [colspan]="1" [rowspan]="1" (deferLoad)="project.show=true">
-    <div @fadeIn *ngIf="project.show" class="tile-content">
-      <a [href]="project.sourceUrl" target="_blank">
-        <img [src]='project.backgroundUrl'>
-        <div class="overlay">
-          <div class="text">
-            <h4>{{project.title}}</h4>
-            <hr>
-            <h6>{{project.description}}</h6>
-            <fa-icon *ngIf="project.sourceIcon" [icon]="['fab', project.sourceIcon]"></fa-icon>
-          </div>
-        </div>
-      </a>
-    </div>
-  </mat-grid-tile>
-</mat-grid-list> -->
