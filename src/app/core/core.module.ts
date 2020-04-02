@@ -1,4 +1,4 @@
-import { routeAnimations } from './animations/route.animations';
+import { routeAnimations, ROUTE_ANIMATIONS_ELEMENTS } from './animations/route.animations';
 import { GoogleAnalyticsEffects } from './google-analytics/google-analytics.effects';
 import { environment } from '../../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
@@ -17,6 +17,7 @@ import { CustomSerializer } from './state/router/router.serializer';
 
 export {
   routeAnimations,
+  ROUTE_ANIMATIONS_ELEMENTS,
 };
 
 @NgModule({

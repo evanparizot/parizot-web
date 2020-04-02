@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { selectTheme, selectDisableFooter } from '../core/state/settings/settings.selectors';
 import { MatSidenav } from '@angular/material/sidenav';
 import { RouterOutlet } from '@angular/router';
+import { FaConfig } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'app-root',
@@ -36,7 +37,9 @@ export class AppComponent implements OnInit {
 
   constructor(
     private store: Store<AppState>,
+    faConfig: FaConfig
     ) {
+      faConfig.defaultPrefix = 'fab';
   }
 
   ngOnInit(): void {
