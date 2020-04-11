@@ -117,5 +117,20 @@ export const projects: Project[] = [
         sourceUrl: "https://imgur.com/a/DSSKPzK"
       }
     ]
+  },
+  {
+    title: "Picture Frames",
+    description: "Custom picture frames for artwork done by Tim Doyle",
+    thumbnailUrl: "https://assets.evanparizot.com/projects/thumbnails/frames_300x300.jpg",
+    sources: [
+      {
+        sourceName: "Imgur",
+        sourceUrl: "https://imgur.com/a/RiOC68B"
+      },
+      {
+        sourceName: "Tim Doyle",
+        sourceUrl: "https://www.timdoyle.com/"
+      }
+    ]
   }
 ]
