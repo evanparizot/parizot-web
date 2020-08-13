@@ -29,7 +29,32 @@ export const Cognizant: Company = {
   areaServed: "Worldwide"
 }
 
+export const Amazon: Company = {
+  name: "Amazon",
+  iconUrl: "https://assets.evanparizot.com/icons/amazon.png",
+  headquarters: {
+    city: "Seattle",
+    state: "Washington"
+  },
+  type: "Public",
+  website: "https://amazon.com",
+  industry: "Consumer, Retail, Technology",
+  areaServed: "Worldwide"
+}
+
 export const experience: Experience[] = [
+  {
+    positions: [
+      {
+        title: "Software Development Engineer"
+      }
+    ],
+    company: Amazon,
+    location: {
+      city: "Detroit", 
+      state: "Michigan"
+    }
+  },
   {
     positions: [
       {
@@ -88,7 +113,7 @@ export const education: Education[] = [
 
 export const profile: Profile = {
   name: 'Evan Parizot',
-  about: 'Originally from Houston, Texas, I currently reside in the Detroit, Michigan area. I do software development at Quickenloans, a Detroit headquartered mortgage company.',
+  about: 'Originally from Houston, Texas, I currently reside in the Detroit, Michigan area. I currently do software development at Amazon.',
   pictureUrl: 'https://assets.evanparizot.com/profile/reinvent_300x300.jpg',
   experience: experience,
   education: education,

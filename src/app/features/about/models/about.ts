@@ -8,13 +8,13 @@ export class Profile {
 }
 
 export class Company {
-  name: string;
+  name?: string;
   iconUrl?: string;
-  headquarters: Partial<Address>;
-  type: string;
-  industry: string;
-  areaServed: string;
-  website: string;
+  headquarters?: Partial<Address>;
+  type?: string;
+  industry?: string;
+  areaServed?: string;
+  website?: string;
 }
 
 export class Address {

@@ -14,10 +14,15 @@
               <h2>{{exp.company.name}}</h2>
             </div>
           </div>
-          <div class="col">
-            <div *ngFor="let pos of exp.positions">
+          <div class="col experience">
+            <ul>
+              <li *ngFor="let pos of exp.positions">
+                {{pos.title}}
+              </li>
+            </ul>
+            <!-- <div *ngFor="let pos of exp.positions">
               {{pos.title}}
-            </div>
+            </div> -->
           </div>
         </div>
       </div>

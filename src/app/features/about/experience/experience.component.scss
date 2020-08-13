@@ -3,6 +3,12 @@
     padding: 0rem 0rem 2rem;
   }
 
+  .icon-wrap {
+    img {
+      background-color: white;
+    }
+  }
+
   img {
     height: 70px;
     width: 70px;
@@ -11,5 +17,15 @@
 
   .inline-block {
     display: inline-block;
+  }
+
+  .experience {
+    justify-content: left;
+    align-items: center; 
+    display: flex;
+  }
+
+  li {
+    list-style: none;
   }
 }
