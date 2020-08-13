@@ -1,17 +1,17 @@
-import { Directive, ElementRef, Renderer, HostListener } from "@angular/core";
+import { Directive, ElementRef, HostListener } from "@angular/core";
 
 @Directive({
     selector: '[nodeHover]'
 })
 export class OnNodeHoverDirective {
-    constructor(private el: ElementRef, private renderer: Renderer) {
-    }
+    // constructor(private el: ElementRef, private renderer: Renderer) {
+    // }
 
-    @HostListener('mouseover') onMouseOver() {
-        this.renderer.setElementClass(this.el.nativeElement, 'hover', true);
-    }
+    // @HostListener('mouseover') onMouseOver() {
+    //     this.renderer.setElementClass(this.el.nativeElement, 'hover', true);
+    // }
 
-    @HostListener('mouseleave') onMouseLeave() {
-        this.renderer.setElementClass(this.el.nativeElement, 'hover', false);
-    }
+    // @HostListener('mouseleave') onMouseLeave() {
+    //     this.renderer.setElementClass(this.el.nativeElement, 'hover', false);
+    // }
 }

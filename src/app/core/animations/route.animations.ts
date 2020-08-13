@@ -60,7 +60,7 @@ const STEPS_ALL: any[] = [
   )
 ];
 const STEPS_NONE = [];
-const STEPS_PAGE = [STEPS_ALL[0], STEPS_ALL[2]];
+const STEPS_PAGE = [STEPS_ALL[1], STEPS_ALL[2]];
 const STEPS_ELEMENTS = [STEPS_ALL[1], STEPS_ALL[3]];
 
 export const routeAnimations = trigger('routeAnimations', [
