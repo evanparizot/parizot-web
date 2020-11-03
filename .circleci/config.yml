@@ -34,17 +34,17 @@ workflows:
 jobs:
   build_and_test:
     docker:
-      - image: circleci/node:latest
+      - image: circleci/node:14.15.0
     working_directory: "~/project"
     steps:
       - checkout
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+      # - restore_cache:
+          # key: dependency-cache-{{ checksum "package.json" }}
       - run: npm install
-      - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-          paths:
-            - node_modules
+      # - save_cache:
+      #     key: dependency-cache-{{ checksum "package.json" }}
+      #     paths:
+      #       - node_modules
       # - run: npm run lint
       # - run: npm run test
       - run: npm run build -- --configuration=staging --output-path=dist/staging --progress=false
