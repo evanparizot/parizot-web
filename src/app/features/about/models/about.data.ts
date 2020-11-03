@@ -113,7 +113,7 @@ export const education: Education[] = [
 
 export const profile: Profile = {
   name: 'Evan Parizot',
-  about: 'Originally from Houston, Texas, I currently reside in the Detroit, Michigan area. I currently do software development at Amazon.',
+  about: 'Originally from Houston, Texas, I currently reside in the Detroit, Michigan area. I do software development at Amazon.',
   pictureUrl: 'https://assets.evanparizot.com/profile/reinvent_300x300.jpg',
   experience: experience,
   education: education,

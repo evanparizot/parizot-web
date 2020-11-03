@@ -1,18 +1,19 @@
 <div class="experience-container">
-
-
     <div *ngFor="let exp of experience" class="exp-wrap">
 
       <div class="container-fluid">
-        <div class="row">
-          <div class="col">
+        <div class="row justify-content-center">
+          <div class="col-xl-3 offset-xl-3 col-xs-2 company">
+            <div class="company">
 
-            <div class="icon-wrap inline-block">
-              <img src="{{exp.company.iconUrl}}">
+              <div class="icon-wrap inline-block">
+                <img src="{{exp.company.iconUrl}}">
+              </div>
+              <div class="inline-block">
+                <h3>{{exp.company.name}}</h3>
+              </div>
             </div>
-            <div class="inline-block">
-              <h2>{{exp.company.name}}</h2>
-            </div>
+              
           </div>
           <div class="col experience">
             <ul>
@@ -20,9 +21,6 @@
                 {{pos.title}}
               </li>
             </ul>
-            <!-- <div *ngFor="let pos of exp.positions">
-              {{pos.title}}
-            </div> -->
           </div>
         </div>
       </div>
