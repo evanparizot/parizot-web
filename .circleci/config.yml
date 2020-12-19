@@ -5,7 +5,7 @@ orbs:
   aws-s3: circleci/aws-s3@1.0.12
 
 workflows:
-  version: 2.1
+  version: 2
   pipeline:
     jobs:
       - build_and_test
