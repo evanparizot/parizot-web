@@ -40,6 +40,17 @@ export const projects: Project[] = [
     ]
   },
   {
+    title: "Piano Coat Rack",
+    description: "'Piano' coat rack made using solid maple. Hangs stuff",
+    thumbnailUrl: "https://assets.evanparizot.com/projects/thumbnails/pianocoat_300x300.jpg",
+    sources: [
+      {
+        sourceName: "Imgur",
+        sourceUrl: "https://imgur.com/gallery/gaKtPGn"
+      }
+    ]
+  },
+  {
     title: "Wordclock",
     description: "In progress prototype wordclock",
     thumbnailUrl: "https://assets.evanparizot.com/projects/thumbnails/wordclock_300x300.png",
