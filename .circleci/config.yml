@@ -9,16 +9,16 @@ workflows:
   pipeline:
     jobs:
       - build_and_test
-      - cypress/run:
-          start: npm start
-          wait-on: "http://localhost:4200"
-          post-steps:
-            - store_test_results:
-                path: cypress/results
+      # - cypress/run:
+      #     start: npm start
+      #     wait-on: "http://localhost:4200"
+      #     post-steps:
+      #       - store_test_results:
+      #           path: cypress/results
 
       - push_to_s3_staging:
           context: aws-s3-parizot
-          requires: ["cypress/run", "build_and_test"]
+          requires: ["build_and_test"]
 
       - hold:
           type: "approval"
