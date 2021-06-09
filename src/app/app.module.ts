@@ -7,6 +7,7 @@ import { AppComponent } from './app/app.component';
 
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
+import { MarkdownModule } from 'ngx-markdown';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { CoreModule } from './core/core.module';
     SharedModule,
     // App stuff
     AppRoutingModule,
+    MarkdownModule.forRoot()
   ],
   providers: [],
   declarations: [AppComponent],

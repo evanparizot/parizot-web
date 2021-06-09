@@ -16,7 +16,7 @@ workflows:
       #       - store_test_results:
       #           path: cypress/results
 
-      - push_to_s3_staging:
+      - push_to_s3_beta:
           context: aws-s3-parizot
           requires: ["build_and_test"]
 
@@ -47,15 +47,15 @@ jobs:
       #       - node_modules
       # - run: npm run lint
       # - run: npm run test
-      - run: npm run build -- --configuration=staging --output-path=dist/staging --progress=false
-      - run: npm run build -- --configuration=production --output-path=dist/prod --progress=false
+      - run: npm run build -- --configuration=beta --output-path=dist/beta --progress=false
+      - run: npm run build -- --configuration=prod --output-path=dist/prod --progress=false
       - persist_to_workspace:
           root: "~/project"
           paths:
-            - dist/staging
+            - dist/beta
             - dist/prod
 
-  push_to_s3_staging:
+  push_to_s3_beta:
     docker:
       - image: circleci/python:3.7
     steps:
@@ -63,7 +63,7 @@ jobs:
           at: ~/project
       - run: pip3 install awscli --upgrade --user
       - aws-s3/sync:
-          from: ./dist/staging
+          from: ./dist/beta
           to: "s3://staging.evanparizot.com/"
           overwrite: true
 
