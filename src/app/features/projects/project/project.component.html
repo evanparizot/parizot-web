@@ -1,8 +1,15 @@
-<div class="container-fluid">
-  <div *ngIf="project$ | async as project" [ngClass]="routeAnimationsElements">
+<div class="container-fluid" >
+  <div *ngIf="!(project$ | async)" class="spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <div *ngIf="project$ | async as project">
     <div class="row justify-content-center align-items-center">
       <div class="col text-center">
-        <h3 class="mat-display-4">{{ project.title }}</h3>
+        <h2 class="mat-display-3">{{ project.title }}</h2>
+        <h3 class="mat-subheading-1">
+          {{ project.createdDate | date: "mediumDate" }}
+        </h3>
       </div>
     </div>
     <div class="row justify-content-center align-items-center">
@@ -10,7 +17,16 @@
         <markdown linenumbers [start]="5" ngPreserveWhitespaces>
           {{ project.contentBody }}
         </markdown>
+
+        <mat-form-field appearance="fill">
+          <textarea
+            matInput
+            placeholder="Stuff goes here"
+            [(ngModel)]="project.contentBody"
+          ></textarea>
+        </mat-form-field>
       </div>
     </div>
   </div>
+
 </div>
