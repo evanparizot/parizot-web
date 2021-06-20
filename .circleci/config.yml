@@ -22,7 +22,7 @@ workflows:
 
       - hold:
           type: "approval"
-          requires: ["push_to_s3_staging"]
+          requires: ["push_to_s3_beta"]
           filters:
             branches:
               only: master
