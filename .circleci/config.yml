@@ -64,7 +64,7 @@ jobs:
       - run: pip3 install awscli --upgrade --user
       - aws-s3/sync:
           from: ./dist/beta
-          to: "s3://staging.evanparizot.com/"
+          to: "s3://beta.evanparizot.com/"
           overwrite: true
 
   push_to_s3_prod:
